@@ -299,7 +299,7 @@
   .pg-body .stat{min-width:9rem;border:1px solid var(--line);border-radius:1rem;background:rgba(0,0,0,.28);padding:1rem 1.3rem}
   .pg-body .stat strong{display:block;font-size:2.2rem;font-weight:600}
   .pg-body .stat span{font-size:.7rem;color:var(--mute)}
-  .pg-body .newsitem{display:block;max-width:40rem;border:1px solid var(--line);border-radius:.9rem;background:rgba(0,0,0,.3);padding:.9rem 1.1rem;margin-bottom:.7rem}
+  .pg-body .newsitem{display:block;color:var(--txt);text-decoration:none;max-width:40rem;border:1px solid var(--line);border-radius:.9rem;background:rgba(0,0,0,.3);padding:.9rem 1.1rem;margin-bottom:.7rem}
   .pg-body .newsitem b{display:block;font-size:.62rem;letter-spacing:.06em;color:var(--mute);margin-bottom:.35rem}
   .pg-body .newsitem h4{font-size:.95rem;font-weight:500;line-height:1.35}
   .pg-body .soon{font-size:.78rem;color:var(--mute);letter-spacing:.04em}
@@ -326,51 +326,40 @@
   body.lite.open .card.active{background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.02) 45%),rgba(30,24,46,.7)}
   body.lite.open .page{background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,0) 42%),rgba(22,19,32,.72)}
   @media (max-width:900px){
-    html{font-size:clamp(11px,min(3.8vw,1.9vh),16px)}
-    .stage{padding:max(.8rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom))}
-    .top{height:3rem}
-    .logo img{height:3.4rem}
+    html{font-size:clamp(12px,3.8vw,17px);height:auto}
+    body{height:auto;min-height:100dvh;overflow-x:hidden;overflow-y:auto}
+    .stage{height:auto;min-height:100dvh;display:block;padding:max(.6rem,env(safe-area-inset-top)) 1rem 2.6rem}
+    .top{position:sticky;top:0;z-index:20;height:3.4rem;margin:0 -1rem;padding:0 1rem;
+      background:linear-gradient(180deg,rgba(8,7,11,.94),rgba(8,7,11,.72) 65%,rgba(8,7,11,0))}
+    .logo img{height:3.1rem}
     .tag,.side{display:none}
     .loc{gap:.8rem;font-size:.6rem}
-    .hero{margin-top:.9rem}
+    .hero{margin-top:.5rem}
     .hero h1.narrow{left:0;right:0;transform:none;white-space:normal;text-align:center;line-height:.95;width:100%}
     .hero h1 .w{display:inline-block;white-space:nowrap}
     .hero::before{left:0;right:0}
 
-    /* beranda: bento 2 kolom, pas satu layar */
-    .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1.1fr repeat(3,1fr) .8fr;gap:.65rem}
+    /* beranda ponsel: tumpuk ke bawah, tinggi beda tiap segmen; hanya 2 kotak terakhir bersebelahan */
+    .shell{display:block}
+    .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;gap:1rem;flex:none}
     .row,.rcol{display:contents}
-    .card{min-height:0;padding:.85rem 1rem;border-radius:1.1rem}
-    .about,.cta{grid-column:1 / -1}
-    .card .eyebrow{font-size:.5rem;letter-spacing:.24em}
-    .card .big{font-size:1.35rem;margin-top:.5rem;line-height:.95}
-    .card .big b{font-size:inherit}
-    .card .arrow{top:.7rem;right:.7rem;bottom:auto;left:auto;margin-top:0;width:1.7rem;height:1.7rem;font-size:.7rem}
-    /* sembunyikan isi yang terlalu rinci untuk ubin kecil */
-    .card h3,.card .strip,.card .faces,.card svg,.card .chips,.card .thumbs,
-    .card .hero-ph,.card .news,.card .founders{display:none}
-    .about .big br{display:none}
-    .about .big b{margin-left:.22em}
-    .about p{display:none}
-    .about .big{font-size:1.9rem}
-    .card p{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-      width:auto;max-width:none;font-size:.58rem;line-height:1.4;margin-top:.5rem;padding-right:.2rem}
-    .lead .names p{display:block;-webkit-line-clamp:unset}
-    .card.cta p,.card.about p{display:none}
-    @media (max-height:700px){ .card p{display:none} }
-    .stats{left:.8rem;right:.8rem;bottom:.7rem;padding:.4rem .7rem}
-    .stats strong{font-size:1.05rem}
-    .stats span{font-size:.5rem}
-    .lead .eyebrow{top:.85rem;left:1rem}
-    .lead .names{left:1rem;bottom:.85rem}
-    .lead .names h2{font-size:1.05rem;line-height:1}
-    .lead .names p{display:block;font-size:.55rem;margin-top:.3rem}
-    .builders .big{font-size:1.1rem}
+    .card{grid-column:1 / -1;min-height:0;border-radius:1.3rem}
+    .about{height:18rem}
+    .lead{height:26rem}
+    .net{height:17rem}
+    .award{height:16.5rem}
+    .builders{height:18.5rem}
+    .work{height:22rem}
+    .press,.cta{grid-column:auto;height:13.5rem}
     .press{display:block}
-    .cta{justify-content:center}
+    .press .news{display:none}
+    .press .big{font-size:1.55rem}
+    .press .big + p{font-size:.62rem;margin-top:.6rem}
+    .press .arrow,.cta .arrow{top:auto;bottom:.9rem;right:.9rem;margin:0}
+    .cta{padding:1.2rem 1.1rem}
     .cta small:last-of-type{display:none}
-    .cta h2{font-size:1.35rem;margin:.3rem 0 0}
-    .card.cta .arrow{top:50%;margin-top:-.85rem}
+    .cta small:first-of-type{font-size:.5rem;letter-spacing:.2em;line-height:1.5}
+    .cta h2{font-size:1.45rem;margin:.7rem 0 0}
   }
   @media (prefers-reduced-motion:reduce){
     #uni-bg{animation:none}#uni-zoom{transition:none}
@@ -380,16 +369,17 @@
   }
 
   @media (max-width:900px){
-    body.open .shell{display:flex;flex-direction:column;gap:.7rem;margin-top:.7rem}
+    body.open .shell{display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem}
     body.open .grid{display:flex;flex-direction:row;flex:none;height:4rem;overflow-x:auto;overflow-y:hidden;gap:.5rem;scrollbar-width:none;padding:4px 2px}
     body.open .grid::-webkit-scrollbar{display:none}
     body.open .card{flex:0 0 10.5rem;height:100%;padding:.3rem 1rem}
-    body.open .page{flex:1 1 0;min-height:0;padding:1.4rem 1.2rem;transform:translateY(1.2rem)}
+    body.open .page{flex:1 1 auto;min-height:calc(100dvh - 11.5rem);padding:1.4rem 1.2rem;transform:translateY(1.2rem)}
     body.open .page.show{transform:none}
     .pg-title{font-size:3.1rem;margin-top:.7rem}
     .pg-lead{font-size:.9rem}
     .page .back{top:1rem;right:1rem}
     body.open .hero{left:1rem;right:1rem}
+    body.moving{touch-action:none}
   }
 </style>
 </head>
@@ -717,10 +707,11 @@
   const FADE = reduce ? 0 : 230;
   function morph(mutate, done){
     busy = true;
-    const first = allCards.map(c=>c.getBoundingClientRect());
     document.body.classList.add('moving');                 /* isi kotak memudar dulu */
     setTimeout(()=>{
+      const first = allCards.map(c=>c.getBoundingClientRect());
       mutate();
+      if (innerWidth<=900) window.scrollTo(0,0);
       const last = allCards.map(c=>c.getBoundingClientRect());
       const anims = allCards.map((c,i)=>{
         const f = first[i], l = last[i];
