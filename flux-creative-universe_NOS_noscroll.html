@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FLUX CREATIVE UNIVERSE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#08070b;
+    --line:rgba(255,255,255,.10);
+    --txt:#f4eefc;
+    --mute:rgba(244,238,252,.62);
+    --pink:#f0b7f5;
+    --glow:rgba(160,110,255,.35);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{font-size:clamp(9px,min(1.04vw,1.85vh),24px);background:var(--bg);height:100%}
+  body{
+    font-family:'Inter','Helvetica Neue',Arial,sans-serif;color:var(--txt);background:var(--bg);
+    height:100vh;height:100dvh;overflow:hidden;
+  }
+  /* ambient background */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(55rem 30rem at 12% 30%,rgba(120,60,200,.16),transparent 70%),
+      radial-gradient(50rem 28rem at 92% 85%,rgba(255,110,60,.12),transparent 70%);
+  }
+  .stage{position:relative;z-index:1;padding:1rem 2rem 1.2rem;isolation:isolate;height:100vh;height:100dvh;display:flex;flex-direction:column}
+
+  /* ===== top bar ===== */
+  .top{flex:none;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:4;height:3.4rem}
+  .logo{display:block;line-height:0}
+  .logo img{height:4.2rem;width:auto;display:block;filter:drop-shadow(0 0 1rem rgba(200,90,200,.25))}
+  .tag{position:absolute;left:50%;transform:translateX(-50%);font-size:.62rem;letter-spacing:.55em;color:var(--mute);white-space:nowrap}
+  .loc{display:flex;align-items:center;gap:1.4rem;font-size:.62rem;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+  .dot{width:.8rem;height:.8rem;border-radius:50%;background:#fff;box-shadow:0 0 .8rem rgba(255,255,255,.7)}
+
+  /* ===== hero title (berubah saat hover) ===== */
+  .hero{flex:none;position:relative;z-index:1;height:7.4rem;margin-top:.4rem}
+  .hero h1{
+    position:absolute;left:50%;top:0;transform:translateX(-50%);
+    font-family:'Anton','Impact','Arial Narrow',sans-serif;font-weight:400;white-space:nowrap;
+    font-size:9rem;line-height:1;letter-spacing:.005em;color:#f6f1ff;
+    -webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,rgba(0,0,0,.35) 100%);
+            mask-image:linear-gradient(180deg,#000 0%,#000 55%,rgba(0,0,0,.35) 100%);
+    user-select:none;transition:opacity .15s ease,filter .15s ease;
+  }
+  .hero::before{content:"";position:absolute;left:10%;right:10%;top:-30%;height:150%;pointer-events:none;
+    background:radial-gradient(50% 50% at 50% 50%,var(--glow),transparent 70%);opacity:.55;transition:background .6s ease}
+  .hero h1.out{opacity:0;filter:blur(14px)}
+  .ch{display:inline-block;animation:chIn .7s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i)*26ms)}
+  .ch.sp{width:.26em}
+  @keyframes chIn{
+    from{opacity:0;filter:blur(18px);transform:translateY(38%) scale(.92)}
+    to{opacity:1;filter:blur(0);transform:none}
+  }
+  .side{position:absolute;top:.5rem;font-size:.62rem;letter-spacing:.22em;line-height:1.7;color:var(--mute);z-index:3}
+  .side.l{left:0;width:6rem}
+  .side.r{right:0;width:8rem}
+
+  /* ===== grid ===== */
+  .grid{position:relative;z-index:2;flex:1 1 0;min-height:0;display:grid;grid-template-rows:repeat(2,minmax(0,1fr));gap:1.1rem}
+  .row{display:grid;gap:1.1rem;min-height:0;min-width:0}
+  .r1{grid-template-columns:1.12fr .92fr 1.08fr 1fr}
+  .r3{grid-template-columns:1.08fr 1.2fr 1fr}
+
+  /* ===== GLASS CARD ===== */
+  .card{
+    --c1:#7b3fe4;--c2:#ff7a45;--c3:#e062c8;
+    position:relative;overflow:hidden;min-height:0;border-radius:1.4rem;isolation:isolate;
+    padding:1.3rem 1.5rem;cursor:pointer;
+    background:
+      linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,0) 42%),
+      rgba(22,20,28,.52);
+    border:1px solid rgba(255,255,255,.09);
+    -webkit-backdrop-filter:blur(22px) saturate(150%);
+            backdrop-filter:blur(22px) saturate(150%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.14),inset 0 -1px 0 rgba(255,255,255,.03),0 1rem 2.5rem rgba(0,0,0,.35);
+    transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .5s ease,box-shadow .6s ease,background .6s ease;
+  }
+  /* lapisan warna hidup (aktif hanya saat hover) */
+  .card::before{
+    content:"";position:absolute;inset:-35%;z-index:-1;opacity:0;pointer-events:none;
+    background:
+      radial-gradient(38% 38% at 18% 22%,var(--c1),transparent 70%),
+      radial-gradient(42% 42% at 86% 88%,var(--c2),transparent 70%),
+      radial-gradient(32% 32% at 82% 14%,var(--c3),transparent 70%);
+    filter:blur(14px);
+    animation:drift 6s ease-in-out infinite alternate;animation-play-state:paused;
+    transition:opacity .7s ease;
+  }
+  @keyframes drift{
+    0%  {transform:translate(-5%,-4%) rotate(0deg) scale(1)}
+    50% {transform:translate(4%,3%) rotate(14deg) scale(1.12)}
+    100%{transform:translate(-2%,5%) rotate(-10deg) scale(1.06)}
+  }
+
+  /* cahaya yang mengelilingi tepi kotak — satu putaran saat hover */
+  @property --a{syntax:'<angle>';inherits:false;initial-value:0deg}
+  .card::after{
+    content:"";position:absolute;inset:0;z-index:5;pointer-events:none;border-radius:inherit;
+    padding:3px;opacity:0;
+    background:conic-gradient(from var(--a),transparent 0deg,transparent 235deg,var(--c1) 290deg,var(--c3) 332deg,#fff 358deg,transparent 360deg);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;
+            mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);
+    filter:drop-shadow(0 0 .5rem var(--c3)) drop-shadow(0 0 .2rem #fff);
+  }
+  .card:hover::after,.card:focus-visible::after{animation:orbit 5.5s cubic-bezier(.3,.1,.4,1) 1 both}
+  @keyframes orbit{
+    0%  {--a:0deg;opacity:0}
+    8%  {opacity:1}
+    50% {opacity:1}
+    72% {opacity:.65}
+    88% {opacity:.25}
+    100%{--a:480deg;opacity:0}
+  }
+
+  /* kondisi MATI / redup */
+  .card > *{opacity:.42;transition:opacity .5s ease}
+  .card .ph,.card svg{filter:grayscale(.8) brightness(.78);transition:filter .6s ease}
+
+  /* kondisi HIDUP */
+  .card:hover,.card:focus-visible{
+    transform:translateY(-.3rem) scale(1.008);outline:none;
+    border-color:rgba(255,255,255,.30);
+    background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.02) 45%),rgba(22,20,28,.34);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 0 0 1px rgba(255,255,255,.06),0 1rem 2.5rem rgba(0,0,0,.35);
+  }
+  .card:hover::before,.card:focus-visible::before{opacity:.95;animation-play-state:running}
+    .card:hover > *,.card:focus-visible > *{opacity:1}
+  .card:hover .ph,.card:hover svg,.card:focus-visible .ph,.card:focus-visible svg{filter:none}
+
+  /* warna tiap kotak (palet desain: ungu · pink · oranye) */
+  .about  {--c1:#7a3df0;--c2:#ff7b47;--c3:#e65bc2}
+  .lead   {--c1:#ff8a3d;--c2:#8a45f0;--c3:#ff4f9a}
+  .net    {--c1:#8f4cff;--c2:#ff5fb0;--c3:#ff8a4a}
+  .builders{--c1:#ff7a3a;--c2:#b04dff;--c3:#ff4fa0}
+  .award  {--c1:#f0a63a;--c2:#7b45e6;--c3:#ff7b4a}
+  .work   {--c1:#ff7f45;--c2:#8446ee;--c3:#e65ac0}
+  .press  {--c1:#7f4ae8;--c2:#ff8248;--c3:#ee5fb5}
+  .cta    {--c1:#8546f5;--c2:#ff4f9d;--c3:#ff8a4a}
+
+  .eyebrow{font-size:.58rem;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+  .arrow{
+    position:absolute;top:1.1rem;right:1.2rem;width:2.1rem;height:2.1rem;border-radius:50%;
+    border:1px solid rgba(255,255,255,.35);display:grid;place-items:center;font-size:.85rem;
+    background:rgba(255,255,255,.05);z-index:4;transition:background .25s,color .25s,opacity .5s,transform .4s;text-decoration:none;color:inherit;
+  }
+  .card:hover .arrow{transform:rotate(-8deg) scale(1.06)}
+  .arrow:hover{background:#fff;color:#111}
+  .big{font-weight:800;letter-spacing:-.03em;line-height:.92}
+  .big .thin{font-weight:400}
+
+  /* about */
+  .about .big{font-size:2.7rem;margin-top:.7rem;color:var(--pink)}
+  .about .big b{font-size:3rem;color:#fff}
+  .about h3{font-size:1.05rem;font-weight:400;margin-top:.45rem}
+  .about p{font-size:.66rem;line-height:1.5;color:var(--mute);margin-top:.4rem;max-width:18rem}
+  .stats{position:absolute;left:.9rem;right:.9rem;bottom:.8rem;display:grid;grid-template-columns:repeat(4,auto);
+    border:1px solid var(--line);border-radius:.9rem;background:rgba(0,0,0,.28);padding:.55rem .9rem;justify-content:space-between}
+  .stats div{padding:0 .45rem;border-left:1px solid var(--line)}
+  .stats div:first-child{border:0;padding-left:0}
+  .stats strong{display:block;font-size:1.15rem;font-weight:500}
+  .stats span{font-size:.52rem;color:var(--mute);line-height:1.2;display:block}
+
+  /* leadership */
+  .lead{padding:0}
+  .lead .eyebrow{position:absolute;top:1.3rem;left:1.5rem;z-index:3}
+  .lead .names{position:absolute;left:1.5rem;bottom:1.2rem;z-index:3}
+  .lead .names h2{font-size:1.9rem;font-weight:500;line-height:1.05;letter-spacing:-.02em}
+  .lead .names p{font-size:.85rem;margin-top:.5rem;color:#e8dff5}
+  .lead .names p i{opacity:.6;font-style:normal;margin:0 .5rem}
+  .founders{position:absolute;inset:0;display:flex;align-items:flex-end;justify-content:center;gap:0}
+  .founders .ph{height:88%;width:44%;border-radius:0;background:none}
+  .founders .ph:first-child{margin-right:-6%;z-index:1}
+
+  /* network */
+  .net .big{font-size:2.5rem;margin-top:1rem}
+  .net p{font-size:.62rem;color:var(--mute);margin-top:1rem;width:9rem;line-height:1.5}
+  .strip{position:absolute;right:.9rem;top:3.4rem;bottom:.9rem;width:46%;display:grid;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,minmax(0,1fr));gap:.4rem}
+  .strip .ph{border-radius:.7rem;height:100%}
+
+  /* builders */
+  .builders{display:grid;grid-template-columns:1fr;grid-template-rows:auto minmax(0,1fr);gap:.9rem}
+  .builders .big{font-size:2.4rem;margin-top:.5rem}
+  .builders p{font-size:.7rem;color:var(--mute);margin-top:.5rem;line-height:1.45}
+  .faces{display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,minmax(0,1fr));gap:.55rem;height:100%;min-height:0}
+  .faces .ph{border-radius:.7rem;height:100%}
+  .builders .arrow{top:1.1rem}
+
+  /* award */
+  .award .big{font-size:2.1rem;margin-top:.9rem;position:relative;z-index:3}
+  .award p{font-size:.72rem;color:var(--mute);margin-top:.6rem;line-height:1.45;width:7rem;position:relative;z-index:3}
+  .award svg{position:absolute;right:-1.2rem;bottom:0;height:74%;width:auto;z-index:2}
+  .award .arrow{top:auto;bottom:1rem;left:1.2rem;right:auto}
+
+  /* work */
+  .work .big{font-size:2.4rem;margin-top:.7rem}
+  .work p{font-size:.72rem;color:#e8dff5;margin-top:.5rem;line-height:1.4;width:11rem}
+  .work .hero-ph.ph.scene{position:absolute;right:12%;top:0;width:34%;height:72%;background:radial-gradient(circle at 50% 42%,rgba(255,190,130,.38),transparent 68%)}
+  .chips{display:flex;gap:.5rem;margin-top:.8rem;position:relative;z-index:5}
+  .chip{font:600 .55rem 'Inter';letter-spacing:.14em;padding:.42rem .95rem;border-radius:2rem;border:1px solid var(--line);
+    background:rgba(0,0,0,.35);color:var(--txt);cursor:pointer;transition:.2s}
+  .chip.on,.chip:hover{background:#fff;color:#111}
+  .thumbs{position:absolute;left:1.2rem;right:1.2rem;bottom:1rem;height:26%;display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;z-index:2}
+  .thumbs .ph{border-radius:.6rem;height:100%;transition:opacity .3s,transform .3s,filter .6s}
+  .thumbs .ph.dim{opacity:.18;transform:scale(.96)}
+
+  /* press + cta */
+  .rcol{display:grid;grid-template-rows:1.15fr .78fr;gap:1.1rem;min-height:0}
+  .press{display:grid;grid-template-columns:7rem 1fr;gap:1rem}
+  .press .big{font-size:1.9rem;margin-top:.9rem}
+  .press .big + p{font-size:.68rem;color:var(--mute);margin-top:.5rem;line-height:1.4}
+  .news{display:flex;flex-direction:column;gap:.55rem;justify-content:center;padding-right:2.6rem}
+  .news a{display:block;text-decoration:none;color:var(--txt);border:1px solid var(--line);border-radius:.8rem;
+    background:rgba(0,0,0,.3);padding:.6rem .8rem;transition:.25s}
+  .news a:hover{background:rgba(255,255,255,.12)}
+  .news .src{font-size:.52rem;font-weight:700;letter-spacing:.04em;margin-bottom:.3rem;display:flex;gap:.3rem;align-items:center}
+  .times{background:#e3262d;color:#fff;padding:.12rem .3rem;border-radius:.15rem;font-size:.5rem}
+  .inv{color:#4aa8ff}
+  .news h4{font-size:.68rem;font-weight:500;line-height:1.3}
+  .news time{display:block;font-size:.55rem;color:var(--mute);margin-top:.25rem}
+  .press .arrow{top:50%;margin-top:-1.05rem}
+  .cta{display:flex;flex-direction:column;justify-content:center}
+  .cta small{font-size:.56rem;letter-spacing:.3em;color:var(--mute)}
+  .cta h2{font-size:1.9rem;font-weight:300;line-height:1;margin:.5rem 0;letter-spacing:-.02em}
+  .cta h2 b{font-weight:800}
+  .cta .arrow{top:auto;bottom:1rem}
+
+  /* ===== placeholder potret (ganti dengan <img>) ===== */
+  .ph{position:relative;overflow:hidden;background:linear-gradient(170deg,hsl(var(--h,260) 35% 22%),hsl(var(--h,260) 30% 8%))}
+  .ph::before{content:"";position:absolute;left:50%;top:22%;width:34%;aspect-ratio:.82;transform:translateX(-50%);
+    border-radius:50% 50% 46% 46%;background:linear-gradient(180deg,hsl(var(--s,28) 32% 52%),hsl(var(--s,28) 30% 38%));
+    box-shadow:0 -.25rem 0 .1rem hsl(20 20% 8%)}
+  .ph::after{content:"";position:absolute;left:50%;bottom:-8%;width:92%;height:40%;transform:translateX(-50%);
+    border-radius:50% 50% 0 0;background:linear-gradient(180deg,hsl(var(--c,230) 15% 16%),hsl(var(--c,230) 15% 7%))}
+  .ph.large::before{width:30%;top:26%}
+  .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:3}
+  .ph.scene::before,.ph.scene::after{display:none}
+  .ph.scene{background:linear-gradient(135deg,hsl(var(--h) 55% 38%),hsl(calc(var(--h) + 50) 50% 18%))}
+  /* penting: pseudo .ph tidak boleh ikut aturan glow kartu */
+  .card .ph::before,.card .ph::after{opacity:1;filter:none;animation:none;inset:auto;z-index:auto}
+  .card .ph::before{inset:auto}
+
+  /* ===== layar sentuh / mobile ===== */
+  @media (hover:none){
+    .card > *{opacity:1}
+    .card .ph,.card svg{filter:none}
+    .card::before{opacity:.55;animation-play-state:running}
+  }
+  @media (max-width:900px){
+    html{font-size:15px;height:auto}
+    body{height:auto;overflow-x:hidden;overflow-y:auto}
+    .stage{padding:1rem 1rem 2rem;height:auto;display:block}
+    .grid{display:grid;grid-template-rows:none}
+    .tag{display:none}
+    .side{display:none}
+    .row,.r1,.r3{grid-template-columns:1fr;height:auto}
+    .card{min-height:19rem}
+    .builders{grid-template-columns:1fr;height:auto;min-height:17rem}
+    .faces{height:9rem;padding-right:0}
+    .rcol{grid-template-rows:auto auto}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .card::before{animation:none}
+    .card:hover::after{animation:none}
+    .ch{animation-duration:.01s}
+  }
+</style>
+</head>
+<body>
+<main class="stage">
+
+  <header class="top">
+    <a class="logo" href="#" aria-label="Flux Creative Universe"><img src="logo-fcu.webp" alt="Flux Creative Universe"></a>
+    <div class="tag">THE CREATIVE GROUP HOLDING</div>
+    <div class="loc"><span>Jakarta · <span id="clock">--:--</span></span><span class="dot"></span></div>
+  </header>
+
+  <section class="hero" aria-label="FLUX CREATIVE UNIVERSE">
+    <div class="side l">CREATIVE<br>ATTENTION<br>AI</div>
+    <h1 id="title">FLUX CREATIVE UNIVERSE</h1>
+    <div class="side r">ONE<br>ECOSYSTEM<br>MANY<br>POSSIBILITIES</div>
+  </section>
+
+  <div class="grid" id="grid">
+
+    <section class="row r1">
+      <article class="card about" tabindex="0" data-title="MEET FCU">
+        <div class="eyebrow">01 / About</div>
+        <a class="arrow" href="#">↗</a>
+        <div class="big">MEET<br><b>FCU.</b></div>
+        <h3>The Creative Group Holding</h3>
+        <p>An Indonesian creative group holding that builds, operates, and grows businesses across Creativity, Attention, and AI.</p>
+        <div class="stats">
+          <div><strong>30</strong><span>Companies</span></div>
+          <div><strong>200+</strong><span>People</span></div>
+          <div><strong>2.3B+</strong><span>Views</span></div>
+          <div><strong>11</strong><span>Gen Z Companies<br>Invested In</span></div>
+        </div>
+      </article>
+
+      <article class="card lead" tabindex="0" data-title="THE FOUNDERS">
+        <div class="eyebrow">02 / Leadership</div>
+        <a class="arrow" href="#">→</a>
+        <div class="founders">
+          <div class="ph large" style="--h:250;--s:30;--c:240"></div>
+          <div class="ph large" style="--h:20;--s:26;--c:20"></div>
+        </div>
+        <div class="names">
+          <h2>MEET<br>THE FOUNDERS.</h2>
+          <p>Yohanes Auri <i>×</i> Deddy Corbuzier</p>
+        </div>
+      </article>
+
+      <article class="card net" tabindex="0" data-title="BACKED BY">
+        <div class="eyebrow">03 / Network</div>
+        <a class="arrow" href="#">→</a>
+        <div class="big">BACKED<br>BY.</div>
+        <p>Investors &amp; Strategic Partners Across The Universe.</p>
+        <div class="strip">
+          <div class="ph" style="--h:20;--s:26"></div>
+          <div class="ph" style="--h:230;--s:30"></div>
+          <div class="ph" style="--h:260;--s:34"></div>
+          <div class="ph" style="--h:210;--s:30"></div>
+          <div class="ph" style="--h:30;--s:36"></div>
+          <div class="ph" style="--h:240;--s:28"></div>
+        </div>
+      </article>
+    
+      <article class="card award" tabindex="0" data-title="AWARD WINNING">
+        <div class="eyebrow">04 / Recognition</div>
+        <div class="big">AWARD<br>WINNING.</div>
+        <p>Our work gets recognized.</p>
+        <a class="arrow" href="#">→</a>
+        <svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg" aria-label="Penghargaan MURI">
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff2c8"/><stop offset=".45" stop-color="#e2a53e"/><stop offset="1" stop-color="#7a4a10"/></linearGradient>
+            <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#2a2236"/><stop offset="1" stop-color="#0d0a14"/></linearGradient>
+          </defs>
+          <ellipse cx="150" cy="312" rx="110" ry="10" fill="#000" opacity=".5"/>
+          <rect x="170" y="130" width="110" height="170" rx="4" fill="url(#gl)" stroke="#c99a46" stroke-opacity=".55"/>
+          <text x="225" y="170" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700" letter-spacing="1">MARKETEERS</text>
+          <text x="225" y="183" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700" letter-spacing="1">YOUTH CHOICE</text>
+          <text x="225" y="196" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700" letter-spacing="1">AWARD</text>
+          <text x="225" y="210" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700">2026</text>
+          <text x="225" y="260" fill="#c9a869" font-size="6" text-anchor="middle" font-family="Inter">FLUX CREATIVE UNIVERSE</text>
+          <path d="M60 40 L110 40 L150 120 L190 40 L240 40 L170 215 L130 215 Z" fill="url(#g)" opacity=".95"/>
+          <text x="150" y="190" fill="#3a2406" font-size="26" text-anchor="middle" font-family="Anton" letter-spacing="1">MURI</text>
+          <rect x="132" y="215" width="36" height="38" fill="url(#g)"/>
+          <ellipse cx="150" cy="262" rx="62" ry="14" fill="url(#g)"/>
+          <ellipse cx="150" cy="254" rx="50" ry="9" fill="#f6d68c" opacity=".7"/>
+          <ellipse cx="150" cy="290" rx="95" ry="12" fill="#1a1522" stroke="#c99a46" stroke-opacity=".4"/>
+        </svg>
+      </article>
+    </section>
+
+
+    <section class="row r3">
+    <article class="card builders" tabindex="0" data-title="PARTNER HEROES">
+      <div>
+        <div class="eyebrow">05 / Our Builders</div>
+        <div class="big">MEET OUR<br><span class="thin">PARTNER HEROES.</span></div>
+        <p>The entrepreneurs who build<br>the universe together.</p>
+      </div>
+      <div class="faces">
+        <div class="ph" style="--h:230;--s:30"></div>
+        <div class="ph" style="--h:25;--s:28"></div>
+        <div class="ph" style="--h:250;--s:32"></div>
+        <div class="ph" style="--h:210;--s:36"></div>
+        <div class="ph" style="--h:260;--s:26"></div>
+        <div class="ph" style="--h:20;--s:34"></div>
+        <div class="ph" style="--h:240;--s:30"></div>
+        <div class="ph" style="--h:30;--s:28"></div>
+        <div class="ph" style="--h:215;--s:32"></div>
+        <div class="ph" style="--h:255;--s:26"></div>
+      </div>
+      <a class="arrow" href="#">→</a>
+    </article>
+
+
+      <article class="card work" tabindex="0" data-title="OUR WORK">
+        <div class="eyebrow">06 / Selected Work</div>
+        <a class="arrow" href="#">→</a>
+        <div class="hero-ph ph scene" style="--h:25"></div>
+        <div class="big">OUR<br>WORK.</div>
+        <p>Campaigns that move brands, people and culture.</p>
+        <div class="chips" id="chips">
+          <span class="chip on" data-f="all">ALL</span>
+          <span class="chip" data-f="creative">CREATIVE</span>
+          <span class="chip" data-f="attention">ATTENTION</span>
+          <span class="chip" data-f="ai">AI</span>
+        </div>
+        <div class="thumbs" id="thumbs">
+          <div class="ph scene" data-c="creative" style="--h:330"></div>
+          <div class="ph scene" data-c="ai" style="--h:10"></div>
+          <div class="ph scene" data-c="attention" style="--h:220"></div>
+          <div class="ph scene" data-c="creative ai" style="--h:45"></div>
+        </div>
+      </article>
+
+      <div class="rcol">
+        <article class="card press" tabindex="0" data-title="IN THE NEWS">
+          <div>
+            <div class="eyebrow">07 / Press</div>
+            <div class="big">IN<br>THE NEWS.</div>
+            <p>What the media says about FCU.</p>
+          </div>
+          <div class="news">
+            <a href="#"><div class="src"><span class="times">TIMES</span> INDONESIA</div>
+              <h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4><time>Oct 6, 2026</time></a>
+            <a href="#"><div class="src inv">Investor.id</div>
+              <h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4><time>Sep 21, 2026</time></a>
+          </div>
+          <a class="arrow" href="#">→</a>
+        </article>
+
+        <article class="card cta" tabindex="0" data-title="A UNIVERSE">
+          <small>THIS IS ONLY THE BEGINNING.</small>
+          <h2>WE'RE BUILDING<br>A <b>UNIVERSE.</b></h2>
+          <small>FLUX CREATIVE UNIVERSE</small>
+          <a class="arrow" href="#">→</a>
+        </article>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script>
+(function(){
+  const DEFAULT = 'FLUX CREATIVE UNIVERSE';
+  const h1 = document.getElementById('title');
+  const hero = document.querySelector('.hero');
+  let current = null, token = 0;
+
+  /* ---- judul: huruf-per-huruf muncul dari blur ---- */
+  function render(text){
+    h1.textContent = '';
+    let i = 0;
+    for (const chr of text){
+      const s = document.createElement('span');
+      if (chr === ' '){ s.className = 'ch sp'; s.innerHTML = '&nbsp;'; }
+      else { s.className = 'ch'; s.textContent = chr; }
+      s.style.setProperty('--i', i++);
+      h1.appendChild(s);
+    }
+    h1.setAttribute('aria-label', text);
+  }
+  function setTitle(text, glow){
+    if (text === current) return;
+    current = text;
+    const my = ++token;
+    h1.classList.add('out');
+    setTimeout(()=>{
+      if (my !== token) return;
+      render(text);
+      if (glow) hero.style.setProperty('--glow', glow);
+      h1.classList.remove('out');
+    }, current === DEFAULT && !h1.childElementCount ? 0 : 150);
+  }
+
+  /* ---- skala judul agar “FLUX CREATIVE UNIVERSE” pas selebar layar ---- */
+  function fit(){
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const narrow = window.innerWidth <= 900;
+    const avail = hero.clientWidth - (narrow ? 0 : 2 * 8.5 * rem);
+    const probe = document.createElement('h1');
+    probe.className = h1.className; probe.id = '';
+    probe.style.cssText = 'position:absolute;visibility:hidden;left:-9999px;font-size:100px;-webkit-mask-image:none;mask-image:none';
+    probe.textContent = DEFAULT;
+    hero.appendChild(probe);
+    const w = probe.getBoundingClientRect().width;
+    probe.remove();
+    const fs = Math.min(100 * avail / w, 9.5 * rem);
+    h1.style.fontSize = fs + 'px';
+    hero.style.height = (fs * 0.86) + 'px';
+    hero.style.marginBottom = (-fs * 0.10) + 'px';
+  }
+
+  /* ---- hover kartu ---- */
+  const cards = document.querySelectorAll('.card[data-title]');
+  let leaveTimer;
+  cards.forEach(card=>{
+    const c1 = getComputedStyle(card).getPropertyValue('--c1').trim() || '#8a4cff';
+    const glow = hexA(c1, .55);
+    const on = ()=>{ clearTimeout(leaveTimer); setTitle(card.dataset.title, glow); };
+    const off = ()=>{ leaveTimer = setTimeout(()=>setTitle(DEFAULT, 'rgba(160,110,255,.35)'), 90); };
+    card.addEventListener('mouseenter', on);
+    card.addEventListener('mouseleave', off);
+    card.addEventListener('focus', on);
+    card.addEventListener('blur', off);
+  });
+  function hexA(hex, a){
+    const n = parseInt(hex.replace('#',''), 16);
+    return `rgba(${n>>16&255},${n>>8&255},${n&255},${a})`;
+  }
+
+  /* ---- jam Jakarta ---- */
+  const clock = document.getElementById('clock');
+  function tick(){
+    clock.textContent = new Intl.DateTimeFormat('en-US',{hour:'numeric',minute:'2-digit',timeZone:'Asia/Jakarta'}).format(new Date());
+  }
+  tick(); setInterval(tick, 20000);
+
+  /* ---- filter Selected Work ---- */
+  const chips = document.querySelectorAll('.chip'), thumbs = document.querySelectorAll('#thumbs .ph');
+  chips.forEach(c=>c.addEventListener('click', e=>{
+    e.stopPropagation();
+    chips.forEach(x=>x.classList.remove('on')); c.classList.add('on');
+    const f = c.dataset.f;
+    thumbs.forEach(t=>t.classList.toggle('dim', f!=='all' && !t.dataset.c.includes(f)));
+  }));
+
+  /* ---- init ---- */
+  render(DEFAULT); current = DEFAULT;
+  fit();
+  (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(fit);
+  window.addEventListener('resize', fit);
+})();
+</script>
+</body>
+</html>
