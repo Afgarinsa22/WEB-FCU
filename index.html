@@ -774,126 +774,118 @@
 </script>
 
 <script>
-/* ===== BACKGROUND UNIVERSE: bintang, nebula, galaksi, bintang jatuh ===== */
+/* ===== BACKGROUND UNIVERSE: terbang maju menembus bintang (pelan), warp saat transisi ===== */
 (function(){
   const cv = document.getElementById('universe'); if(!cv) return;
   const ctx = cv.getContext('2d');
   const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let W=0,H=0,DPR=1, stars=[], neb=null, dust=null, shooters=[];
-  let mx=0,my=0,tx=0,ty=0, warp=0, warpTarget=0, t0=performance.now();
+  const BASE = 0.016;          /* kecepatan jelajah (z / detik) — sangat pelan */
+  const WARP = 1.15;           /* tambahan kecepatan saat klik kotak bento */
+  let W=0,H=0,DPR=1,F=1, stars=[], neb=null, dust=null;
+  let mx=0,my=0,tx=0,ty=0, warp=0, warpTarget=0, last=performance.now(), T=0;
   const rnd=(a,b)=>a+Math.random()*(b-a);
+  const TINT=['255,255,255','215,200,255','255,215,240','255,230,200'];
 
   function buildNebula(){
-    const w=Math.round(W*1.25), h=Math.round(H*1.25);
+    const w=Math.round(W*1.3), h=Math.round(H*1.3);
     neb=document.createElement('canvas'); neb.width=w; neb.height=h;
     const n=neb.getContext('2d'); n.globalCompositeOperation='lighter';
-    const blobs=[
-      [.18,.30,.48,'120,60,220',.34],[.30,.65,.38,'70,50,190',.30],
-      [.82,.80,.46,'255,110,60',.20],[.74,.22,.40,'230,90,194',.26],
-      [.52,.48,.34,'150,90,255',.16],[.92,.45,.30,'255,80,160',.14]
-    ];
-    blobs.forEach(([x,y,r,c,a])=>{
+    [[.18,.30,.48,'120,60,220',.34],[.30,.65,.38,'70,50,190',.30],
+     [.82,.80,.46,'255,110,60',.20],[.74,.22,.40,'230,90,194',.26],
+     [.52,.48,.34,'150,90,255',.16],[.92,.45,.30,'255,80,160',.14]
+    ].forEach(([x,y,r,c,a])=>{
       const R=r*Math.max(w,h)*.62, g=n.createRadialGradient(x*w,y*h,0,x*w,y*h,R);
       g.addColorStop(0,`rgba(${c},${a})`); g.addColorStop(.45,`rgba(${c},${a*.4})`); g.addColorStop(1,`rgba(${c},0)`);
       n.fillStyle=g; n.fillRect(0,0,w,h);
     });
   }
-  function buildDust(){            /* pita galaksi (milky way) dari ribuan titik halus */
+  function buildDust(){
     dust=document.createElement('canvas'); dust.width=W; dust.height=H;
     const d=dust.getContext('2d'); d.globalCompositeOperation='lighter';
     const ang=-0.42, ca=Math.cos(ang), sa=Math.sin(ang), L=Math.hypot(W,H);
     const N=Math.round(W*H/520);
     for(let i=0;i<N;i++){
-      const u=rnd(-.6,.6)*L;
-      const v=(Math.random()+Math.random()+Math.random()-1.5)*H*.16;
-      const x=W/2+u*ca-v*sa, y=H/2+u*sa+v*ca;
-      const k=1-Math.min(1,Math.abs(v)/(H*.22));
+      const u=rnd(-.6,.6)*L, v=(Math.random()+Math.random()+Math.random()-1.5)*H*.16;
+      const x=W/2+u*ca-v*sa, y=H/2+u*sa+v*ca, k=1-Math.min(1,Math.abs(v)/(H*.22));
       d.fillStyle=`rgba(${Math.random()<.5?'205,185,255':'255,200,235'},${rnd(.05,.32)*k})`;
       d.fillRect(x,y,rnd(.4,1.3),rnd(.4,1.3));
     }
   }
+  /* bintang 3D: posisi (x,y) tetap, kedalaman z mengecil -> memancar keluar dari titik tengah */
+  function spawn(s, anywhere){
+    s.x=(Math.random()*2-1)*(W/2/F);
+    s.y=(Math.random()*2-1)*(H/2/F);
+    s.z=anywhere?rnd(.04,1):1;
+    s.c=TINT[(Math.random()*4)|0]; s.tw=rnd(0,6.28); s.ts=rnd(.5,1.8); s.sz=rnd(.6,1.5);
+  }
   function buildStars(){
-    const n=Math.round(Math.min(520,W*H/4200));
-    stars=[];
-    for(let i=0;i<n;i++){
-      const z=Math.random();                         /* 0 jauh .. 1 dekat */
-      stars.push({x:Math.random()*W,y:Math.random()*H,z,
-        r:.35+z*1.5, v:.04+z*.34, tw:rnd(0,6.28), ts:rnd(.6,2.2),
-        c:['255,255,255','215,200,255','255,215,240','255,230,200'][(Math.random()*4)|0]});
-    }
+    const n=Math.round(Math.min(620,W*H/3400));
+    stars=Array.from({length:n},()=>{const s={};spawn(s,true);return s;});
   }
   function resize(){
     DPR=Math.min(window.devicePixelRatio||1,1.5);
-    W=innerWidth; H=innerHeight;
+    W=innerWidth; H=innerHeight; F=Math.max(W,H)*.5;
     cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
     ctx.setTransform(DPR,0,0,DPR,0,0);
     buildNebula(); buildDust(); buildStars();
-    if(reduce) frame(performance.now());
+    draw(0);
   }
-  function spawnShooter(){
-    const fromTop=Math.random()<.5, a=rnd(.35,.6);
-    shooters.push({x:rnd(W*.35,W*1.05),y:fromTop?rnd(-20,H*.25):rnd(0,H*.5),
-      vx:-Math.cos(a)*rnd(11,17),vy:Math.sin(a)*rnd(11,17),life:0,max:rnd(40,70)});
-  }
-  let nextShoot=performance.now()+rnd(2500,6000);
 
-  function frame(now){
-    const t=(now-t0)/1000;
-    mx+=(tx-mx)*.04; my+=(ty-my)*.04;
-    warp+=(warpTarget-warp)*.07;
+  function draw(dt){
+    T+=dt;
+    mx+=(tx-mx)*Math.min(1,dt*2.2); my+=(ty-my)*Math.min(1,dt*2.2);
+    warp+=(warpTarget-warp)*(1-Math.exp(-dt*(warpTarget>warp?4.5:2.2)));
+    const v=BASE+warp*WARP;
+    const cx=W/2-mx*W*.03, cy=H/2-my*H*.03;
     ctx.clearRect(0,0,W,H);
 
-    /* nebula: melayang pelan + parallax */
-    const sc=1+Math.sin(t*.08)*.03;
-    ctx.globalAlpha=.95;
+    /* nebula & galaksi: "bernapas" pelan, membesar saat warp (kesan maju) */
+    const zoom=1+.03*Math.sin(T*.15)+warp*.10;
     ctx.save();
-    ctx.translate(W/2-mx*14+Math.sin(t*.05)*26, H/2-my*10+Math.cos(t*.04)*18);
-    ctx.rotate(Math.sin(t*.03)*.025); ctx.scale(sc,sc);
+    ctx.translate(cx,cy); ctx.scale(zoom,zoom); ctx.rotate(Math.sin(T*.04)*.015);
     ctx.drawImage(neb,-neb.width/2,-neb.height/2);
     ctx.restore();
-    ctx.globalAlpha=1;
-    ctx.drawImage(dust,-mx*8,-my*6,W,H);
+    ctx.save();
+    ctx.translate(cx,cy); ctx.scale(1+(zoom-1)*1.4,1+(zoom-1)*1.4);
+    ctx.drawImage(dust,-W/2,-H/2,W,H);
+    ctx.restore();
 
-    /* bintang: hanyut ke kiri (searah gerak kotak), berkelip; warp saat transisi */
+    ctx.lineCap='round';
     for(const s of stars){
-      s.x -= (s.v + warp*(2+s.z*30));
-      if(s.x< -40){ s.x=W+rnd(0,40); s.y=Math.random()*H; }
-      const px=s.x - mx*(10+s.z*38), py=s.y - my*(8+s.z*30);
-      const a=(.45+.55*Math.sin(t*s.ts+s.tw))*(.35+s.z*.65);
-      ctx.fillStyle=`rgba(${s.c},${Math.max(.05,Math.min(1,a))})`;
-      if(warp>.6){
-        ctx.strokeStyle=ctx.fillStyle; ctx.lineWidth=s.r;
-        ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(px+warp*(6+s.z*60),py); ctx.stroke();
-      } else {
-        ctx.beginPath(); ctx.arc(px,py,s.r,0,6.283); ctx.fill();
-        if(s.z>.86){ ctx.globalAlpha=a*.25; ctx.beginPath(); ctx.arc(px,py,s.r*3.2,0,6.283); ctx.fill(); ctx.globalAlpha=1; }
-      }
+      s.z-=v*dt;
+      if(s.z<=.03){ spawn(s,false); continue; }
+      const px=cx+s.x/s.z*F, py=cy+s.y/s.z*F;
+      if(px<-60||px>W+60||py<-60||py>H+60){ spawn(s,false); continue; }
+      const near=1-s.z;
+      let a=Math.min(1,.3+near*1.7)*(.6+.4*Math.sin(T*s.ts+s.tw));
+      if(a<.03) continue;
+      const r=(.35+near*1.9)*s.sz;
+      /* ekor: posisi sedikit lebih jauh -> garis memanjang ke arah tengah */
+      const lag=Math.max(.0008, v*.055);
+      const zp=Math.min(1.4,s.z+lag);
+      const qx=cx+s.x/zp*F, qy=cy+s.y/zp*F;
+      ctx.strokeStyle=`rgba(${s.c},${Math.min(1,a)})`;
+      ctx.lineWidth=r*2;
+      ctx.beginPath(); ctx.moveTo(qx,qy); ctx.lineTo(px,py); ctx.stroke();
+      if(near>.78 && warp<.4){ ctx.fillStyle=`rgba(${s.c},${a*.16})`; ctx.beginPath(); ctx.arc(px,py,r*3.4,0,6.283); ctx.fill(); }
     }
+  }
 
-    /* bintang jatuh */
-    if(!reduce && now>nextShoot){ spawnShooter(); nextShoot=now+rnd(3500,9000); }
-    for(let i=shooters.length-1;i>=0;i--){
-      const o=shooters[i]; o.x+=o.vx; o.y+=o.vy; o.life++;
-      const f=1-o.life/o.max; if(f<=0){shooters.splice(i,1);continue;}
-      const g=ctx.createLinearGradient(o.x,o.y,o.x-o.vx*7,o.y-o.vy*7);
-      g.addColorStop(0,`rgba(255,255,255,${f})`); g.addColorStop(1,'rgba(200,150,255,0)');
-      ctx.strokeStyle=g; ctx.lineWidth=1.6; ctx.beginPath();
-      ctx.moveTo(o.x,o.y); ctx.lineTo(o.x-o.vx*7,o.y-o.vy*7); ctx.stroke();
-    }
-    if(!reduce) requestAnimationFrame(frame);
+  function loop(now){
+    const dt=Math.min(.05,(now-last)/1000); last=now;
+    draw(dt);
+    requestAnimationFrame(loop);
   }
 
   addEventListener('resize',resize);
   addEventListener('pointermove',e=>{ tx=e.clientX/W-.5; ty=e.clientY/H-.5; },{passive:true});
-  document.addEventListener('visibilitychange',()=>{ if(!document.hidden && !reduce) requestAnimationFrame(frame); });
-  /* efek “warp” sesaat saat kotak bento bergeser */
+  document.addEventListener('visibilitychange',()=>{ last=performance.now(); });
   if(!reduce) new MutationObserver(()=>{
-    const m=document.body.classList.contains('moving');
-    warpTarget=m?1:0;
+    warpTarget=document.body.classList.contains('moving')?1:0;
   }).observe(document.body,{attributes:true,attributeFilter:['class']});
 
   resize();
-  if(!reduce) requestAnimationFrame(frame);
+  if(!reduce) requestAnimationFrame(loop);
 })();
 </script>
 </body>
