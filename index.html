@@ -247,6 +247,58 @@
   .card .ph::before,.card .ph::after{opacity:1;filter:none;animation:none;inset:auto;z-index:auto}
   .card .ph::before{inset:auto}
 
+
+  /* ===== SUB-PAGE: kotak bento menggeser ke kiri jadi menu ===== */
+  .shell{flex:1 1 0;min-height:0;position:relative;z-index:2;display:flex;flex-direction:column}
+  .rail-label{display:none;align-items:center;gap:.8rem;font-size:.68rem;letter-spacing:.14em;font-weight:600;text-transform:uppercase;white-space:nowrap}
+  .rail-label span{color:var(--mute);font-weight:500;letter-spacing:.2em}
+  .rail-label b{font-weight:700;overflow:hidden;text-overflow:ellipsis}
+  .hero{transition:opacity .35s ease}
+  .page{display:none}
+
+  body.open .hero{position:absolute;left:2rem;right:2rem;opacity:0;pointer-events:none}
+  body.open .shell{display:grid;grid-template-columns:16rem minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:1.1rem;margin-top:1.3rem}
+  body.open .grid{grid-template-columns:1fr;grid-template-rows:repeat(8,minmax(0,1fr));gap:.6rem;min-height:0}
+  body.open .row,body.open .rcol{display:contents}
+  body.open .card{display:flex;flex-direction:column;justify-content:center;padding:.4rem 1.2rem;min-height:0;border-radius:1.1rem}
+  body.open .rail-label,body.moving .rail-label{display:flex}
+  body.open:not(.moving) .card > *:not(.rail-label){display:none}
+  body.moving .card > *:not(.rail-label){opacity:0 !important;transition:opacity .28s ease !important}
+  body.moving .rail-label{opacity:0 !important}
+  body.moving .card{pointer-events:none}
+
+  body.open .card.active{border-color:rgba(255,255,255,.34);
+    background:linear-gradient(135deg,rgba(255,255,255,.14),rgba(255,255,255,.02) 45%),rgba(22,20,28,.34)}
+  .card.active::before{opacity:.95;animation-play-state:running}
+  .card.active > *{opacity:1}
+
+  body.open .page{display:flex;flex-direction:column;position:relative;overflow:hidden;min-height:0;isolation:isolate;
+    --c1:#7b3fe4;--c2:#ff7a45;--c3:#e062c8;
+    border-radius:1.4rem;padding:2.2rem 2.6rem;border:1px solid rgba(255,255,255,.12);
+    background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,0) 42%),rgba(22,20,28,.5);
+    -webkit-backdrop-filter:blur(22px) saturate(150%);backdrop-filter:blur(22px) saturate(150%);
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 1rem 2.5rem rgba(0,0,0,.35);
+    opacity:0;transform:translateX(2.2rem);transition:opacity .45s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  body.open .page.show{opacity:1;transform:none}
+  .page::before{content:"";position:absolute;inset:-30%;z-index:-1;opacity:.5;pointer-events:none;filter:blur(30px);
+    background:radial-gradient(38% 38% at 14% 12%,var(--c1),transparent 70%),radial-gradient(42% 42% at 92% 96%,var(--c2),transparent 70%),radial-gradient(30% 30% at 88% 10%,var(--c3),transparent 70%)}
+  .page .back{position:absolute;top:1.4rem;right:1.6rem;font:600 .6rem 'Inter';letter-spacing:.18em;color:var(--txt);
+    padding:.6rem 1.1rem;border-radius:2rem;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);cursor:pointer;transition:.2s}
+  .page .back:hover{background:#fff;color:#111}
+  .pg-eyebrow{font-size:.62rem;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
+  .pg-title{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:5.2rem;line-height:1;margin-top:1rem;letter-spacing:.005em;
+    background:linear-gradient(180deg,#fff 40%,rgba(255,255,255,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .pg-lead{font-size:1.05rem;line-height:1.55;color:#e8dff5;margin-top:1.1rem;max-width:38rem}
+  .pg-body{margin-top:1.8rem;min-height:0;overflow:auto}
+  .pg-body .stat-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .pg-body .stat{min-width:9rem;border:1px solid var(--line);border-radius:1rem;background:rgba(0,0,0,.28);padding:1rem 1.3rem}
+  .pg-body .stat strong{display:block;font-size:2.2rem;font-weight:600}
+  .pg-body .stat span{font-size:.7rem;color:var(--mute)}
+  .pg-body .newsitem{display:block;max-width:40rem;border:1px solid var(--line);border-radius:.9rem;background:rgba(0,0,0,.3);padding:.9rem 1.1rem;margin-bottom:.7rem}
+  .pg-body .newsitem b{display:block;font-size:.62rem;letter-spacing:.06em;color:var(--mute);margin-bottom:.35rem}
+  .pg-body .newsitem h4{font-size:.95rem;font-weight:500;line-height:1.35}
+  .pg-body .soon{font-size:.78rem;color:var(--mute);letter-spacing:.04em}
+
   /* ===== layar sentuh / mobile ===== */
   @media (hover:none){
     .card > *{opacity:1}
@@ -271,6 +323,15 @@
     .card:hover::after{animation:none}
     .ch{animation-duration:.01s}
   }
+
+  @media (max-width:900px){
+    body.open .shell{display:block;margin-top:.8rem}
+    body.open .grid{display:flex;flex-direction:row;overflow-x:auto;gap:.5rem;padding-bottom:.4rem;scrollbar-width:none}
+    body.open .card{flex:0 0 11rem;height:4.2rem}
+    body.open .page{margin-top:.8rem;min-height:24rem;padding:1.6rem 1.3rem}
+    .pg-title{font-size:3.4rem}
+    body.open .hero{left:1rem;right:1rem}
+  }
 </style>
 </head>
 <body>
@@ -288,10 +349,12 @@
     <div class="side r">ONE<br>ECOSYSTEM<br>MANY<br>POSSIBILITIES</div>
   </section>
 
+  <div class="shell" id="shell">
   <div class="grid" id="grid">
 
     <section class="row r1">
       <article class="card about" tabindex="0" data-title="MEET FCU">
+        <div class="rail-label"><span>01</span><b>MEET FCU</b></div>
         <div class="eyebrow">01 / About</div>
         <a class="arrow" href="#">↗</a>
         <div class="big">MEET<br><b>FCU.</b></div>
@@ -306,6 +369,7 @@
       </article>
 
       <article class="card lead" tabindex="0" data-title="THE FOUNDERS">
+        <div class="rail-label"><span>02</span><b>THE FOUNDERS</b></div>
         <div class="eyebrow">02 / Leadership</div>
         <a class="arrow" href="#">→</a>
         <div class="founders">
@@ -319,6 +383,7 @@
       </article>
 
       <article class="card net" tabindex="0" data-title="BACKED BY">
+        <div class="rail-label"><span>03</span><b>BACKED BY</b></div>
         <div class="eyebrow">03 / Network</div>
         <a class="arrow" href="#">→</a>
         <div class="big">BACKED<br>BY.</div>
@@ -334,6 +399,7 @@
       </article>
     
       <article class="card award" tabindex="0" data-title="AWARD WINNING">
+        <div class="rail-label"><span>04</span><b>AWARD WINNING</b></div>
         <div class="eyebrow">04 / Recognition</div>
         <div class="big">AWARD<br>WINNING.</div>
         <p>Our work gets recognized.</p>
@@ -363,6 +429,7 @@
 
     <section class="row r3">
     <article class="card builders" tabindex="0" data-title="PARTNER HEROES">
+        <div class="rail-label"><span>05</span><b>PARTNER HEROES</b></div>
       <div>
         <div class="eyebrow">05 / Our Builders</div>
         <div class="big">MEET OUR<br><span class="thin">PARTNER HEROES.</span></div>
@@ -385,6 +452,7 @@
 
 
       <article class="card work" tabindex="0" data-title="OUR WORK">
+        <div class="rail-label"><span>06</span><b>OUR WORK</b></div>
         <div class="eyebrow">06 / Selected Work</div>
         <a class="arrow" href="#">→</a>
         <div class="hero-ph ph scene" style="--h:25"></div>
@@ -406,6 +474,7 @@
 
       <div class="rcol">
         <article class="card press" tabindex="0" data-title="IN THE NEWS">
+        <div class="rail-label"><span>07</span><b>IN THE NEWS</b></div>
           <div>
             <div class="eyebrow">07 / Press</div>
             <div class="big">IN<br>THE NEWS.</div>
@@ -421,6 +490,7 @@
         </article>
 
         <article class="card cta" tabindex="0" data-title="A UNIVERSE">
+        <div class="rail-label"><span>08</span><b>A UNIVERSE</b></div>
           <small>THIS IS ONLY THE BEGINNING.</small>
           <h2>WE'RE BUILDING<br>A <b>UNIVERSE.</b></h2>
           <small>FLUX CREATIVE UNIVERSE</small>
@@ -429,6 +499,15 @@
       </div>
     </section>
 
+  </div>
+
+  <section class="page" id="page" aria-live="polite">
+    <button class="back" id="back" type="button">&larr; HOME</button>
+    <div class="pg-eyebrow" id="pgEye"></div>
+    <h2 class="pg-title" id="pgTitle"></h2>
+    <p class="pg-lead" id="pgLead"></p>
+    <div class="pg-body" id="pgBody"></div>
+  </section>
   </div>
 </main>
 
@@ -516,6 +595,109 @@
     const f = c.dataset.f;
     thumbs.forEach(t=>t.classList.toggle('dim', f!=='all' && !t.dataset.c.includes(f)));
   }));
+
+
+  /* ===== SUB-PAGE: klik kotak -> semua kotak bergeser ke kiri ===== */
+  const page = document.getElementById('page');
+  const allCards = Array.from(document.querySelectorAll('.card[data-title]'));
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+  const DUR = reduce ? 1 : 820, STAG = reduce ? 0 : 38;
+  const EASE = 'cubic-bezier(.22,.8,.2,1)';
+  let busy = false;
+
+  const PAGES = {
+    'MEET FCU':{eye:'01 / About', lead:'An Indonesian creative group holding that builds, operates, and grows businesses across Creativity, Attention, and AI.',
+      body:'<div class="stat-row"><div class="stat"><strong>30</strong><span>Companies</span></div><div class="stat"><strong>200+</strong><span>People</span></div><div class="stat"><strong>2.3B+</strong><span>Views</span></div><div class="stat"><strong>11</strong><span>Gen Z Companies Invested In</span></div></div>'},
+    'THE FOUNDERS':{eye:'02 / Leadership', lead:'Yohanes Auri × Deddy Corbuzier', body:'<p class="soon">Profil lengkap founders segera hadir.</p>'},
+    'BACKED BY':{eye:'03 / Network', lead:'Investors & Strategic Partners Across The Universe.', body:'<p class="soon">Daftar investor &amp; partner segera hadir.</p>'},
+    'AWARD WINNING':{eye:'04 / Recognition', lead:'Our work gets recognized.', body:'<p class="soon">Marketeers Youth Choice Award 2026 · MURI</p>'},
+    'PARTNER HEROES':{eye:'05 / Our Builders', lead:'The entrepreneurs who build the universe together.', body:'<p class="soon">Profil partner segera hadir.</p>'},
+    'OUR WORK':{eye:'06 / Selected Work', lead:'Campaigns that move brands, people and culture.', body:'<p class="soon">Showcase karya segera hadir.</p>'},
+    'IN THE NEWS':{eye:'07 / Press', lead:'What the media says about FCU.',
+      body:'<a class="newsitem" href="#"><b>TIMES INDONESIA · Oct 6, 2026</b><h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4></a><a class="newsitem" href="#"><b>Investor.id · Sep 21, 2026</b><h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4></a>'},
+    'A UNIVERSE':{eye:'08 / The Beginning', lead:'This is only the beginning.', body:'<p class="soon">FLUX CREATIVE UNIVERSE</p>'}
+  };
+
+  function setActive(card){
+    allCards.forEach(c=>c.classList.toggle('active', c===card));
+    const d = PAGES[card.dataset.title] || {eye:'',lead:'',body:''};
+    const cs = getComputedStyle(card);
+    ['--c1','--c2','--c3'].forEach(v=>page.style.setProperty(v, cs.getPropertyValue(v)));
+    document.getElementById('pgEye').textContent = d.eye;
+    document.getElementById('pgTitle').textContent = card.dataset.title;
+    document.getElementById('pgLead').textContent = d.lead;
+    document.getElementById('pgBody').innerHTML = d.body;
+  }
+
+  /* gerakkan semua kotak dari posisi lama ke posisi baru (FLIP, smooth) */
+  function morph(mutate, done){
+    busy = true;
+    const first = allCards.map(c=>c.getBoundingClientRect());
+    document.body.classList.add('moving');
+    mutate();
+    const last = allCards.map(c=>c.getBoundingClientRect());
+    allCards.forEach((c,i)=>{
+      const f = first[i];
+      c.style.cssText = `position:fixed;margin:0;z-index:6;transition:none;left:${f.left}px;top:${f.top}px;width:${f.width}px;height:${f.height}px`;
+    });
+    void document.body.offsetWidth;
+    requestAnimationFrame(()=>{
+      allCards.forEach((c,i)=>{
+        const l = last[i], d = i*STAG;
+        c.style.transition = ['left','top','width','height'].map(k=>`${k} ${DUR}ms ${EASE} ${d}ms`).join(',');
+        c.style.left = l.left+'px'; c.style.top = l.top+'px';
+        c.style.width = l.width+'px'; c.style.height = l.height+'px';
+      });
+    });
+    setTimeout(()=>{
+      allCards.forEach(c=>c.removeAttribute('style'));
+      document.body.classList.remove('moving');
+      busy = false; if (done) done();
+    }, DUR + STAG*(allCards.length-1) + 80);
+  }
+
+  const isOpen = ()=>document.body.classList.contains('open');
+
+  function openPage(card){
+    if (busy) return;
+    if (isOpen()){
+      if (card.classList.contains('active')) return;
+      page.classList.remove('show');
+      setTimeout(()=>{ setActive(card); page.classList.add('show'); }, 220);
+      return;
+    }
+    setActive(card);
+    morph(()=>{
+      const t = hero.offsetTop;
+      document.body.classList.add('open');
+      hero.style.top = t+'px';
+    });
+    setTimeout(()=>page.classList.add('show'), reduce?0:DUR*0.45);
+    setTimeout(()=>{ if (innerWidth<=900) card.scrollIntoView({inline:'center',block:'nearest'}); }, DUR+STAG*8+120);
+  }
+
+  function closePage(){
+    if (busy || !isOpen()) return;
+    page.classList.remove('show');
+    morph(()=>{
+      document.body.classList.remove('open');
+      hero.style.top = '';
+    }, ()=>allCards.forEach(c=>c.classList.remove('active')));
+  }
+
+  allCards.forEach(card=>{
+    card.addEventListener('click', e=>{
+      if (e.target.closest('a')) e.preventDefault();
+      openPage(card);
+    });
+    card.addEventListener('keydown', e=>{
+      if (e.key==='Enter' || e.key===' '){ e.preventDefault(); openPage(card); }
+    });
+  });
+  document.getElementById('back').addEventListener('click', closePage);
+  document.querySelector('.logo').addEventListener('click', e=>{ e.preventDefault(); closePage(); });
+  document.addEventListener('keydown', e=>{ if (e.key==='Escape') closePage(); });
+  page.addEventListener('click', e=>{ if (e.target.closest('a')) e.preventDefault(); });
 
   /* ---- init ---- */
   render(DEFAULT); current = DEFAULT;
