@@ -50,11 +50,11 @@
     font-family:'Anton','Impact',sans-serif;font-weight:400;white-space:nowrap;
     font-size:7.8rem;line-height:1;letter-spacing:.005em;
     background:
-      linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(255,255,255,.16) 36%,rgba(0,0,0,0) 54%,rgba(0,0,0,.5) 100%),
-      linear-gradient(100deg,#4a4660 0%,#8d86ad 14%,#3c3a48 26%,#e9e3f2 37%,#6b6674 46%,#f2b48e 56%,#4c4858 66%,#b7c0ff 76%,#5a5566 84%,#f0a07a 93%,#4a4660 100%);
-    background-size:100% 100%,200% 100%;background-repeat:no-repeat,repeat-x;
+      linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.07) 36%,rgba(0,0,0,0) 54%,rgba(0,0,0,.5) 100%),
+      linear-gradient(100deg,#2e2b3d 0%,#5c5778 14%,#2a2833 26%,#8f8aa0 37%,#413e4c 46%,#9a6e5a 56%,#302d3b 66%,#6b7299 76%,#3a3646 84%,#8a5a48 93%,#2e2b3d 100%);
+    background-size:100% 100%,100% 100%;background-repeat:no-repeat;
     -webkit-background-clip:text;background-clip:text;color:transparent;
-    filter:drop-shadow(0 -1px 0 rgba(255,255,255,.28)) drop-shadow(0 .5rem 1.3rem rgba(0,0,0,.55));
+    filter:drop-shadow(0 -1px 0 rgba(255,255,255,.2)) drop-shadow(0 .5rem 1.3rem rgba(0,0,0,.55));
     user-select:none;
   }
   .side{position:absolute;z-index:0;top:.7rem;font-size:.62rem;letter-spacing:.22em;line-height:1.7;color:var(--mute);z-index:3}
@@ -97,9 +97,7 @@
   @keyframes lightdrift{0%{--gx:85%;--gy:110%;--hx:0%;--hy:0%}33%{--gx:55%;--gy:95%;--hx:30%;--hy:15%}66%{--gx:100%;--gy:70%;--hx:10%;--hy:40%}100%{--gx:85%;--gy:110%;--hx:0%;--hy:0%}}
   .hero h1{transition:opacity .55s cubic-bezier(.2,.8,.2,1),filter .55s cubic-bezier(.2,.8,.2,1),transform .55s cubic-bezier(.2,.8,.2,1),letter-spacing .55s cubic-bezier(.2,.8,.2,1);transform-origin:50% 100%}
   .hero h1.sw{opacity:0;filter:blur(16px);transform:translateX(-50%) scale(1.04);letter-spacing:.05em;transition-duration:.26s,.26s,.26s,.26s}
-  .hero h1.hl{filter:brightness(1.4) drop-shadow(0 -1px 0 rgba(255,255,255,.35)) drop-shadow(0 0 1.4rem rgba(190,130,255,.5)) drop-shadow(0 .5rem 1.3rem rgba(0,0,0,.5))}
-  @keyframes sheen{to{background-position:0 0,200% 0}}
-  @media (hover:hover) and (pointer:fine){body:not(.lite) .hero h1{animation:sheen 22s linear infinite}}
+  .hero h1.hl{filter:brightness(1.15) drop-shadow(0 -1px 0 rgba(255,255,255,.25)) drop-shadow(0 0 1.2rem rgba(190,130,255,.3)) drop-shadow(0 .5rem 1.3rem rgba(0,0,0,.5))}
   @media (hover:hover) and (pointer:fine){
     .card{transition:transform .35s ease,border-color .35s ease,opacity .4s ease,box-shadow .4s ease}
     .card{background-color:rgba(255,255,255,0)}
