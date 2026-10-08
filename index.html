@@ -260,42 +260,41 @@
   body.open .card.active{border-color:rgba(255,255,255,.5);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.22),0 0 0 1px rgba(255,255,255,.08),0 0 1.6rem rgba(180,110,255,.38)}
 
-  body.open .page{display:flex;flex-direction:column;position:relative;overflow:hidden;min-height:0;
-    border-radius:1.4rem;padding:2.2rem 2.6rem;border:1px solid var(--line);
+  body.open .page{display:flex;flex-direction:column;gap:.9rem;position:relative;min-height:0;
+    opacity:0;transform:translateX(2.2rem);transition:opacity .45s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+  body.open .page.show{opacity:1;transform:none}
+  .pg-head,.pt{position:relative;overflow:hidden;min-height:0;border-radius:1.4rem;border:1px solid var(--line);
     background:
       radial-gradient(30rem 18rem at 85% 110%,var(--glowA,rgba(255,130,70,.35)),transparent 65%),
       radial-gradient(26rem 18rem at 0% 0%,var(--glowB,rgba(140,80,230,.32)),transparent 65%),
       linear-gradient(145deg,rgba(255,255,255,.07),rgba(255,255,255,.015));
-    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 .5rem 1.4rem rgba(0,0,0,.34);
-    opacity:0;transform:translateX(2.2rem);transition:opacity .45s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
-  body.open .page.show{opacity:1;transform:none}
+    background-color:rgba(14,8,30,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 .5rem 1.4rem rgba(0,0,0,.34)}
+  .pg-head{flex:none;padding:1.5rem 2rem 1.6rem}
+  .pg-body{flex:1 1 auto;min-height:0;display:grid;gap:.9rem;grid-template-columns:repeat(var(--cols,12),minmax(0,1fr));grid-auto-rows:minmax(0,1fr);grid-template-rows:var(--rows,none)}
+  .pt{padding:1.1rem 1.3rem;display:flex;flex-direction:column;justify-content:flex-end;gap:.25rem;grid-column:span var(--sp,12)}
+  .pt .k{font-size:.58rem;letter-spacing:.28em;color:var(--mute);text-transform:uppercase;margin-bottom:auto}
+  .pt strong{font-size:2.6rem;font-weight:600;line-height:1}
+  .pt .big{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:2.4rem;line-height:1;letter-spacing:.005em}
+  .pt span,.pt p{font-size:.78rem;color:#d8cde8;line-height:1.45}
+  .pt.soon span{color:var(--mute);letter-spacing:.04em}
+  .pt a.nl{display:flex;flex-direction:column;justify-content:flex-end;height:100%;color:var(--txt);text-decoration:none}
+  .pt h4{font-size:1.15rem;font-weight:500;line-height:1.35}
+  .pt .face{position:absolute;inset:0;opacity:.5}
+  .pt > *{position:relative}
+  @keyframes ptIn{from{opacity:0;transform:translateY(1.2rem) scale(.97)}to{opacity:1;transform:none}}
+  .page.show .pt{animation:ptIn .65s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*70ms + 120ms)}
   .pg-eyebrow{font-size:.62rem;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
-  .pg-title{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:5.2rem;line-height:1;margin-top:1rem;letter-spacing:.005em;
+  .pg-title{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:4.2rem;line-height:1;margin-top:.7rem;letter-spacing:.005em;
     background:linear-gradient(180deg,#fff 40%,rgba(255,255,255,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .pg-lead{font-size:1.05rem;line-height:1.55;color:#e8dff5;margin-top:1.1rem;max-width:38rem}
-  .pg-body{margin-top:1.8rem;min-height:0;overflow:auto}
-  .page .back{position:absolute;top:1.4rem;right:1.6rem;font:600 .6rem 'Inter';letter-spacing:.18em;color:var(--txt);
+  .pg-lead{font-size:1rem;line-height:1.5;color:#e8dff5;margin-top:.8rem;max-width:38rem}
+  .page .back{position:absolute;top:1.3rem;right:1.5rem;font:600 .6rem 'Inter';letter-spacing:.18em;color:var(--txt);
     padding:.6rem 1.1rem;border-radius:2rem;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.3);cursor:pointer;transition:.2s}
   .page .back:hover{background:#fff;color:#111}
-  .pg-eyebrow{font-size:.62rem;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
-  .pg-title{font-family:'Anton','Impact',sans-serif;font-weight:400;font-size:5.2rem;line-height:1;margin-top:1rem;letter-spacing:.005em;
-    background:linear-gradient(180deg,#fff 40%,rgba(255,255,255,.55));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .pg-lead{font-size:1.05rem;line-height:1.55;color:#e8dff5;margin-top:1.1rem;max-width:38rem}
-  .pg-body{margin-top:1.8rem;min-height:0;overflow:auto}
-  .pg-body .stat-row{display:flex;gap:1rem;flex-wrap:wrap}
-  .pg-body .stat{min-width:9rem;border:1px solid var(--line);border-radius:1rem;background:rgba(0,0,0,.28);padding:1rem 1.3rem}
-  .pg-body .stat strong{display:block;font-size:2.2rem;font-weight:600}
-  .pg-body .stat span{font-size:.7rem;color:var(--mute)}
-  .pg-body .newsitem{display:block;color:var(--txt);text-decoration:none;max-width:40rem;border:1px solid var(--line);border-radius:.9rem;background:rgba(0,0,0,.3);padding:.9rem 1.1rem;margin-bottom:.7rem}
-  .pg-body .newsitem b{display:block;font-size:.62rem;letter-spacing:.06em;color:var(--mute);margin-bottom:.35rem}
-  .pg-body .newsitem h4{font-size:.95rem;font-weight:500;line-height:1.35}
-  .pg-body .soon{font-size:.78rem;color:var(--mute);letter-spacing:.04em}
 
   /* ===== perangkat lemah / layar sentuh: tanpa blur kaca (jauh lebih ringan) ===== */
   @media (max-width:900px),(hover:none){
     #uni-bg{animation:none;will-change:auto}
-    .card,body.open .page{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(18,16,26,.7)}
+    .card{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(18,16,26,.7)}
   }
   body.lite #uni-bg{animation:none;will-change:auto}
   body.lite .card,body.lite.open .page{-webkit-backdrop-filter:none;backdrop-filter:none;background-color:rgba(18,16,26,.7)}
@@ -345,9 +344,14 @@
     body.open .grid{display:flex;flex-direction:row;flex:none;height:4rem;overflow-x:auto;overflow-y:hidden;gap:.5rem;scrollbar-width:none;padding:4px 2px}
     body.open .grid::-webkit-scrollbar{display:none}
     body.open .card{flex:0 0 10.5rem;height:100%;padding:.3rem 1rem}
-    body.open .page{flex:1 1 auto;min-height:calc(100dvh - 11.5rem);padding:1.4rem 1.2rem;transform:translateY(1.2rem)}
+    body.open .page{flex:1 1 auto;min-height:calc(100dvh - 11.5rem);transform:translateY(1.2rem)}
+    .pg-head{padding:1.2rem 1.2rem 1.3rem}
+    .pg-body{grid-template-columns:repeat(2,minmax(0,1fr))!important;grid-auto-rows:minmax(8rem,auto);grid-template-rows:none!important}
+    .pt{grid-column:span 1!important}
+    .pt:last-child:nth-child(odd){grid-column:span 2!important}
+    .pt strong{font-size:2rem}.pt .big{font-size:1.45rem;overflow-wrap:anywhere}
     body.open .page.show{transform:none}
-    .pg-title{font-size:3.1rem;margin-top:.7rem}
+    .pg-title{font-size:3.1rem;margin-top:.7rem;padding-right:0}
     .pg-lead{font-size:.9rem}
     .page .back{top:1rem;right:1rem}
     body.moving{touch-action:none}
@@ -530,10 +534,12 @@
   </div>
 
   <section class="page" id="page" aria-live="polite">
-    <button class="back" id="back" type="button">&larr; HOME</button>
-    <div class="pg-eyebrow" id="pgEye"></div>
-    <h2 class="pg-title" id="pgTitle"></h2>
-    <p class="pg-lead" id="pgLead"></p>
+    <div class="pg-head">
+      <button class="back" id="back" type="button">&larr; HOME</button>
+      <div class="pg-eyebrow" id="pgEye"></div>
+      <h2 class="pg-title" id="pgTitle"></h2>
+      <p class="pg-lead" id="pgLead"></p>
+    </div>
     <div class="pg-body" id="pgBody"></div>
   </section>
   </div>
@@ -560,16 +566,14 @@
   let busy = false;
 
   const PAGES = {
-    'MEET FCU':{eye:'01 / About', lead:'An Indonesian creative group holding that builds, operates, and grows businesses across Creativity, Attention, and AI.',
-      body:'<div class="stat-row"><div class="stat"><strong>30</strong><span>Companies</span></div><div class="stat"><strong>200+</strong><span>People</span></div><div class="stat"><strong>2.3B+</strong><span>Views</span></div><div class="stat"><strong>11</strong><span>Gen Z Companies Invested In</span></div></div>'},
-    'THE FOUNDERS':{eye:'02 / Leadership', lead:'Yohanes Auri × Deddy Corbuzier', body:'<p class="soon">Profil lengkap founders segera hadir.</p>'},
-    'BACKED BY':{eye:'03 / Network', lead:'Investors & Strategic Partners Across The Universe.', body:'<p class="soon">Daftar investor &amp; partner segera hadir.</p>'},
-    'PARTNER HEROES':{eye:'04 / Our Builders', lead:'The entrepreneurs who build the universe together.', body:'<p class="soon">Profil partner segera hadir.</p>'},
-    'AWARD WINNING':{eye:'05 / Recognition', lead:'Our work gets recognized.', body:'<p class="soon">Marketeers Youth Choice Award 2026 · MURI</p>'},
-    'OUR WORK':{eye:'06 / Selected Work', lead:'Campaigns that move brands, people and culture.', body:'<p class="soon">Showcase karya segera hadir.</p>'},
-    'IN THE NEWS':{eye:'07 / Press', lead:'What the media says about FCU.',
-      body:'<a class="newsitem" href="#"><b>TIMES INDONESIA · Oct 6, 2026</b><h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4></a><a class="newsitem" href="#"><b>Investor.id · Sep 21, 2026</b><h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4></a>'},
-    'A UNIVERSE':{eye:'08 / The Beginning', lead:'This is only the beginning.', body:'<p class="soon">FLUX CREATIVE UNIVERSE</p>'}
+    'MEET FCU':{eye:'01 / About',cols:12,rows:'.5fr 1fr',lead:'An Indonesian creative group holding that builds, operates, and grows businesses across Creativity, Attention, and AI.',body:'<div class="pt" style="--sp:3"><div class="k">Companies</div><strong>30</strong></div><div class="pt" style="--sp:3"><div class="k">People</div><strong>200+</strong></div><div class="pt" style="--sp:3"><div class="k">Views</div><strong>2.3B+</strong></div><div class="pt" style="--sp:3"><div class="k">Gen Z Companies Invested In</div><strong>11</strong></div><div class="pt" style="--sp:4"><div class="k">Pillar</div><div class="big">CREATIVITY</div></div><div class="pt" style="--sp:4"><div class="k">Pillar</div><div class="big">ATTENTION</div></div><div class="pt" style="--sp:4"><div class="k">Pillar</div><div class="big">AI</div></div>'},
+    'THE FOUNDERS':{eye:'02 / Leadership',cols:12,lead:'Yohanes Auri × Deddy Corbuzier',body:'<div class="pt" style="--sp:6"><div class="k">Founder</div><div class="big">YOHANES AURI</div><span>Profil lengkap segera hadir.</span></div><div class="pt" style="--sp:6"><div class="k">Founder</div><div class="big">DEDDY CORBUZIER</div><span>Profil lengkap segera hadir.</span></div>'},
+    'BACKED BY':{eye:'03 / Network',cols:12,lead:'Investors & Strategic Partners Across The Universe.',body:'<div class="pt soon" style="--sp:4"><div class="k">01 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">02 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">03 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">04 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">05 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">06 / Investor</div><span>Daftar investor segera hadir</span></div>'},
+    'PARTNER HEROES':{eye:'04 / Our Builders',cols:5,lead:'The entrepreneurs who build the universe together.',body:'<div class="pt soon" style="--sp:1"><div class="k">Partner 01</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 02</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 03</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 04</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 05</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 06</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 07</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 08</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 09</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 10</div><span>Segera hadir</span></div>'},
+    'AWARD WINNING':{eye:'05 / Recognition',cols:12,lead:'Our work gets recognized.',body:'<div class="pt" style="--sp:8"><div class="k">Recognition</div><div class="big">MARKETEERS YOUTH CHOICE AWARD 2026</div></div><div class="pt" style="--sp:4"><div class="k">Record</div><div class="big">MURI</div><span>Pencatatan rekor</span></div>'},
+    'OUR WORK':{eye:'06 / Selected Work',cols:12,lead:'Campaigns that move brands, people and culture.',body:'<div class="pt" style="--sp:6"><div class="k">Creative</div><div class="big">CREATIVE</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">Attention</div><div class="big">ATTENTION</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">AI</div><div class="big">AI</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">All Work</div><div class="big">ALL WORK</div><span>Showcase segera hadir</span></div>'},
+    'IN THE NEWS':{eye:'07 / Press',cols:12,lead:'What the media says about FCU.',body:'<div class="pt" style="--sp:6"><div class="k">Times Indonesia · Oct 6, 2026</div><a class="nl" href="#"><h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4></a></div><div class="pt" style="--sp:6"><div class="k">Investor.id · Sep 21, 2026</div><a class="nl" href="#"><h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4></a></div>'},
+    'A UNIVERSE':{eye:'08 / The Beginning',cols:12,lead:'This is only the beginning.',body:'<div class="pt" style="--sp:12"><div class="k">Flux Creative Universe</div><div class="big">WE\'RE BUILDING A UNIVERSE.</div></div>'}
   };
 
   function setActive(card){
@@ -583,7 +587,11 @@
     document.getElementById('pgEye').textContent = d.eye;
     document.getElementById('pgTitle').textContent = card.dataset.title;
     document.getElementById('pgLead').textContent = d.lead;
-    document.getElementById('pgBody').innerHTML = d.body;
+    const pb = document.getElementById('pgBody');
+    pb.style.setProperty('--cols', d.cols||12);
+    if (d.rows) pb.style.setProperty('--rows', d.rows); else pb.style.removeProperty('--rows');
+    pb.innerHTML = d.body;
+    pb.querySelectorAll('.pt').forEach((t,i)=>t.style.setProperty('--i',i));
   }
 
   /* FLIP dengan transform (GPU): isi memudar dulu, lalu kotak meluncur ke posisi baru */
