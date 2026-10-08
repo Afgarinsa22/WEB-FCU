@@ -139,7 +139,8 @@
   /* leadership */
   .lead{padding:0;--glowA:rgba(255,140,60,.4)}
   .lead .eyebrow{position:absolute;top:1.3rem;left:1.5rem;z-index:3}
-  .lead .names{position:absolute;left:1.5rem;bottom:1.2rem;z-index:3}
+  .card > .pic{position:absolute;right:0;bottom:0;height:96%;width:auto;max-width:100%;object-fit:contain;object-position:right bottom;z-index:1;pointer-events:none;filter:drop-shadow(0 0 1.2rem rgba(0,0,0,.45))}
+  .lead .names{text-shadow:0 1px 10px rgba(0,0,0,.7);position:absolute;left:1.5rem;bottom:1.2rem;z-index:3}
   .lead .names h2{font-size:1.9rem;font-weight:500;line-height:1.05;letter-spacing:-.02em}
   .lead .names p{font-size:.85rem;margin-top:.5rem;color:#e8dff5}
   .lead .names p i{opacity:.6;font-style:normal;margin:0 .5rem}
@@ -411,10 +412,7 @@
     <div class="rail-label"><span>02</span><b>THE FOUNDERS</b></div>
       <div class="eyebrow">02 / Leadership</div>
       <a class="arrow" href="#">→</a>
-      <div class="founders">
-        <div class="ph large" style="--h:250;--s:30;--c:240"></div>
-        <div class="ph large" style="--h:20;--s:26;--c:20"></div>
-      </div>
+      <img class="pic" src="founders.webp" alt="Yohanes Auri dan Deddy Corbuzier" decoding="async">
       <div class="names">
         <h2>MEET<br>THE FOUNDERS.</h2>
         <p>Yohanes Auri <i>×</i> Deddy Corbuzier</p>
