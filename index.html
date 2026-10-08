@@ -73,6 +73,20 @@
     transition:transform .35s ease,border-color .35s ease;
   }
   .card:hover{transform:translateY(-.2rem);border-color:rgba(255,255,255,.3)}
+
+  /* hover: inner light + outer halo + title on top bar */
+  .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:0;opacity:0;transition:opacity .35s ease;
+    background:radial-gradient(18rem 14rem at var(--mx,50%) var(--my,50%),rgba(255,255,255,.2),rgba(255,255,255,.06) 45%,transparent 70%)}
+  .card > *{position:relative}
+  .card > .arrow{position:absolute}
+  .tag{transition:opacity .25s ease,color .25s ease,letter-spacing .25s ease;white-space:nowrap}
+  .tag.hl{color:#fff;letter-spacing:.6em;text-shadow:0 0 1rem rgba(200,140,255,.8)}
+  .tag.sw{opacity:0}
+  @media (hover:hover) and (pointer:fine){
+    body:not(.open):not(.moving) .card:hover{border-color:rgba(255,255,255,.55);
+      box-shadow:inset 0 0 1.6rem rgba(255,255,255,.1),inset 0 1px 0 rgba(255,255,255,.25),0 0 0 1px rgba(255,255,255,.18),0 0 2.2rem var(--halo,rgba(180,110,255,.55)),0 0 4.5rem var(--halo2,rgba(180,110,255,.22))}
+    body:not(.open):not(.moving) .card:hover::after{opacity:1}
+  }
   .eyebrow{font-size:.58rem;letter-spacing:.3em;color:var(--mute);text-transform:uppercase}
   .arrow{
     color:inherit;text-decoration:none;position:absolute;top:1.1rem;right:1.2rem;width:2.1rem;height:2.1rem;border-radius:50%;
@@ -726,6 +740,25 @@
     if(n/((t-t0)/1000) < 42) document.body.classList.add('lite');
   }
   setTimeout(()=>requestAnimationFrame(f),2200);
+})();
+</script>
+<script>
+(function(){
+  var grid=document.getElementById('grid'),tag=document.querySelector('.top .tag');
+  if(!grid||!tag||!matchMedia('(hover:hover) and (pointer:fine)').matches)return;
+  var base=tag.textContent,cur=null,t;
+  var HALO=['rgba(190,120,255,.6)','rgba(255,130,200,.55)','rgba(120,170,255,.55)','rgba(120,210,255,.5)','rgba(255,190,90,.55)','rgba(255,120,120,.5)','rgba(110,170,255,.55)','rgba(210,120,255,.6)'];
+  var cards=[].slice.call(grid.querySelectorAll('.card'));
+  cards.forEach(function(c,i){c.style.setProperty('--halo',HALO[i%8]);c.style.setProperty('--halo2',HALO[i%8].replace(/[\d.]+\)$/,'.2)'))});
+  function setTag(txt,on){clearTimeout(t);tag.classList.add('sw');t=setTimeout(function(){tag.textContent=txt;tag.classList.toggle('hl',on);tag.classList.remove('sw')},120)}
+  grid.addEventListener('pointermove',function(e){
+    if(document.body.classList.contains('open')||document.body.classList.contains('moving'))return;
+    var c=e.target.closest&&e.target.closest('.card');if(!c)return;
+    var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');
+    if(c!==cur){cur=c;setTag(c.getAttribute('data-title'),true)}
+  });
+  grid.addEventListener('pointerleave',function(){if(cur){cur=null;setTag(base,false)}});
+  grid.addEventListener('click',function(){cur=null;clearTimeout(t);tag.textContent=base;tag.classList.remove('hl','sw')});
 })();
 </script>
 </body>
