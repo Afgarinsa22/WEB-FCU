@@ -554,6 +554,59 @@
     .backer-info{padding-bottom:3.6rem}
   }
 
+  /* ===== PARTNER HEROES DETAIL ===== */
+  body.open .page.heroes-detail{padding:0;gap:0;overflow:hidden;background:#05060a;container-type:size}
+  .heroes-detail .pg-head{display:none}
+  .pg-body.heroes-body{position:absolute;inset:0;display:block;margin:0}
+  .ph-art{position:absolute;left:0;bottom:0;width:100%;aspect-ratio:1452/883;background:url('heroes-art.webp') center/100% 100% no-repeat;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 7%);mask-image:linear-gradient(180deg,transparent 0,#000 7%)}
+  .ph-quote{position:absolute;left:2.6%;top:6.5%;width:min(15rem,22%);z-index:2;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
+  .ph-tag{font-size:clamp(10px,1.35vh,13px);letter-spacing:.06em;line-height:1.35;color:rgba(255,255,255,.62)}
+  .ph-tag::after{content:"";display:block;width:1.6rem;margin:.9rem 0 1.1rem;border-top:1px solid rgba(255,255,255,.5)}
+  .ph-quote blockquote{position:relative;margin:0;font-size:clamp(15px,2.15vh,21px);line-height:1.22;font-style:italic;font-weight:400}
+  .ph-quote blockquote::before{content:"\201C";position:absolute;left:-1.1rem;top:-.35rem;font-size:1.8em;color:rgba(255,255,255,.75)}
+  .ph-sign{margin-top:1.6rem;padding-left:2.4rem}
+  .ph-sign b{display:block;font-size:clamp(12px,1.55vh,15px);font-weight:600;letter-spacing:.02em}
+  .ph-sign span{font-size:clamp(11px,1.35vh,13px);color:rgba(255,255,255,.65)}
+  .ph-panel{position:absolute;right:1.6%;top:2.2%;width:min(44%,44rem);min-height:calc(100cqh - 24.9cqw - 2.2cqh);z-index:3;padding:1.3rem 1.4rem 1rem;border:1px solid rgba(255,255,255,.12);border-radius:.9rem;background:rgba(8,10,14,.84);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1rem 3rem rgba(0,0,0,.45);animation:ptIn .6s cubic-bezier(.2,.8,.2,1) both}
+  .ph-top{display:flex;align-items:center;gap:.6rem}
+  .ph-count{font-size:clamp(12px,1.55vh,15px);color:rgba(255,255,255,.85)}
+  .ph-label{margin-left:auto;margin-right:1rem;font-size:clamp(9px,1.15vh,11px);letter-spacing:.06em;color:rgba(255,255,255,.75)}
+  .ph-nav{width:2.6rem;height:2.6rem;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.04);color:#fff;font-size:1.35rem;line-height:1;cursor:pointer;transition:background .2s,color .2s}
+  .ph-nav:hover{background:#fff;color:#111}
+  .ph-name{display:flex;align-items:center;gap:.8rem;margin-top:.5rem;flex-wrap:wrap}
+  .ph-name h3{font-family:'Inter',Arial,sans-serif;font-size:clamp(28px,4.3vh,42px);font-weight:800;letter-spacing:-.02em;line-height:1;color:#fff}
+  .ph-role{padding:.35rem .8rem;border:1px solid rgba(255,255,255,.35);border-radius:2rem;font-size:clamp(10px,1.25vh,12px);color:#fff}
+  .ph-brand{display:flex;align-items:center;gap:.8rem;margin-top:.55rem}
+  .ph-brand b{font-size:clamp(20px,3vh,30px);font-weight:900;letter-spacing:-.04em;color:#fff;padding-right:.8rem;border-right:1px solid rgba(255,255,255,.4);line-height:1}
+  .ph-brand span{font-size:clamp(12px,1.6vh,16px);color:rgba(255,255,255,.85)}
+  .ph-about{display:grid;grid-template-columns:1fr auto;gap:1.2rem;margin-top:.8rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.12)}
+  .ph-about p{font-size:clamp(11px,1.5vh,15px);line-height:1.4;color:rgba(255,255,255,.8)}
+  .ph-about ul{list-style:none;padding:0 0 0 1.2rem;margin:0;border-left:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.2vh,12px);line-height:1.45;letter-spacing:.04em;color:rgba(255,255,255,.75)}
+  .ph-about ul:empty{display:none}
+  .ph-row{display:flex;justify-content:space-between;align-items:center;margin:.75rem 0 .5rem;font-size:clamp(9px,1.2vh,12px);letter-spacing:.04em;color:rgba(255,255,255,.75)}
+  .ph-all{color:rgba(255,255,255,.85);text-decoration:none}
+  .ph-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
+  .ph-projects article{border:1px solid rgba(255,255,255,.1);border-radius:.5rem;overflow:hidden;background:rgba(255,255,255,.03)}
+  .ph-projects img{display:block;width:100%;aspect-ratio:190/85;object-fit:cover}
+  .ph-projects h4{font-size:clamp(9px,1.2vh,12px);font-weight:700;margin:.5rem .6rem .2rem;color:#fff}
+  .ph-projects p{font-size:clamp(8px,1.05vh,11px);line-height:1.3;margin:0 .6rem .6rem;color:rgba(255,255,255,.65)}
+  .ph-clients{margin-top:.8rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.1)}
+  .ph-clients span{display:block;font-size:clamp(9px,1.2vh,12px);letter-spacing:.04em;color:rgba(255,255,255,.75);margin-bottom:.5rem}
+  .ph-clients img{display:block;width:100%;height:auto;mix-blend-mode:screen}
+  .ph-soon{font-size:clamp(11px,1.4vh,14px);color:rgba(255,255,255,.55);margin-top:.8rem}
+  @media (max-width:900px){
+    body.open .page.heroes-detail{container-type:normal;overflow:visible;background:transparent}
+    .pg-body.heroes-body{position:relative;inset:auto;display:flex;flex-direction:column;gap:1rem}
+    .ph-art{position:relative;left:auto;transform:none;width:100%;border-radius:1rem;overflow:hidden}
+    .ph-quote{position:relative;left:auto;top:auto;width:auto;padding:0 .4rem}
+    .ph-panel{position:relative;right:auto;top:auto;width:auto;min-height:0}
+    .ph-art{-webkit-mask-image:none;mask-image:none}
+    .ph-about{grid-template-columns:1fr}
+    .ph-about ul{display:flex;flex-wrap:wrap;gap:.3rem .8rem;border-left:0;padding:0}
+    .ph-projects{grid-template-columns:1fr 1fr 1fr}
+  }
+
   @media (max-width:900px){
     body.open .stage{padding:max(.6rem,env(safe-area-inset-top)) 1rem 2.6rem}
     body.open .top{height:3.4rem;margin:0 -1rem;padding:0 1rem}
@@ -880,7 +933,29 @@
       lead:'Entrepreneurs, investors, and business leaders who believe in our vision and back companies across the Flux Creative Universe ecosystem.',
       body:`<section class="backers"><article class="backer"><img class="backer-photo" src="network-sign-1.webp" alt="Deddy Corbuzier signing with FCU" loading="lazy"><div class="backer-info"><h3>DEDDY CORBUZIER</h3><span class="backer-role">Strategic Partner &amp; Investor</span><div class="backer-brand"><img src="network-logo-1.webp" alt="" loading="lazy"><b>FCU<small>Flux Creative Universe</small></b></div><p>Strategic partner and investor supporting the growth of FCU across creative, media, and technology.</p><span class="backer-go" aria-hidden="true">→</span></div></article><article class="backer"><img class="backer-photo" src="network-sign-2.webp" alt="Andrew Susanto signing with FCU" loading="lazy"><div class="backer-info"><h3>ANDREW SUSANTO</h3><span class="backer-role">Investor</span><div class="backer-brand"><img src="network-logo-2.webp" alt="" loading="lazy"><b>Bersinema</b></div><p>Investor in Bersinema, our production house focused on films, series, and original content.</p><span class="backer-go" aria-hidden="true">→</span></div></article><article class="backer"><img class="backer-photo" src="network-sign-3.webp" alt="Ivan Tanjaya signing with FCU" loading="lazy"><div class="backer-info"><h3>IVAN TANJAYA</h3><span class="backer-role">Investor</span><div class="backer-brand"><img src="network-logo-3.webp" alt="" loading="lazy"><b>Privilege</b></div><p>Investor in Privilege, our activation and event business creating impactful brand experiences.</p><span class="backer-go" aria-hidden="true">→</span></div></article><article class="backer"><img class="backer-photo" src="network-sign-4.webp" alt="Hotman Paris signing with FCU" loading="lazy"><div class="backer-info"><h3>HOTMAN PARIS</h3><span class="backer-role">Investor</span><div class="backer-brand"><img src="network-logo-4.webp" alt="" loading="lazy"><b>Pacarku</b></div><p>Investor in Pacarku, our AI platform exploring new ways people connect and engage.</p><span class="backer-go" aria-hidden="true">→</span></div></article><article class="backer"><img class="backer-photo" src="network-sign-5.webp" alt="Grace Tahir signing with FCU" loading="lazy"><div class="backer-info"><h3>GRACE TAHIR</h3><span class="backer-role">Investor</span><div class="backer-brand"><img src="network-logo-5.webp" alt="" loading="lazy"><b>Faith Media</b></div><p>Investor in Faith Media, our media and intellectual property business creating meaningful content.</p><span class="backer-go" aria-hidden="true">→</span></div></article></section>`
     },
-    'PARTNER HEROES':{eye:'04 / Our Builders',cols:5,lead:'The entrepreneurs who build the universe together.',body:'<div class="pt soon" style="--sp:1"><div class="k">Partner 01</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 02</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 03</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 04</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 05</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 06</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 07</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 08</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 09</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 10</div><span>Segera hadir</span></div>'},
+    'PARTNER HEROES':{eye:'04 / Our Builders',heroes:true,lead:'',body:`<div class="ph-art" role="img" aria-label="Yohanes Auri dan deretan Partner Heroes FCU"></div>
+        <div class="ph-quote">
+          <div class="ph-tag">DIFFERENT<br>EXPERTISES<br>ONE ECOSYSTEM<br>BIGGER<br>OPPORTUNITIES</div>
+          <blockquote id="phQuote">Building next-generation creative businesses for Indonesia and beyond.</blockquote>
+          <div class="ph-sign"><b id="phSignName">YOHANES AURI</b><span id="phSignRole">Group CEO</span></div>
+        </div>
+        <section class="ph-panel" aria-live="polite">
+          <div class="ph-top"><span class="ph-count" id="phCount">01 / 20</span><span class="ph-label">PARTNER HEROES</span>
+            <button class="ph-nav" data-dir="-1" aria-label="Sebelumnya">‹</button><button class="ph-nav" data-dir="1" aria-label="Berikutnya">›</button></div>
+          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole">Group CEO</span></div>
+          <div class="ph-brand"><b id="phBrand">FCU</b><span id="phBrandSub">Flux Creative Universe</span></div>
+          <div class="ph-about"><p id="phDesc">Leading the vision, strategy, and expansion of FCU, building and scaling next-generation creative, media, and technology businesses across Indonesia and beyond.</p>
+            <ul id="phTags"><li>STRATEGY</li><li>CREATIVE</li><li>MEDIA</li><li>TECHNOLOGY</li><li>PEOPLE</li></ul></div>
+          <div class="ph-extra" id="phExtra">
+            <div class="ph-row"><span>TOP PROJECTS</span><a href="#" class="ph-all">View All Projects →</a></div>
+            <div class="ph-projects">
+              <article><img src="heroes-proj-1.webp" alt="" loading="lazy"><h4>FCU SHOWCASE</h4><p>A multi-city creative event uniting creators, brands, and communities.</p></article>
+              <article><img src="heroes-proj-2.webp" alt="" loading="lazy"><h4>ORIGINAL SERIES</h4><p>Developing original content IP for digital and streaming platforms.</p></article>
+              <article><img src="heroes-proj-3.webp" alt="" loading="lazy"><h4>BRAND ACTIVATION</h4><p>Large-scale brand experiences across entertainment, media, and live events.</p></article>
+            </div>
+            <div class="ph-clients"><span>CLIENTS &amp; PARTNERS</span><img src="heroes-clients.webp" alt="Samsung, Telkomsel, Indomie, Hyundai, Grab, Taco, Spotify, YouTube" loading="lazy"></div>
+          </div>
+        </section>`},
     'AWARD WINNING':{eye:'05 / Recognition',cols:12,lead:'Our work gets recognized.',body:'<div class="pt" style="--sp:8"><div class="k">Recognition</div><div class="big">MARKETEERS YOUTH CHOICE AWARD 2026</div></div><div class="pt" style="--sp:4"><div class="k">Record</div><div class="big">MURI</div><span>Pencatatan rekor</span></div>'},
     'OUR WORK':{eye:'06 / Selected Work',cols:12,lead:'Campaigns that move brands, people and culture.',body:'<div class="pt" style="--sp:6"><div class="k">Creative</div><div class="big">CREATIVE</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">Attention</div><div class="big">ATTENTION</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">AI</div><div class="big">AI</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">All Work</div><div class="big">ALL WORK</div><span>Showcase segera hadir</span></div>'},
     'IN THE NEWS':{eye:'07 / Press',cols:12,lead:'What the media says about FCU.',body:'<div class="pt" style="--sp:6"><div class="k">Times Indonesia · Oct 6, 2026</div><a class="nl" href="#"><h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4></a></div><div class="pt" style="--sp:6"><div class="k">Investor.id · Sep 21, 2026</div><a class="nl" href="#"><h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4></a></div>'},
@@ -893,6 +968,7 @@
     page.classList.toggle('meet-detail', !!d.custom);
     page.classList.toggle('founders-detail', !!d.founders);
     page.classList.toggle('network-detail', !!d.network);
+    page.classList.toggle('heroes-detail', !!d.heroes);
     const cs = getComputedStyle(card);
     ['--glowA','--glowB'].forEach(v=>{
       const val = cs.getPropertyValue(v).trim();
@@ -907,6 +983,8 @@
     pb.classList.toggle('meet-body', !!d.custom);
     pb.classList.toggle('founders-body', !!d.founders);
     pb.classList.toggle('network-body', !!d.network);
+    pb.classList.toggle('heroes-body', !!d.heroes);
+    if (d.heroes) window.fcuHeroShow && window.fcuHeroShow(0);
     pb.style.setProperty('--cols', d.cols||12);
     if (d.rows) pb.style.setProperty('--rows', d.rows); else pb.style.removeProperty('--rows');
     pb.innerHTML = d.body;
@@ -1125,6 +1203,33 @@
   });
   grid.addEventListener('pointerleave',function(){if(cur){clear();setH(base,false)}});
   grid.addEventListener('click',function(){clear();clearTimeout(t);h1.textContent=base;h1.classList.remove('hl','sw')});
+})();
+</script>
+<script>
+(function(){
+  var H=[['YOHANES AURI','Group CEO','FCU','Flux Creative Universe'],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
+    ['NADYA','Partner','Faith Media',''],['RUDY SALIM','Partner','Privilege',''],['PETRA','Partner','Pacarku',''],['DENNY','Partner','Homeless Media',''],['RICO','Partner','Fluxnesia',''],['ALDI','Partner','KA',''],
+    ['HENDRA','Partner','Clipper',''],['BAYU','Partner','Studio Lama',''],['SANDY','Partner','Kreatifku',''],['CLARA','Partner','Eventgaris',''],['ARIF','Partner','AI Motion',''],
+    ['TIARA','Partner','Playverse',''],['WIRA','Partner','Soundscape',''],['LUKAS','Partner','Visual District',''],['RATIH','Partner','Storylab',''],['DIMAS','Partner','Growth Hub','']];
+  var cur=0, first=null;
+  function $(id){return document.getElementById(id)}
+  window.fcuHeroShow=function(i){
+    if(!$('phName'))return;
+    if(!first) first={desc:$('phDesc').textContent,tags:$('phTags').innerHTML,quote:$('phQuote').textContent};
+    cur=(i+H.length)%H.length; var h=H[cur], main=cur===0;
+    $('phCount').textContent=String(cur+1).padStart(2,'0')+' / '+H.length;
+    $('phName').textContent=h[0]; $('phRole').textContent=h[1];
+    $('phBrand').textContent=h[2]; $('phBrandSub').textContent=h[3]; $('phBrandSub').style.display=h[3]?'':'none';
+    $('phDesc').textContent=main?first.desc:'Profil lengkap '+h[0].charAt(0)+h[0].slice(1).toLowerCase()+' dan '+h[2]+' segera hadir.';
+    $('phTags').innerHTML=main?first.tags:'';
+    $('phExtra').style.display=main?'':'none';
+    $('phQuote').textContent=main?first.quote:'Different expertises, one ecosystem.';
+    $('phSignName').textContent=h[0]; $('phSignRole').textContent=h[1]+(main?'':' · '+h[2]);
+  };
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('.ph-nav'); if(!b)return;
+    e.preventDefault(); e.stopPropagation(); window.fcuHeroShow(cur+Number(b.dataset.dir));
+  });
 })();
 </script>
 </body>
