@@ -139,8 +139,7 @@
   /* leadership */
   .lead{padding:0;--glowA:rgba(255,140,60,.4)}
   .lead .eyebrow{position:absolute;top:1.3rem;left:1.5rem;z-index:3}
-  .card > .pic{position:absolute;right:0;bottom:0;height:96%;width:auto;max-width:100%;object-fit:contain;object-position:right bottom;z-index:1;pointer-events:none;filter:drop-shadow(0 0 1.2rem rgba(0,0,0,.45))}
-  .lead .names{text-shadow:0 1px 10px rgba(0,0,0,.7);position:absolute;left:1.5rem;bottom:1.2rem;z-index:3}
+  .lead .names{position:absolute;left:1.5rem;bottom:1.2rem;z-index:3}
   .lead .names h2{font-size:1.9rem;font-weight:500;line-height:1.05;letter-spacing:-.02em}
   .lead .names p{font-size:.85rem;margin-top:.5rem;color:#e8dff5}
   .lead .names p i{opacity:.6;font-style:normal;margin:0 .5rem}
@@ -366,6 +365,194 @@
   @media (prefers-reduced-motion:reduce){
     #uni-bg{animation:none}#uni-zoom{transition:none}
   }
+
+  /* ===== MEET FCU DETAIL — cinematic single-screen layout ===== */
+  body.open{background:#030608}
+  body.open #uni-zoom,body.open #universe{opacity:0;transition:opacity .45s ease}
+  body.open .stage{padding:0;gap:0;grid-template-rows:3.65rem 0 minmax(0,1fr)}
+  body.open .top{height:3.65rem;padding:0 1.45rem;border-bottom:1px solid rgba(255,255,255,.11);background:rgba(3,6,8,.88)}
+  body.open .top::after{content:"";position:absolute;left:clamp(225px,18.5vw,310px);top:0;bottom:0;border-left:1px solid rgba(255,255,255,.12)}
+  body.open .logo img{display:none}
+  body.open .logo::after{content:"FCU";display:block;font:700 1.45rem/1 'Inter',sans-serif;letter-spacing:-.07em;color:#fff}
+  body.open .tag{font-size:.56rem;letter-spacing:.48em;color:rgba(255,255,255,.7)}
+  body.open .loc{font-size:.54rem;letter-spacing:.29em;color:rgba(255,255,255,.65);gap:1rem}
+  body.open .dot{width:1.65rem;height:1.65rem;border:1px solid rgba(255,255,255,.18);background:radial-gradient(circle,#fff 0 16%,transparent 18%);box-shadow:none}
+
+  body.open .shell{grid-template-columns:clamp(225px,18.5vw,310px) minmax(0,1fr);gap:0;background:#030608}
+  body.open .grid{padding:.75rem 1.45rem 1.4rem;gap:.62rem;border-right:1px solid rgba(255,255,255,.13);background:#030506}
+  body.open .card{position:relative;isolation:isolate;padding:.8rem 1rem;border-radius:.75rem;border-color:rgba(255,255,255,.11);box-shadow:none;background-color:#090b0d;background-repeat:no-repeat;background-size:cover;background-position:center;transition:border-color .25s ease,filter .25s ease,transform .25s ease}
+  body.open .card::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:inherit;background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.69) 48%,rgba(0,0,0,.16) 100%)}
+  body.open .card::after{display:none}
+  body.open .card.about{background-image:url('meet-fcu-planet.png');background-position:67% 42%}
+  body.open .card.lead{background-image:url('founders.webp');background-position:68% 18%}
+  body.open .card.net{background-image:url('meet-fcu-planet.png');background-position:83% 50%;filter:saturate(.48)}
+  body.open .card.builders{background-image:url('founders.webp');background-position:80% 22%}
+  body.open .card.award{background-image:radial-gradient(ellipse at 76% 46%,rgba(224,158,82,.55),transparent 28%),linear-gradient(135deg,#090908,#21160f 70%,#060606)}
+  body.open .card.work{background-image:radial-gradient(circle at 73% 45%,rgba(239,166,95,.52),transparent 22%),linear-gradient(135deg,#090909,#26170e 60%,#060606)}
+  body.open .card.press{background-image:linear-gradient(135deg,transparent 45%,rgba(116,132,145,.24)),repeating-linear-gradient(0deg,#080a0c 0 10px,#0d1114 11px 18px)}
+  body.open .card.cta{background-image:url('meet-fcu-planet.png');background-position:63% 8%}
+  body.open .card:not(.active){filter:saturate(.64) brightness(.74)}
+  body.open .card:hover{filter:saturate(.9) brightness(.96);transform:translateX(.12rem)}
+  body.open .card.active{filter:none;border-color:rgba(255,255,255,.86);box-shadow:0 0 0 1px rgba(255,255,255,.12),0 0 1rem rgba(255,236,218,.16)}
+  body.open:not(.moving) .card.award > svg{display:block!important;position:absolute;right:-.2rem;bottom:-.7rem;width:57%;height:126%;opacity:.58;pointer-events:none;z-index:0}
+  body.open .card.award .rail-label{z-index:2}
+  body.open .rail-label{position:relative;width:100%;height:100%;align-items:flex-start;justify-content:flex-end;flex-direction:column;gap:.22rem;opacity:1!important;text-shadow:0 1px 8px #000}
+  body.open .rail-label span{position:absolute;left:0;top:0;font-size:.62rem;color:rgba(255,255,255,.72)}
+  body.open .rail-label b{font-size:.82rem;line-height:1.08;letter-spacing:0;text-transform:none;color:#fff;max-width:7.5rem}
+  body.open .rail-label b::after{content:"›";position:absolute;right:0;bottom:-.1rem;width:1.65rem;height:1.65rem;border:1px solid rgba(255,255,255,.3);border-radius:50%;display:grid;place-items:center;font:300 1.1rem/1 'Inter'}
+
+  body.open .page{padding:0 1.45rem 1.05rem;gap:.62rem;background:#030608}
+  body.open .page.meet-detail{overflow:hidden}
+  .meet-detail .back{display:none}
+  .meet-detail .pg-head{flex:0 0 44%;isolation:isolate;border:0;border-radius:0;padding:1.55rem 1.65rem;background:
+    linear-gradient(90deg,rgba(2,4,5,.99) 0%,rgba(2,4,5,.91) 24%,rgba(2,4,5,.31) 48%,rgba(2,4,5,.1) 100%),
+    linear-gradient(0deg,rgba(3,6,8,.62),transparent 42%),url('meet-fcu-planet.png') 56% 38%/100% auto no-repeat;
+    box-shadow:none;overflow:hidden}
+  .meet-detail .pg-head::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 72% 0%,rgba(255,186,139,.17),transparent 42%);pointer-events:none}
+  .meet-detail .pg-head::after{content:"CREATIVE\A ATTENTION\A AI\A\A —\A\A ONE ECOSYSTEM.\A MANY POSSIBILITIES.\A FOR BRANDS, CREATORS,\A ENTREPRENEURS, AND\A THE NEXT GENERATION.";white-space:pre;position:absolute;right:3.2rem;top:4.8rem;width:12rem;font-size:.58rem;line-height:1.65;letter-spacing:.2em;color:rgba(255,255,255,.84);text-shadow:0 1px 8px #000}
+  .meet-detail .pg-eyebrow{font-size:.54rem;letter-spacing:.31em;color:rgba(255,255,255,.78)}
+  .meet-detail .pg-title{font-family:'Inter',sans-serif;font-size:clamp(60px,8vh,76px);font-weight:500;line-height:.87;letter-spacing:-.055em;color:#f6f3ee;background:none;margin-top:.7rem;max-width:28rem;text-shadow:0 .25rem 1.8rem rgba(0,0,0,.8)}
+  .meet-detail .pg-title .meet-fcu{font-size:clamp(84px,11.6vh,112px);font-weight:700;letter-spacing:-.075em;line-height:.85}
+  .meet-detail .pg-title .meet-dot{color:#fff}
+  .meet-detail .pg-lead{margin-top:.55rem;max-width:35rem;color:#fff}
+  .meet-sub{display:block;font-size:clamp(19px,2.75vh,27px);line-height:1.15;letter-spacing:-.035em;margin-bottom:.65rem}
+  .meet-copy{display:block;max-width:28rem;font-size:clamp(12px,1.65vh,16px);line-height:1.18;color:rgba(255,255,255,.86)}
+  .meet-stats{display:flex;margin-top:1rem;width:34rem}
+  .meet-stat{display:flex;flex-direction:column;min-width:7.2rem;padding:0 1.35rem;border-left:1px solid rgba(255,255,255,.22);font-size:clamp(11px,1.37vh,14px);line-height:1.05;color:rgba(255,255,255,.82)}
+  .meet-stat:first-child{padding-left:0;border-left:0}
+  .meet-stat strong{font-size:clamp(22px,2.8vh,28px);line-height:1.1;font-weight:400;color:#fff;margin-bottom:.05rem}
+
+  .pg-body.meet-body{display:grid;grid-template-columns:1fr;grid-template-rows:minmax(0,1.12fr) minmax(0,1fr) minmax(0,.58fr);gap:.62rem}
+  .meet-panel{position:relative;min-height:0;border:1px solid rgba(255,255,255,.14);border-radius:.8rem;background:linear-gradient(145deg,rgba(10,15,19,.94),rgba(3,7,10,.98));overflow:hidden}
+  .meet-kicker{position:absolute;left:1.35rem;top:.72rem;z-index:3;font-size:clamp(9px,1.1vh,11px);letter-spacing:.27em;text-transform:uppercase;color:#fff}
+  .meet-kicker::after{content:"";display:block;width:6.7rem;margin-top:.35rem;border-bottom:1px solid rgba(255,215,180,.7)}
+
+  .journey{padding:2.15rem 1.45rem .65rem;background:
+    linear-gradient(90deg,rgba(2,6,9,.7) 0%,rgba(2,6,9,.35) 58%,rgba(2,6,9,.03) 100%),
+    url('journey-moon.png') center 54%/cover no-repeat,#020609}
+  .journey-intro{position:absolute;left:10.5rem;top:.78rem;font-size:clamp(9px,1.05vh,11px);color:rgba(255,255,255,.54)}
+  .story-btn{position:absolute;right:1rem;top:.65rem;z-index:4;padding:.48rem 1.15rem;border:1px solid rgba(255,255,255,.22);border-radius:2rem;background:rgba(0,0,0,.4);color:#fff;font:clamp(10px,1.1vh,12px) 'Inter';cursor:pointer}
+  .story-btn span{padding-left:.8rem;font-size:.9rem}
+  .timeline{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding-top:.3rem}
+  .timeline::before{content:"";position:absolute;left:3.2%;right:4%;top:44%;border-top:1px solid rgba(255,255,255,.5);transform:rotate(-.5deg)}
+  .milestone{position:relative;align-self:end;padding:0 .55rem 0 1.1rem;min-height:5.5rem;color:rgba(255,255,255,.72);font-size:clamp(10px,1.22vh,12px);line-height:1.22}
+  .milestone::before{content:"";position:absolute;left:1.4rem;top:-1.1rem;width:1.15rem;height:1.15rem;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#d77b3b 28%,#130a08 62%);box-shadow:0 0 .8rem rgba(255,120,67,.8)}
+  .milestone:nth-child(2)::before{background:radial-gradient(circle at 35% 30%,#fff,#454ad7 30%,#060618 65%);box-shadow:0 0 .8rem rgba(95,100,255,.85)}
+  .milestone:nth-child(3)::before{background:radial-gradient(circle at 35% 30%,#fff,#bf3f4f 30%,#180508 65%);box-shadow:0 0 .8rem rgba(255,89,110,.75)}
+  .milestone:nth-child(4)::before{background:radial-gradient(circle at 35% 30%,#fff,#1d5a96 28%,#030b12 65%);box-shadow:0 0 .8rem rgba(72,144,212,.65)}
+  .milestone:nth-child(5)::before{background:#fff;box-shadow:0 0 .7rem #fff}
+  .milestone:last-child{text-shadow:0 1px 5px #000}
+  .milestone strong{display:block;margin-bottom:.18rem;font-size:clamp(14px,1.75vh,18px);font-weight:500;color:#fff}
+  .milestone b{display:block;color:#fff;font-weight:500}
+
+  .engines{padding:1.62rem .75rem .72rem}
+  .engine-grid{height:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:.62rem}
+  .engine{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.13);border-radius:.7rem;padding:1rem 1rem .7rem;background-color:#090b0d;background-size:cover;background-position:center;display:grid;grid-template-columns:1fr .72fr;align-items:start}
+  .engine.creative{border-color:rgba(217,117,55,.45);background-image:linear-gradient(90deg,rgba(21,7,4,.78),transparent 28%,transparent 66%,rgba(5,6,8,.9) 91%),url('engine-creative.png')}
+  .engine.attention{border-color:rgba(158,95,210,.45);background-image:linear-gradient(90deg,rgba(15,6,25,.78),transparent 28%,transparent 66%,rgba(5,6,8,.9) 91%),url('engine-attention.png')}
+  .engine.ai{border-color:rgba(57,125,222,.5);background-image:linear-gradient(90deg,rgba(3,21,53,.78),transparent 28%,transparent 66%,rgba(5,6,8,.9) 91%),url('engine-ai.png')}
+  .engine-copy,.engine-list{position:relative;z-index:2}
+  .engine h3{font-size:clamp(15px,2.1vh,20px);margin-bottom:.5rem}
+  .engine p{max-width:9.5rem;font-size:clamp(9px,1.33vh,13px);line-height:1.18;color:rgba(255,255,255,.92)}
+  .engine-list{justify-self:end;font-size:clamp(8px,1.18vh,11px);line-height:1.3;color:rgba(255,255,255,.68)}
+  .engine-go{position:absolute;left:1rem;bottom:.68rem;z-index:3;width:1.6rem;height:1.6rem;border:1px solid rgba(255,255,255,.46);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.85rem}
+
+  .brands{padding:2.05rem 3.2rem .45rem;display:flex;align-items:center;justify-content:space-between;gap:1.1rem}
+  .brands .meet-kicker{left:1.35rem;top:.45rem}
+  .brands .meet-kicker::after{display:none}
+  .brand-intro{position:absolute;left:1.35rem;top:1.3rem;font-size:clamp(8px,.95vh,10px);color:rgba(255,255,255,.48)}
+  .brand-logo{display:block;flex:0 1 auto;max-width:6.5rem;height:1.75rem;object-fit:contain;filter:brightness(0) invert(1);opacity:.92}
+  .brand-logo.wide{max-width:7.6rem}
+  .brand-logo.icon{width:2.25rem;height:2.25rem}
+  .brand-lockup{display:flex;align-items:center;gap:.22rem;white-space:nowrap;color:#fff;font-size:clamp(10px,1.35vh,13px);font-weight:600}
+  .brand-lockup .brand-logo.icon{width:1.75rem;height:1.75rem}
+  .brand-binus{display:block;flex:0 0 6rem;width:6rem;height:2.5rem;background:url('brand-logos/binus.png') -3.9rem -2.9rem/13rem 9.2rem no-repeat;filter:grayscale(1) invert(1);mix-blend-mode:screen}
+  .brand.more{white-space:nowrap;font-weight:400;font-size:clamp(10px,1.1vh,12px);color:rgba(255,255,255,.7)}
+  .brand-arrow{position:absolute;top:50%;transform:translateY(-28%);width:1.65rem;height:1.65rem;border:1px solid rgba(255,255,255,.22);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.85rem}
+  .brand-arrow.prev{left:.7rem}.brand-arrow.next{right:.7rem}
+
+  /* ===== THE FOUNDERS DETAIL ===== */
+  body.open .page.founders-detail{isolation:isolate;gap:0;padding:0 1.7rem 2.35rem 1.45rem;overflow:hidden;background:
+    linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.12) 44%,rgba(0,0,0,.34) 100%),
+    url('founders-backdrop-v2.png') right -3.65rem/100vw 100vh no-repeat,#030405}
+  .founders-detail::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(0deg,rgba(0,0,0,.79),transparent 35%,transparent 75%,rgba(0,0,0,.2))}
+  .founders-detail::after{content:"";position:absolute;left:22%;top:13%;width:56%;height:60%;z-index:1;pointer-events:none;background:url('founders-hero.png') center bottom/contain no-repeat;filter:drop-shadow(0 1rem 2.5rem rgba(0,0,0,.7))}
+  .founders-detail .back{display:none}
+  .founders-detail .pg-head{z-index:2;flex:0 0 26.5%;padding:1.95rem 1rem 0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
+  .founders-detail .pg-eyebrow{font-size:clamp(10px,1.2vh,12px);letter-spacing:.22em;color:rgba(255,255,255,.83)}
+  .founders-detail .pg-title{font-family:'Inter',Arial,sans-serif;font-size:clamp(55px,7.45vh,72px);line-height:.81;letter-spacing:-.075em;font-weight:800;color:#fff;background:none;margin-top:.8rem;max-width:31rem;text-shadow:0 .2rem 1.3rem rgba(0,0,0,.55)}
+  .founders-detail .pg-lead{position:absolute;right:1rem;top:2.8rem;margin:0;width:18.1rem;max-width:25%;font-size:clamp(10px,1.25vh,13px);line-height:1.52;letter-spacing:.19em;color:rgba(255,255,255,.88);text-transform:uppercase;text-shadow:0 1px 5px #000}
+  .pg-body.founders-body{position:relative;z-index:2;display:grid;flex:1;min-height:0;grid-template-columns:1fr;grid-template-rows:minmax(0,1.88fr) minmax(0,1fr);gap:2rem}
+  .founder-profiles{display:flex;justify-content:space-between;min-height:0;gap:1rem}
+  .founder-profile{width:28.6%;min-width:0;display:flex;flex-direction:column;padding:1.35rem 1.35rem 1.15rem;border:1px solid rgba(255,255,255,.26);border-radius:.8rem;background:linear-gradient(105deg,rgba(4,5,7,.73),rgba(8,10,13,.52));box-shadow:inset 0 1px 0 rgba(255,255,255,.05);backdrop-filter:blur(3px)}
+  .founder-profile:last-child{width:29.8%;background:linear-gradient(100deg,rgba(5,7,9,.67),rgba(3,5,7,.79))}
+  .founder-role{font-size:clamp(10px,1.3vh,13px);letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.78)}
+  .founder-profile h3{font-size:clamp(25px,3.25vh,33px);line-height:1.05;letter-spacing:-.04em;font-weight:750;margin:.9rem 0 .6rem;white-space:nowrap;color:#fff}
+  .founder-profile p{font-size:clamp(12px,1.65vh,16px);line-height:1.25;color:rgba(255,255,255,.76);margin:0 0 1.25rem;max-width:25rem}
+  .founder-profile .founder-bio{font-size:clamp(11px,1.48vh,15px);line-height:1.26;color:rgba(255,255,255,.68)}
+  .founder-profile button{display:flex;align-items:center;gap:.75rem;align-self:flex-start;margin-top:auto;margin-bottom:1.15rem;border:0;background:none;color:rgba(255,255,255,.77);font:clamp(10px,1.32vh,13px) 'Inter',sans-serif;cursor:pointer}
+  .founder-profile button span{display:grid;place-items:center;width:2.4rem;height:2.4rem;border:1px solid rgba(255,255,255,.64);border-radius:50%;font-size:1.15rem;color:#fff;transition:background .2s,color .2s}
+  .founder-profile button:hover span,.founder-profile button:focus-visible span{background:#fff;color:#111}
+  .founder-numbers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.28)}
+  .founder-numbers div{min-width:0}
+  .founder-numbers strong{display:block;font-size:clamp(15px,1.9vh,20px);font-weight:500;line-height:1.05;color:#fff}
+  .founder-numbers small{display:block;margin-top:.35rem;font-size:clamp(9px,1.12vh,11px);line-height:1.2;color:rgba(255,255,255,.63)}
+  .founder-socials{display:grid;grid-template-columns:.97fr 1.03fr;gap:3.1rem;min-height:0}
+  .founder-social{min-width:0;min-height:0;padding:.85rem 1rem .72rem;border:1px solid rgba(255,255,255,.21);border-radius:.75rem;background:rgba(2,4,6,.76);box-shadow:0 .4rem 1.4rem rgba(0,0,0,.23);transition:border-color .25s,box-shadow .25s}
+  .founder-social.profile-focus{border-color:rgba(255,229,206,.8);box-shadow:0 0 1.3rem rgba(255,217,186,.22)}
+  .founder-social-head{display:flex;align-items:center;gap:.7rem;height:2.15rem;min-width:0}
+  .ig-mark{flex:0 0 1.55rem;width:1.55rem;height:1.55rem;display:grid;place-items:center;border-radius:.42rem;background:linear-gradient(35deg,#ffbc55 0%,#e44884 42%,#8d46cd 75%,#346cdb 100%);color:#fff;font-size:1.1rem;font-weight:700;line-height:1}
+  .founder-handle{font-size:clamp(11px,1.5vh,15px);font-weight:600;letter-spacing:-.035em;color:#fff;white-space:nowrap}
+  .verified{display:inline-grid;place-items:center;width:.9rem;height:.9rem;border-radius:50%;background:#54aaff;color:#fff;font-size:.65rem;line-height:1}
+  .founder-tabs{display:flex;justify-content:flex-end;gap:1.1rem;margin-left:auto;align-items:center;min-width:0}
+  .founder-tab{padding:.25rem 0;border:0;border-bottom:1px solid transparent;background:none;color:rgba(255,255,255,.57);font:clamp(9px,1.2vh,12px) 'Inter',sans-serif;cursor:pointer;white-space:nowrap}
+  .founder-tab.active{color:#fff;border-bottom-color:#fff}
+  .founder-thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:.55rem;height:calc(100% - 3.2rem);margin-top:.85rem}
+  .founder-thumb{display:block;min-width:0;min-height:0;border:1px solid rgba(255,255,255,.11);border-radius:.42rem;background-image:url('founders-reference.png');background-repeat:no-repeat;background-size:1672px 941px;background-position:var(--bx) var(--by);transition:opacity .22s,filter .22s,transform .22s}
+  .founder-thumb:hover{transform:translateY(-.12rem);filter:brightness(1.15)}
+  .founder-thumb.is-dim{opacity:.27;filter:grayscale(1)}
+
+  @media (max-width:900px){
+    body.open .stage{padding:max(.6rem,env(safe-area-inset-top)) 1rem 2.6rem}
+    body.open .top{height:3.4rem;margin:0 -1rem;padding:0 1rem}
+    body.open .top::after{display:none}
+    body.open .shell{display:flex;background:transparent}
+    body.open .grid{padding:4px 2px;border:0;background:transparent}
+    body.open .card{padding:.5rem .8rem}
+    body.open .rail-label b::after{display:none}
+    body.open .page{padding:0;background:transparent;overflow:visible!important}
+    .meet-detail .pg-head{flex:none;min-height:35rem;padding:1.4rem 1.2rem;background-position:58% 45%;background-size:auto 100%}
+    .meet-detail .pg-head::after{display:none}
+    .meet-detail .pg-title{font-size:4.8rem;margin-top:1.1rem}
+    .meet-sub{font-size:1.2rem}.meet-copy{font-size:.8rem;max-width:22rem}
+    .meet-stats{width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1.3rem}
+    .meet-stat{padding:0;border:0;min-width:0}
+    .pg-body.meet-body{display:flex;flex-direction:column;gap:.8rem}
+    .journey{min-height:27rem;padding-top:3rem}
+    .journey-intro{display:none}.story-btn{top:.55rem}
+    .timeline{grid-template-columns:1fr 1fr;height:auto;gap:1.5rem;padding-top:2rem}
+    .timeline::before{display:none}.milestone{min-height:5.5rem;padding-left:1.5rem}.milestone::before{top:.1rem;left:.2rem}
+    .engines{padding-top:2.3rem}.engine-grid{grid-template-columns:1fr;height:auto}.engine{min-height:11rem}
+    .brands{min-height:8rem;flex-wrap:wrap;justify-content:center;padding:2.4rem 3rem 1rem}
+    body.open .page.founders-detail{padding:0 .8rem 1.2rem;background-position:57% top;background-size:auto 45rem;overflow:visible}
+    .founders-detail::after{left:15%;top:7rem;width:78%;height:25rem;opacity:.9}
+    .founders-detail .pg-head{min-height:35rem;flex:none;padding:1.3rem .4rem 0}
+    .founders-detail .pg-title{font-size:clamp(3.5rem,13vw,5rem);margin-top:1.2rem}
+    .founders-detail .pg-lead{top:auto;bottom:2rem;right:.5rem;width:13rem;max-width:48%;font-size:.55rem;line-height:1.4}
+    .pg-body.founders-body{display:flex;flex-direction:column;gap:1rem}
+    .founder-profiles,.founder-socials{display:flex;flex-direction:column;gap:1rem}
+    .founder-profile,.founder-profile:last-child{width:100%;min-height:21rem;padding:1.2rem;background:rgba(3,5,7,.8)}
+    .founder-profile h3{font-size:1.8rem}
+    .founder-profile p,.founder-profile .founder-bio{font-size:.85rem}
+    .founder-profile button{margin-top:1rem}
+    .founder-social{height:11.4rem;padding:.65rem}
+    .founder-social-head{gap:.35rem}
+    .founder-tabs{gap:.45rem}
+    .founder-tab{font-size:.56rem}
+    .founder-handle{font-size:.75rem}
+    .founder-thumbs{height:7.4rem;gap:.3rem;margin-top:.35rem}
+    .founder-thumb{background-size:1672px 941px;background-position:var(--bx) var(--by)}
+  }
 </style>
 </head>
 <body>
@@ -393,7 +580,7 @@
   <!-- row 1 -->
   <section class="row r1">
     <article class="card about" tabindex="0" data-title="MEET FCU">
-    <div class="rail-label"><span>01</span><b>MEET FCU</b></div>
+    <div class="rail-label"><span>01</span><b>Meet<br>FCU</b></div>
       <img class="art" src="meet-fcu.webp" alt="" decoding="async">
       <div class="eyebrow">01 / About</div>
       <a class="arrow" href="#">↗</a>
@@ -409,10 +596,13 @@
     </article>
 
     <article class="card lead" tabindex="0" data-title="THE FOUNDERS">
-    <div class="rail-label"><span>02</span><b>THE FOUNDERS</b></div>
+    <div class="rail-label"><span>02</span><b>Founders</b></div>
       <div class="eyebrow">02 / Leadership</div>
       <a class="arrow" href="#">→</a>
-      <img class="pic" src="founders.webp" alt="Yohanes Auri dan Deddy Corbuzier" decoding="async">
+      <div class="founders">
+        <div class="ph large" style="--h:250;--s:30;--c:240"></div>
+        <div class="ph large" style="--h:20;--s:26;--c:20"></div>
+      </div>
       <div class="names">
         <h2>MEET<br>THE FOUNDERS.</h2>
         <p>Yohanes Auri <i>×</i> Deddy Corbuzier</p>
@@ -420,7 +610,7 @@
     </article>
 
     <article class="card net" tabindex="0" data-title="BACKED BY">
-    <div class="rail-label"><span>03</span><b>BACKED BY</b></div>
+    <div class="rail-label"><span>03</span><b>Network</b></div>
       <div class="eyebrow">03 / Network</div>
       <a class="arrow" href="#">→</a>
       <div class="big">BACKED<br>BY.</div>
@@ -438,7 +628,7 @@
 
   <!-- row 2 -->
   <section class="card builders" tabindex="0" data-title="PARTNER HEROES">
-    <div class="rail-label"><span>04</span><b>PARTNER HEROES</b></div>
+    <div class="rail-label"><span>04</span><b>Partner<br>Heroes</b></div>
     <div>
       <div class="eyebrow">04 / Our Builders</div>
       <div class="big">MEET OUR<br><span class="thin">PARTNER HEROES.</span></div>
@@ -462,7 +652,7 @@
   <!-- row 3 -->
   <section class="row r3">
     <article class="card award" tabindex="0" data-title="AWARD WINNING">
-    <div class="rail-label"><span>05</span><b>AWARD WINNING</b></div>
+    <div class="rail-label"><span>05</span><b>Awards</b></div>
       <div class="eyebrow">05 / Recognition</div>
       <div class="big">AWARD<br>WINNING.</div>
       <p>Our work gets recognized.</p>
@@ -489,7 +679,7 @@
     </article>
 
     <article class="card work" tabindex="0" data-title="OUR WORK">
-    <div class="rail-label"><span>06</span><b>OUR WORK</b></div>
+    <div class="rail-label"><span>06</span><b>Our Work</b></div>
       <div class="eyebrow">06 / Selected Work</div>
       <a class="arrow" href="#">→</a>
       <div class="hero-ph ph scene" style="--h:25;background:radial-gradient(circle at 50% 40%,rgba(255,190,130,.35),transparent 65%);border:0"></div>
@@ -511,7 +701,7 @@
 
     <div class="rcol">
       <article class="card press" tabindex="0" data-title="IN THE NEWS">
-    <div class="rail-label"><span>07</span><b>IN THE NEWS</b></div>
+    <div class="rail-label"><span>07</span><b>In The<br>News</b></div>
         <div>
           <div class="eyebrow">07 / Press</div>
           <div class="big">IN<br>THE NEWS.</div>
@@ -527,7 +717,7 @@
       </article>
 
       <article class="card cta" tabindex="0" data-title="A UNIVERSE">
-    <div class="rail-label"><span>08</span><b>A UNIVERSE</b></div>
+    <div class="rail-label"><span></span><b>The<br>Next Chapter</b></div>
         <small>THIS IS ONLY THE BEGINNING.</small>
         <h2>WE'RE BUILDING<br>A <b>UNIVERSE.</b></h2>
         <small>FLUX CREATIVE UNIVERSE</small>
@@ -571,8 +761,81 @@
   let busy = false;
 
   const PAGES = {
-    'MEET FCU':{eye:'01 / About',cols:12,rows:'.5fr 1fr',lead:'An Indonesian creative group holding that builds, operates, and grows businesses across Creativity, Attention, and AI.',body:'<div class="pt" style="--sp:3"><div class="k">Companies</div><strong>30</strong></div><div class="pt" style="--sp:3"><div class="k">People</div><strong>200+</strong></div><div class="pt" style="--sp:3"><div class="k">Views</div><strong>2.3B+</strong></div><div class="pt" style="--sp:3"><div class="k">Gen Z Companies Invested In</div><strong>11</strong></div><div class="pt" style="--sp:4"><div class="k">Pillar</div><div class="big">CREATIVITY</div></div><div class="pt" style="--sp:4"><div class="k">Pillar</div><div class="big">ATTENTION</div></div><div class="pt" style="--sp:4"><div class="k">Pillar</div><div class="big">AI</div></div>'},
-    'THE FOUNDERS':{eye:'02 / Leadership',cols:12,lead:'Yohanes Auri × Deddy Corbuzier',body:'<div class="pt" style="--sp:6"><div class="k">Founder</div><div class="big">YOHANES AURI</div><span>Profil lengkap segera hadir.</span></div><div class="pt" style="--sp:6"><div class="k">Founder</div><div class="big">DEDDY CORBUZIER</div><span>Profil lengkap segera hadir.</span></div>'},
+    'MEET FCU':{
+      custom:true,
+      eye:'01 / About',
+      titleHtml:'MEET<br><span class="meet-fcu">FCU<span class="meet-dot">.</span></span>',
+      leadHtml:'<span class="meet-sub">The Creative Group Holding.</span><span class="meet-copy">An Indonesian creative group holding that builds,<br>operates, and grows businesses across<br>Creativity, Attention, and AI.</span><span class="meet-stats"><span class="meet-stat"><strong>30</strong>Companies</span><span class="meet-stat"><strong>200+</strong>People</span><span class="meet-stat"><strong>2.3B+</strong>Views</span><span class="meet-stat"><strong>11</strong>Gen Z Companies<br>Invested In</span></span>',
+      body:`
+        <section class="meet-panel journey">
+          <div class="meet-kicker">Our Journey</div>
+          <div class="journey-intro">From a creative idea to a limitless creative universe.</div>
+          <button class="story-btn" type="button">Our Full Story <span>›</span></button>
+          <div class="timeline">
+            <div class="milestone"><strong>2000</strong><b>The beginning.</b>Started as a creative<br>agency.</div>
+            <div class="milestone"><strong>2018</strong><b>Flux.</b>The idea of Flux was<br>born.</div>
+            <div class="milestone"><strong>2021</strong><b>Flux Creative Universe.</b>Evolved into a creative<br>group holding.</div>
+            <div class="milestone"><strong>2023</strong><b>Deddy Corbuzier</b>invested in FCU.</div>
+            <div class="milestone"><strong>2024 – Now</strong><b>Expanding.</b>New companies,<br>new opportunities,<br>bigger impact.</div>
+          </div>
+        </section>
+        <section class="meet-panel engines">
+          <div class="meet-kicker">Our Three Growth Engines</div>
+          <div class="engine-grid">
+            <article class="engine creative"><div class="engine-copy"><h3>CREATIVE</h3><p>We create what<br>people want to see.</p></div><div class="engine-list">Strategy<br>Creative Campaign<br>Social Media<br>Production<br>Brand Activation<br>KOL &amp; Influencer<br>and more...</div><span class="engine-go">›</span></article>
+            <article class="engine attention"><div class="engine-copy"><h3>ATTENTION</h3><p>We don't just create<br>content. We own<br>and engineer attention.</p></div><div class="engine-list">Media Network<br>Communities<br>UGC Network<br>Creator Network<br>Clipper<br>Vertical Drama<br>Distribution<br>and more...</div><span class="engine-go">›</span></article>
+            <article class="engine ai"><div class="engine-copy"><h3>AI</h3><p>We turn technology<br>into the next<br>creative advantage.</p></div><div class="engine-list">AI Products<br>AI Creation<br>Creative Technology<br>Venture Building<br>Consumer AI<br>and more...</div><span class="engine-go">›</span></article>
+          </div>
+        </section>
+        <section class="meet-panel brands">
+          <div class="meet-kicker">Trusted By Leading Brands</div><div class="brand-intro">Brands, institutions, and partners who grow with us.</div><span class="brand-arrow prev">‹</span>
+          <img class="brand-logo wide" src="brand-logos/telkomsel.svg" alt="Telkomsel">
+          <img class="brand-logo" src="brand-logos/bca.svg" alt="BCA">
+          <img class="brand-logo" src="brand-logos/mayora.svg" alt="Mayora">
+          <img class="brand-logo" src="brand-logos/kredivo.svg" alt="Kredivo">
+          <span class="brand-binus" role="img" aria-label="BINUS University"></span>
+          <img class="brand-logo wide" src="brand-logos/samsung.svg" alt="Samsung">
+          <img class="brand-logo icon" src="brand-logos/toyota.svg" alt="Toyota">
+          <img class="brand-logo icon" src="brand-logos/unilever.svg" alt="Unilever">
+          <span class="brand-lockup"><img class="brand-logo icon" src="brand-logos/shopee.svg" alt="">Shopee</span>
+          <span class="brand-lockup"><img class="brand-logo icon" src="brand-logos/gojek.svg" alt="">gojek</span>
+          <span class="brand more">and more</span>
+          <span class="brand-arrow next">›</span>
+        </section>`
+    },
+    'THE FOUNDERS':{
+      founders:true,
+      eye:'02 / FOUNDERS',
+      titleHtml:'THE<br>FOUNDERS.',
+      leadHtml:'TWO DIFFERENT JOURNEYS.<br>ONE UNITED VISION.<br><br>COMBINING CREATIVE,<br>MEDIA, AND INFLUENCE TO BUILD<br>A BIGGER UNIVERSE FOR<br>THE NEXT GENERATION.',
+      body:`
+        <section class="founder-profiles" aria-label="Founder profiles">
+          <article class="founder-profile">
+            <div class="founder-role">Founder &amp; Group CEO</div>
+            <h3>YOHANES AURI</h3>
+            <p>Entrepreneur, Content Creator,<br>Creative Business Builder.</p>
+            <p class="founder-bio">Building companies at the intersection<br>of creativity, media, and technology.<br>Sharing the journey along the way.</p>
+            <button type="button" data-profile-focus="yohanes"><span aria-hidden="true">→</span>View Full Profile</button>
+            <div class="founder-numbers"><div><strong>1.2M</strong><small>Instagram<br>Followers</small></div><div><strong>2.8M</strong><small>TikTok<br>Followers</small></div><div><strong>780K</strong><small>YouTube<br>Subscribers</small></div><div><strong>320K</strong><small>X<br>Followers</small></div></div>
+          </article>
+          <article class="founder-profile">
+            <div class="founder-role">Strategic Partner &amp; Investor</div>
+            <h3>DEDDY CORBUZIER</h3>
+            <p>Entrepreneur, Content Creator,<br>Strategic Investor.</p>
+            <p class="founder-bio">One of Indonesia’s most influential<br>digital voices, bringing media influence<br>and strategic value to FCU.</p>
+            <button type="button" data-profile-focus="deddy"><span aria-hidden="true">→</span>View Full Profile</button>
+            <div class="founder-numbers"><div><strong>20M</strong><small>YouTube<br>Subscribers</small></div><div><strong>11M</strong><small>Instagram<br>Followers</small></div><div><strong>15M</strong><small>TikTok<br>Followers</small></div><div><strong>4.8M</strong><small>X<br>Followers</small></div></div>
+          </article>
+        </section>
+        <section class="founder-socials" aria-label="Founder social content">
+          <div class="founder-social" data-person="yohanes"><div class="founder-social-head"><span class="ig-mark" aria-hidden="true">◎</span><span class="founder-handle">yohanesauri</span><span class="verified" aria-label="Verified">✓</span><div class="founder-tabs"><button class="founder-tab active" type="button" data-filter="all">All</button><button class="founder-tab" type="button" data-filter="business">Business</button><button class="founder-tab" type="button" data-filter="fcu">FCU</button><button class="founder-tab" type="button" data-filter="family">Family</button><button class="founder-tab" type="button" data-filter="lifestyle">Lifestyle</button></div></div><div class="founder-thumbs">
+            <span class="founder-thumb" role="img" aria-label="Yohanes speaking" data-category="business" style="--bx:-349px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Yohanes portrait" data-category="fcu" style="--bx:-470px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Family moment" data-category="family" style="--bx:-591px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Yohanes in conversation" data-category="business" style="--bx:-712px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Lifestyle and travel" data-category="lifestyle" style="--bx:-833px;--by:-758px"></span>
+          </div></div>
+          <div class="founder-social" data-person="deddy"><div class="founder-social-head"><span class="ig-mark" aria-hidden="true">◎</span><span class="founder-handle">mastercorbuzier</span><span class="verified" aria-label="Verified">✓</span><div class="founder-tabs"><button class="founder-tab active" type="button" data-filter="all">All</button><button class="founder-tab" type="button" data-filter="podcast">Podcast</button><button class="founder-tab" type="button" data-filter="fitness">Fitness</button><button class="founder-tab" type="button" data-filter="business">Business</button><button class="founder-tab" type="button" data-filter="lifestyle">Lifestyle</button></div></div><div class="founder-thumbs">
+            <span class="founder-thumb" role="img" aria-label="Deddy podcast" data-category="podcast" style="--bx:-1018px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Deddy fitness" data-category="fitness" style="--bx:-1141px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Deddy on stage" data-category="business" style="--bx:-1266px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Deddy portrait" data-category="business" style="--bx:-1390px;--by:-758px"></span><span class="founder-thumb" role="img" aria-label="Deddy lifestyle" data-category="lifestyle" style="--bx:-1514px;--by:-758px"></span>
+          </div></div>
+        </section>`
+    },
     'BACKED BY':{eye:'03 / Network',cols:12,lead:'Investors & Strategic Partners Across The Universe.',body:'<div class="pt soon" style="--sp:4"><div class="k">01 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">02 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">03 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">04 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">05 / Investor</div><span>Daftar investor segera hadir</span></div><div class="pt soon" style="--sp:4"><div class="k">06 / Investor</div><span>Daftar investor segera hadir</span></div>'},
     'PARTNER HEROES':{eye:'04 / Our Builders',cols:5,lead:'The entrepreneurs who build the universe together.',body:'<div class="pt soon" style="--sp:1"><div class="k">Partner 01</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 02</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 03</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 04</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 05</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 06</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 07</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 08</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 09</div><span>Segera hadir</span></div><div class="pt soon" style="--sp:1"><div class="k">Partner 10</div><span>Segera hadir</span></div>'},
     'AWARD WINNING':{eye:'05 / Recognition',cols:12,lead:'Our work gets recognized.',body:'<div class="pt" style="--sp:8"><div class="k">Recognition</div><div class="big">MARKETEERS YOUTH CHOICE AWARD 2026</div></div><div class="pt" style="--sp:4"><div class="k">Record</div><div class="big">MURI</div><span>Pencatatan rekor</span></div>'},
@@ -584,19 +847,40 @@
   function setActive(card){
     allCards.forEach(c=>c.classList.toggle('active', c===card));
     const d = PAGES[card.dataset.title] || {eye:'',lead:'',body:''};
+    page.classList.toggle('meet-detail', !!d.custom);
+    page.classList.toggle('founders-detail', !!d.founders);
     const cs = getComputedStyle(card);
     ['--glowA','--glowB'].forEach(v=>{
       const val = cs.getPropertyValue(v).trim();
       if (val) page.style.setProperty(v,val); else page.style.removeProperty(v);
     });
     document.getElementById('pgEye').textContent = d.eye;
-    document.getElementById('pgTitle').textContent = card.dataset.title;
-    document.getElementById('pgLead').textContent = d.lead;
+    const title = document.getElementById('pgTitle');
+    if (d.titleHtml) title.innerHTML = d.titleHtml; else title.textContent = card.dataset.title;
+    const lead = document.getElementById('pgLead');
+    if (d.leadHtml) lead.innerHTML = d.leadHtml; else lead.textContent = d.lead;
     const pb = document.getElementById('pgBody');
+    pb.classList.toggle('meet-body', !!d.custom);
+    pb.classList.toggle('founders-body', !!d.founders);
     pb.style.setProperty('--cols', d.cols||12);
     if (d.rows) pb.style.setProperty('--rows', d.rows); else pb.style.removeProperty('--rows');
     pb.innerHTML = d.body;
     pb.querySelectorAll('.pt').forEach((t,i)=>t.style.setProperty('--i',i));
+    pb.querySelectorAll('.founder-tab').forEach(tab=>tab.addEventListener('click',e=>{
+      e.stopPropagation();
+      const panel=tab.closest('.founder-social');
+      panel.querySelectorAll('.founder-tab').forEach(t=>t.classList.toggle('active',t===tab));
+      panel.querySelectorAll('.founder-thumb').forEach(thumb=>thumb.classList.toggle('is-dim',tab.dataset.filter!=='all'&&thumb.dataset.category!==tab.dataset.filter));
+    }));
+    pb.querySelectorAll('[data-profile-focus]').forEach(button=>button.addEventListener('click',e=>{
+      e.stopPropagation();
+      const panel=pb.querySelector('.founder-social[data-person="'+button.dataset.profileFocus+'"]');
+      if (!panel) return;
+      pb.querySelectorAll('.founder-social').forEach(s=>s.classList.remove('profile-focus'));
+      panel.classList.add('profile-focus');
+      panel.scrollIntoView({behavior:'smooth',block:'nearest'});
+      setTimeout(()=>panel.classList.remove('profile-focus'),1800);
+    }));
   }
 
   /* FLIP dengan transform (GPU): isi memudar dulu, lalu kotak meluncur ke posisi baru */
@@ -637,7 +921,11 @@
     setActive(card);
     morph(()=>document.body.classList.add('open'));
     setTimeout(()=>page.classList.add('show'), reduce?0:FADE+DUR*0.45);
-    setTimeout(()=>{ if (innerWidth<=900) card.scrollIntoView({inline:'center',block:'nearest'}); }, FADE+DUR+STAG*8+120);
+    setTimeout(()=>{ if (innerWidth<=900){
+      const grid=document.getElementById('grid');
+      grid.scrollLeft+=card.getBoundingClientRect().left-grid.getBoundingClientRect().left-grid.clientWidth/2+card.clientWidth/2;
+      window.scrollTo(0,0);
+    } }, FADE+DUR+STAG*8+120);
   }
 
   function closePage(){
