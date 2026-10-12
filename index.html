@@ -535,11 +535,11 @@
   .founder-thumb.is-dim{opacity:.27;filter:grayscale(1)}
 
   /* ===== NETWORK (BACKED BY) DETAIL ===== */
-  body.open .page.network-detail{container-type:size;isolation:isolate;gap:0;padding:0 1.45rem 1.3rem;overflow:hidden;background:#030405}
-  .network-detail::before{content:"";position:absolute;right:0;top:0;width:100%;height:min(74%,calc(100cqw * .39));z-index:0;pointer-events:none;
+  body.open .page.network-detail{--net-tx:clamp(20rem,30%,28rem);container-type:size;isolation:isolate;gap:0;padding:0 1.45rem 1.3rem;overflow:hidden;background:#030405}
+  .network-detail::before{content:"";position:absolute;right:0;top:0;width:calc(100% - var(--net-tx,30rem));height:min(78%,calc((100cqw - var(--net-tx,30rem)) * .5628));z-index:0;pointer-events:none;
     background:url('network-group.webp') right top/100% auto no-repeat;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 16%),linear-gradient(0deg,transparent 0,#000 22%);-webkit-mask-composite:source-in;
-    mask-image:linear-gradient(90deg,transparent 0,#000 16%),linear-gradient(0deg,transparent 0,#000 22%);mask-composite:intersect}
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 6%),linear-gradient(0deg,transparent 0,#000 18%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(90deg,transparent 0,#000 6%),linear-gradient(0deg,transparent 0,#000 18%);mask-composite:intersect}
   .network-detail::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(90deg,rgba(3,4,5,.8) 0%,rgba(3,4,5,.15) 34%,transparent 50%)}
   .network-detail .back{display:none}
   .network-detail .pg-head{position:relative;z-index:2;flex:0 0 44%;padding:2.1rem 1rem 0;border:0;border-radius:0;background:none;box-shadow:none;overflow:visible}
