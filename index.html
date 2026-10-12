@@ -83,7 +83,7 @@
   .card > *{position:relative}
   .card > .arrow{position:absolute}
   .card > .art{position:absolute;top:0;right:0;bottom:0;width:54%;height:100%;object-fit:cover;object-position:100% 40%;z-index:0;pointer-events:none;
-    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%);mask-image:linear-gradient(90deg,transparent 0,#000 55%)}
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 18%,#000 38%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 18%,#000 38%)}
   .about > *:not(.art){z-index:1}
   .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:5;opacity:0;transition:opacity .4s ease;padding:2px;
     background:conic-gradient(from var(--ang,0deg),rgba(255,255,255,.18) 0deg,rgba(255,255,255,.18) 40deg,#6a6bff 120deg,#b36bff 200deg,#ff4fa3 270deg,#ff8a5c 320deg,#ffd0a0 350deg,rgba(255,255,255,.18) 360deg);
@@ -125,7 +125,7 @@
   .big .thin{font-weight:400}
 
   /* about */
-  .about{--glowA:rgba(255,120,70,.28)}
+  .about{--glowA:rgba(255,120,70,.08);--glowB:rgba(140,80,230,.1)}
   .about .big{font-size:3.1rem;margin-top:1rem;color:var(--pink)}
   .about .big b{font-size:3.4rem;color:#fff}
   .about h3{font-size:1.25rem;font-weight:400;margin-top:.5rem}
