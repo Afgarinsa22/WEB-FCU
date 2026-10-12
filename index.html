@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+  body.no-anim *,body.no-anim *::before,body.no-anim *::after{transition:none!important}
   @font-face{font-family:'Goldman';src:url('goldman-bold.ttf') format('truetype');font-weight:100 900;font-style:normal;font-display:swap}
   :root{
     --bg:#0b0a0e;
@@ -1155,8 +1156,11 @@
 
   const isOpen = ()=>document.body.classList.contains('open');
 
+  const slug=c=>(c.dataset.title||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  function setHash(card){ try{ history.replaceState(null,'',card?('#'+slug(card)):(location.pathname+location.search)); }catch(_){} }
   function openPage(card){
     if (busy) return;
+    setHash(card);
     if (isOpen()){
       if (card.classList.contains('active')) return;
       page.classList.remove('show');
@@ -1175,6 +1179,7 @@
 
   function closePage(){
     if (busy || !isOpen()) return;
+    setHash(null);
     page.classList.remove('show');
     morph(()=>document.body.classList.remove('open'), ()=>allCards.forEach(c=>c.classList.remove('active')));
   }
@@ -1192,6 +1197,16 @@
   document.querySelector('.logo').addEventListener('click', e=>{ e.preventDefault(); closePage(); });
   document.addEventListener('keydown', e=>{ if (e.key==='Escape') closePage(); });
   page.addEventListener('click', e=>{ if (e.target.closest('a')) e.preventDefault(); });
+  /* restore sub-page after refresh (URL #slug) */
+  const h=decodeURIComponent(location.hash.slice(1));
+  const start=h&&allCards.find(c=>slug(c)===h);
+  if (start) addEventListener('DOMContentLoaded',()=>{
+    document.body.classList.add('no-anim');
+    setActive(start);
+    document.body.classList.add('open');
+    page.classList.add('show');
+    requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.classList.remove('no-anim')));
+  });
 })();
 </script>
 <script>
