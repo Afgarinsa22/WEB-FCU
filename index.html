@@ -471,6 +471,19 @@
   .brand.more{white-space:nowrap;font-weight:400;font-size:clamp(10px,1.1vh,12px);color:rgba(255,255,255,.7)}
   .brand-arrow{position:absolute;top:50%;transform:translateY(-28%);width:1.65rem;height:1.65rem;border:1px solid rgba(255,255,255,.22);border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.85rem}
   .brand-arrow.prev{left:.7rem}.brand-arrow.next{right:.7rem}
+  .brand-stage{flex:1;min-width:0;align-self:stretch;display:grid;grid-template-columns:repeat(var(--bn,10),minmax(0,1fr));align-items:center;gap:1.1rem;
+    touch-action:pan-y;cursor:grab;user-select:none;transition:opacity .45s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+  .brand-stage.dragging{cursor:grabbing;transition:none}
+  .brand-stage.out{opacity:0;transform:translateX(var(--bx,-1.2rem))}
+  .brand-stage > *{justify-self:center;min-width:0;max-width:100%;pointer-events:none}
+  .brand-stage img{filter:brightness(0) invert(1)}
+  .brand-stage .bl{display:block;width:100%;max-width:7rem;height:1.9rem;object-fit:contain;opacity:.9}
+  .brand-stage .bl.tall{height:2.5rem}
+  .brand-dots{position:absolute;left:50%;bottom:.35rem;transform:translateX(-50%);display:flex;gap:.3rem}
+  .brand-dots i{width:.32rem;height:.32rem;border-radius:50%;background:rgba(255,255,255,.25);transition:background .3s,width .3s}
+  .brand-dots i.on{background:#fff;width:.9rem;border-radius:.2rem}
+  button.brand-arrow{background:rgba(0,0,0,.35);cursor:pointer;z-index:3;padding:0;font-family:inherit}
+  button.brand-arrow:hover{background:#fff;color:#111}
 
   /* ===== THE FOUNDERS DETAIL ===== */
   body.open .page.founders-detail{isolation:isolate;gap:0;padding:0 1.7rem 2.35rem 1.45rem;overflow:hidden;background:
@@ -975,19 +988,7 @@
           </div>
         </section>
         <section class="meet-panel brands">
-          <div class="meet-kicker">Trusted By Leading Brands</div><div class="brand-intro">Brands, institutions, and partners who grow with us.</div><span class="brand-arrow prev">‹</span>
-          <img class="brand-logo wide" src="brand-logos/telkomsel.svg" alt="Telkomsel">
-          <img class="brand-logo" src="brand-logos/bca.svg" alt="BCA">
-          <img class="brand-logo" src="brand-logos/mayora.svg" alt="Mayora">
-          <img class="brand-logo" src="brand-logos/kredivo.svg" alt="Kredivo">
-          <span class="brand-binus" role="img" aria-label="BINUS University"></span>
-          <img class="brand-logo wide" src="brand-logos/samsung.svg" alt="Samsung">
-          <img class="brand-logo icon" src="brand-logos/toyota.svg" alt="Toyota">
-          <img class="brand-logo icon" src="brand-logos/unilever.svg" alt="Unilever">
-          <span class="brand-lockup"><img class="brand-logo icon" src="brand-logos/shopee.svg" alt="">Shopee</span>
-          <span class="brand-lockup"><img class="brand-logo icon" src="brand-logos/gojek.svg" alt="">gojek</span>
-          <span class="brand more">and more</span>
-          <span class="brand-arrow next">›</span>
+          <div class="meet-kicker">Trusted By Leading Brands</div><div class="brand-intro">Brands, institutions, and partners who grow with us.</div><button type="button" class="brand-arrow prev" aria-label="Sebelumnya">‹</button><div class="brand-stage" id="brandStage"></div><span class="brand-dots" id="brandDots"></span><button type="button" class="brand-arrow next" aria-label="Berikutnya">›</button>
         </section>`
     },
     'THE FOUNDERS':{
@@ -1406,6 +1407,40 @@
     else if(t.classList.contains('aw-nav')) window.fcuAwardShow(cur+Number(t.dataset.dir));
     else if(t.classList.contains('aw-more')) $('awTrack').scrollBy({left:$('awTrack').clientWidth*.6,behavior:'smooth'});
   });
+})();
+</script>
+<script>
+(function(){
+  var B=["<img class=\"bl \" src=\"brand-logos/telkomsel.svg\" alt=\"Telkomsel\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/bca.svg\" alt=\"BCA\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/mayora.svg\" alt=\"Mayora\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/kredivo.svg\" alt=\"Kredivo\" draggable=\"false\">", "<span class=\"brand-binus\" role=\"img\" aria-label=\"BINUS University\"></span>", "<img class=\"bl \" src=\"brand-logos/samsung.svg\" alt=\"Samsung\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/toyota.svg\" alt=\"Toyota\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/unilever.svg\" alt=\"Unilever\" draggable=\"false\">", "<span class=\"brand-lockup\"><img class=\"brand-logo icon\" src=\"brand-logos/shopee.svg\" alt=\"\">Shopee</span>", "<span class=\"brand-lockup\"><img class=\"brand-logo icon\" src=\"brand-logos/gojek.svg\" alt=\"\">gojek</span>", "<img class=\"bl \" src=\"brand-logos/xl-axiata.svg\" alt=\"XL Axiata\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/uniqlo.svg\" alt=\"Uniqlo\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/garuda-indonesia.svg\" alt=\"Garuda Indonesia\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/citilink.svg\" alt=\"Citilink\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/sriwijaya-air.svg\" alt=\"Sriwijaya Air\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/nam-air.svg\" alt=\"NAM Air\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/lion-parcel.svg\" alt=\"Lion Parcel\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/bni.svg\" alt=\"BNI\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/bank-mega.svg\" alt=\"Bank Mega\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/standard-chartered.svg\" alt=\"Standard Chartered\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/bank-bjb.svg\" alt=\"bank bjb\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/maybank.svg\" alt=\"Maybank\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/mandiri.svg\" alt=\"Mandiri\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/linkaja-syariah.svg\" alt=\"LinkAja Syariah\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/oy.svg\" alt=\"OY!\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/pegadaian.svg\" alt=\"Pegadaian\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/tanamduit.svg\" alt=\"tanamduit\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/mastercard.svg\" alt=\"Mastercard\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/mandiri-taspen.svg\" alt=\"Mandiri Taspen\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/cimb-niaga.svg\" alt=\"CIMB Niaga\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/bni-life.svg\" alt=\"BNI Life\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/aia.svg\" alt=\"AIA\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/zurich.svg\" alt=\"Zurich\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/axa-mandiri.svg\" alt=\"AXA Mandiri\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/chubb.svg\" alt=\"Chubb\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/sun-life.svg\" alt=\"Sun Life\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/siloam.svg\" alt=\"Siloam Hospitals\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/sony.svg\" alt=\"Sony\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/panasonic.svg\" alt=\"Panasonic\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/lg.svg\" alt=\"LG\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/brother.svg\" alt=\"Brother\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/porsche.svg\" alt=\"Porsche\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/dfsk.svg\" alt=\"DFSK\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/uber.svg\" alt=\"Uber\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/gudang-garam.svg\" alt=\"Gudang Garam\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/delfi.svg\" alt=\"Delfi\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/van-houten.svg\" alt=\"Van Houten\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/inaco.svg\" alt=\"Inaco\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/im-coco.svg\" alt=\"Inaco I'm Coco\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/fks-food.svg\" alt=\"FKS Food\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/sosro.svg\" alt=\"Sosro\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/dnaku.svg\" alt=\"DNAku\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/kimia-farma.svg\" alt=\"Kimia Farma\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/cap-lang.svg\" alt=\"Cap Lang\" draggable=\"false\">", "<img class=\"bl tall\" src=\"brand-logos/mu-weber.svg\" alt=\"MU Weber\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/energizer.svg\" alt=\"Energizer\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/zilingo.svg\" alt=\"Zilingo\" draggable=\"false\">", "<img class=\"bl \" src=\"brand-logos/traveloka.svg\" alt=\"Traveloka\" draggable=\"false\">"], page=0, timer=null;
+  function per(){var w=innerWidth; return w<=600?4:w<=900?6:w<1300?8:10}
+  function pages(){return Math.ceil(B.length/per())}
+  function render(){
+    var st=document.getElementById('brandStage'); if(!st) return;
+    var n=per(), P=pages(); page=(page+P)%P;
+    st.style.setProperty('--bn',n);
+    var h=''; for(var i=0;i<n;i++){h+=B[(page*n+i)%B.length]}
+    st.innerHTML=h;
+    var d=document.getElementById('brandDots'); if(d){var t='';for(var j=0;j<P;j++)t+='<i class="'+(j===page?'on':'')+'"></i>';d.innerHTML=t}
+  }
+  function go(dir){
+    var st=document.getElementById('brandStage'); if(!st) return;
+    st.style.setProperty('--bx',(dir>0?-1.2:1.2)+'rem'); st.classList.add('out');
+    setTimeout(function(){page+=dir;render();st.style.setProperty('--bx',(dir>0?1.2:-1.2)+'rem');
+      requestAnimationFrame(function(){requestAnimationFrame(function(){st.classList.remove('out')})})},420);
+  }
+  function auto(){clearInterval(timer);timer=setInterval(function(){if(document.getElementById('brandStage')&&!document.hidden)go(1)},3800)}
+  var seen=null;
+  new MutationObserver(function(){var st=document.getElementById('brandStage');if(st&&st!==seen){seen=st;page=0;render();auto();bind(st)}}).observe(document.body,{childList:true,subtree:true});
+  function bind(st){
+    var x0=null,dx=0;
+    st.addEventListener('pointerdown',function(e){x0=e.clientX;dx=0;st.classList.add('dragging');try{st.setPointerCapture(e.pointerId)}catch(_){} e.stopPropagation()});
+    st.addEventListener('pointermove',function(e){if(x0===null)return;dx=e.clientX-x0;st.style.transform='translateX('+(dx*.6)+'px)';st.style.opacity=String(1-Math.min(Math.abs(dx)/400,.6))});
+    function end(){if(x0===null)return;st.classList.remove('dragging');st.style.transform='';st.style.opacity='';if(Math.abs(dx)>40)go(dx<0?1:-1);x0=null;auto()}
+    st.addEventListener('pointerup',end);st.addEventListener('pointercancel',end);
+    st.addEventListener('click',function(e){e.stopPropagation()});
+  }
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('button.brand-arrow');if(!a)return;e.preventDefault();e.stopPropagation();go(a.classList.contains('next')?1:-1);auto()});
+  addEventListener('resize',function(){render()});
 })();
 </script>
 </body>
