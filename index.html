@@ -766,6 +766,35 @@
     .founder-thumbs{height:7.4rem;gap:.3rem;margin-top:.35rem}
     .founder-thumb{background-size:1672px 941px;background-position:var(--bx) var(--by)}
   }
+
+  /* ===== THEME SYNC: sub-pages use the same purple-glass universe theme as home ===== */
+  body.open{background:var(--bg,#07040f)}
+  body.open #uni-zoom,body.open #universe{opacity:1}
+  body.open .top{background:transparent;border-bottom:1px solid rgba(255,255,255,.08)}
+  body.open .top::after{border-left-color:rgba(255,255,255,.08)}
+  body.open .logo img{display:block}
+  body.open .logo::after{content:none}
+  body.open .shell,body.open .grid{background:transparent!important}
+  body.open .grid{border-right-color:rgba(255,255,255,.08)}
+  body.open .card{background-color:rgba(18,10,38,.82)!important;border-color:var(--line)!important;border-radius:1rem}
+  body.open .card::before{background:linear-gradient(90deg,rgba(16,8,34,.95) 0%,rgba(16,8,34,.7) 48%,rgba(16,8,34,.2) 100%)!important}
+  body.open .card:not(.active){filter:saturate(.8) brightness(.8)}
+  body.open .card.active{border-color:rgba(200,150,255,.75)!important;box-shadow:0 0 0 1px rgba(200,150,255,.25),0 0 1.4rem rgba(170,100,255,.45)!important}
+  body.open .page,
+  body.open .page.network-detail,body.open .page.heroes-detail,body.open .page.awards-detail,body.open .page.founders-detail{background-color:transparent!important}
+  body.open .page.founders-detail{background-image:linear-gradient(90deg,rgba(10,5,24,.6) 0%,rgba(10,5,24,.08) 44%,rgba(10,5,24,.3) 100%),url('founders-backdrop-v2.webp')!important}
+  .awards-body::after{background:radial-gradient(ellipse at 50% 100%,rgba(140,90,40,.16),transparent 60%)!important}
+  .meet-detail .pg-head{background:
+    linear-gradient(90deg,rgba(12,6,28,.92) 0%,rgba(12,6,28,.7) 24%,rgba(12,6,28,.2) 48%,transparent 100%),
+    url('meet-fcu-planet.webp') 56% 38%/100% auto no-repeat!important;border-radius:1rem}
+  .meet-panel,.founder-profile,.founder-profile:last-child,.founder-social,.backer,.ph-panel,.aw-card,.aw-camp{
+    background:linear-gradient(145deg,rgba(28,14,56,.78),rgba(10,6,24,.86))!important;border-color:var(--line)!important;
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .journey{background:linear-gradient(90deg,rgba(14,7,30,.75) 0%,rgba(14,7,30,.3) 58%,transparent 100%),url('journey-moon.webp') center 54%/cover no-repeat!important}
+  .engine{background-color:rgba(18,10,38,.8)!important}
+  @media (max-width:900px),(hover:none){
+    .meet-panel,.founder-profile,.founder-social,.backer,.ph-panel,.aw-card,.aw-camp{-webkit-backdrop-filter:none;backdrop-filter:none}
+  }
 </style>
 </head>
 <body>
