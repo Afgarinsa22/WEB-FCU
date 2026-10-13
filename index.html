@@ -183,6 +183,9 @@
   .award .big{font-size:2.3rem;margin-top:.9rem;position:relative;z-index:3}
   .award p{font-size:.72rem;color:var(--mute);margin-top:.6rem;line-height:1.45;width:7rem;position:relative;z-index:3}
   .award svg{position:absolute;right:-.5rem;bottom:0;height:95%;width:auto;z-index:2}
+  .card > .pic.award-pic{inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;filter:brightness(.85);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%)}
+  .award > *:not(.pic){position:relative;z-index:2}.award > .arrow{position:absolute}
+  .award .eyebrow,.award .big,.award p{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}.award p{color:rgba(255,255,255,.85)}
   .award .arrow{top:auto;bottom:1rem;left:1.2rem;right:auto}
 
   /* work */
@@ -898,25 +901,7 @@
       <div class="big">AWARD<br>WINNING.</div>
       <p>Our work gets recognized.</p>
       <a class="arrow" href="#">→</a>
-      <svg viewBox="0 0 300 330" xmlns="http://www.w3.org/2000/svg" aria-label="Penghargaan MURI">
-        <defs>
-          <linearGradient id="g" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#fff2c8"/><stop offset=".45" stop-color="#e2a53e"/><stop offset="1" stop-color="#7a4a10"/></linearGradient>
-          <linearGradient id="gl" x1="0" x2="1"><stop offset="0" stop-color="#2a2236"/><stop offset="1" stop-color="#0d0a14"/></linearGradient>
-        </defs>
-        <ellipse cx="150" cy="312" rx="110" ry="10" fill="#000" opacity=".5"/>
-        <rect x="170" y="130" width="110" height="170" rx="4" fill="url(#gl)" stroke="#c99a46" stroke-opacity=".55"/>
-        <text x="225" y="170" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700" letter-spacing="1">MARKETEERS</text>
-        <text x="225" y="183" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700" letter-spacing="1">YOUTH CHOICE</text>
-        <text x="225" y="196" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700" letter-spacing="1">AWARD</text>
-        <text x="225" y="210" fill="#e9c27a" font-size="9" text-anchor="middle" font-family="Inter" font-weight="700">2026</text>
-        <text x="225" y="260" fill="#c9a869" font-size="6" text-anchor="middle" font-family="Inter">FLUX CREATIVE UNIVERSE</text>
-        <path d="M60 40 L110 40 L150 120 L190 40 L240 40 L170 215 L130 215 Z" fill="url(#g)" opacity=".95"/>
-        <text x="150" y="190" fill="#3a2406" font-size="26" text-anchor="middle" font-family="Goldman" letter-spacing="1">MURI</text>
-        <rect x="132" y="215" width="36" height="38" fill="url(#g)"/>
-        <ellipse cx="150" cy="262" rx="62" ry="14" fill="url(#g)"/>
-        <ellipse cx="150" cy="254" rx="50" ry="9" fill="#f6d68c" opacity=".7"/>
-        <ellipse cx="150" cy="290" rx="95" ry="12" fill="#1a1522" stroke="#c99a46" stroke-opacity=".4"/>
-      </svg>
+      <img class="pic cover award-pic" src="award-card.webp?v=1" alt="Piagam MURI, piala Film Craft, dan piala MDMH 2025" decoding="async">
     </article>
 
     <article class="card work" tabindex="0" data-title="OUR WORK">
