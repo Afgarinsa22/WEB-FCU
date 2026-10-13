@@ -145,7 +145,7 @@
   .card > .pic{position:absolute;left:60%;bottom:0;transform:translateX(-50%);height:92%;width:auto;max-width:96%;object-fit:contain;object-position:center bottom;z-index:1;pointer-events:none;filter:drop-shadow(0 0 1.2rem rgba(0,0,0,.45))}
   .card > .pic.cover{left:0;right:0;top:0;bottom:0;transform:none;width:100%;height:100%;max-width:none;object-fit:cover;object-position:15% 25%;filter:brightness(.82)}
   .lead .names h2,.lead .names p,.lead .eyebrow{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}
-  .card > .pic.net-pic{left:auto;right:.5rem;top:2.7rem;bottom:auto;width:61%;height:calc(100% - 3.3rem);border-radius:.8rem;object-position:50% 30%;filter:none;z-index:0}
+  .card > .pic.net-pic{inset:0;width:100%;height:100%;border-radius:0;object-position:58% 30%;filter:brightness(.85);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 42%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 42%)}
   .net > *:not(.pic){position:relative;z-index:2}
   .net > .arrow{position:absolute}
   .net .eyebrow,.net .big,.net p{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}
@@ -345,7 +345,6 @@
     .faces{grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(2,minmax(0,1fr));padding-right:0}
     .builders .arrow{top:1.1rem;transform:none}
     .builders .arrow:hover,.press .arrow:hover{transform:none}
-    .card > .pic.net-pic{right:.9rem;top:3.4rem;width:46%;height:calc(100% - 4.3rem);object-position:35% 30%}
     .strip{right:.9rem;top:3.4rem;bottom:.9rem;width:46%;grid-template-columns:repeat(2,1fr);grid-template-rows:repeat(3,minmax(0,1fr))}
     .press{display:block}
     .press .news{display:none}
