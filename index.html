@@ -169,7 +169,9 @@
   .net .big{font-size:2.5rem;margin-top:1rem}
   .net p{font-size:.74rem;color:var(--mute);margin-top:.7rem;width:15.5rem;max-width:100%;line-height:1.42}
   .net .big{font-size:2.1rem}
-  body:not(.open) .net::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;background:linear-gradient(90deg,rgba(8,4,18,.75) 0,rgba(8,4,18,.45) 32%,rgba(8,4,18,0) 52%);-webkit-mask-image:linear-gradient(180deg,#000 58%,transparent 78%);mask-image:linear-gradient(180deg,#000 58%,transparent 78%)}
+  body:not(.open) .net::before{content:'';position:absolute;inset:auto 0 0 0;height:75%;z-index:1;pointer-events:none;border-radius:inherit;background:linear-gradient(180deg,rgba(8,4,18,0) 0,rgba(8,4,18,.55) 40%,rgba(8,4,18,.9) 100%)}
+  .net > .net-copy{position:absolute;left:1.5rem;right:1.5rem;bottom:1.2rem;z-index:2}
+  .net .net-copy p{width:auto;max-width:30rem}
   body:not(.open) .card > .pic.net-pic{-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 22%,#000 42%);mask-image:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 22%,#000 42%)}
   .strip{position:absolute;right:.5rem;top:2.7rem;bottom:.6rem;width:61%;display:grid;grid-template-columns:repeat(6,1fr);gap:.35rem}
   .strip .ph{border-radius:.7rem;height:100%}
@@ -881,8 +883,8 @@
     <div class="rail-label"><span>03</span><b>Investor</b></div>
       <div class="eyebrow">03 / Investor</div>
       <a class="arrow" href="#">→</a>
-      <div class="big">MEET OUR<br>INVESTORS</div>
-      <p>Deddy Corbuzier leads the investment network backing Flux Creative Universe, alongside high-profile Indonesian entrepreneurs and business leaders, including Grace Tahir, Ivan Tanjaya, Andrew Susanto, and Rudy Salim.</p>
+      <div class="net-copy"><div class="big">MEET OUR<br>INVESTORS</div>
+      <p>Deddy Corbuzier leads the investment network backing Flux Creative Universe, alongside high-profile Indonesian entrepreneurs and business leaders, including Grace Tahir, Ivan Tanjaya, Andrew Susanto, and Rudy Salim.</p></div>
       <img class="pic cover net-pic" src="network-card.webp?v=2" alt="Investor dan partner Flux Creative Universe" decoding="async">
         </article>
   </section>
