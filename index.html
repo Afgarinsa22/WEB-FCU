@@ -795,7 +795,9 @@
   body.open .card.active{border-color:rgba(200,150,255,.75)!important;box-shadow:0 0 0 1px rgba(200,150,255,.25),0 0 1.4rem rgba(170,100,255,.45)!important}
   body.open .page,
   body.open .page.network-detail,body.open .page.heroes-detail,body.open .page.awards-detail,body.open .page.founders-detail{background-color:transparent!important}
-  body.open .page.founders-detail{background-image:linear-gradient(90deg,rgba(10,5,24,.6) 0%,rgba(10,5,24,.08) 44%,rgba(10,5,24,.3) 100%),url('founders-backdrop-v2.webp')!important}
+  body.open .page.founders-detail{background-image:none!important}
+  .founders-detail::after{left:16%!important;top:1%!important;width:68%!important;height:76%!important;background:url('founders-hero-bg.webp?v=1') 50% 0/118% auto no-repeat!important;filter:none!important;-webkit-mask-image:radial-gradient(ellipse 50% 52% at 50% 42%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 52% at 50% 42%,#000 60%,transparent 100%)}
+  @media (max-width:900px){.founders-detail::after{left:0!important;top:12rem!important;width:100%!important;height:20rem!important;background-size:cover!important;background-position:50% 20%!important}}
   .awards-body::after{background:radial-gradient(ellipse at 50% 100%,rgba(140,90,40,.16),transparent 60%)!important}
   .meet-detail .pg-head{background:
     linear-gradient(90deg,rgba(12,6,28,.92) 0%,rgba(12,6,28,.7) 24%,rgba(12,6,28,.2) 48%,transparent 100%),
