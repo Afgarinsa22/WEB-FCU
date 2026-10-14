@@ -1382,6 +1382,7 @@
     $('phExtra').style.display=main?'':'none';
     $('phQuote').textContent=main?first.quote:'Different expertises, one ecosystem.';
     document.querySelectorAll('.hc').forEach(function(x){x.classList.toggle('is-on',Number(x.dataset.hero)===cur)});
+    var art=document.querySelector('.ph-art'); if(art){art.style.backgroundImage=(cur>=6&&cur<=16)?"linear-gradient(90deg,rgba(8,4,18,.6) 0,rgba(8,4,18,0) 32%,rgba(8,4,18,0) 58%,rgba(8,4,18,.55) 100%),linear-gradient(180deg,rgba(8,4,18,0) 55%,rgba(8,4,18,.7) 100%),url('heroes/big/p"+String(cur+1).padStart(2,'0')+".webp?v=1')":'';art.setAttribute('aria-label',h[0]);}
     $('phSignName').textContent=h[0]; $('phSignRole').textContent=h[1]+(main?'':' · '+h[2]);
   };
   document.addEventListener('click',function(e){
