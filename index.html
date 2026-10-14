@@ -445,16 +445,17 @@
     linear-gradient(0deg,rgba(3,6,8,.62),transparent 42%),url('meet-fcu-planet.webp') 56% 38%/100% auto no-repeat;
     box-shadow:none;overflow:hidden}
   .meet-detail .pg-head::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 72% 0%,rgba(255,186,139,.17),transparent 42%);pointer-events:none}
-  .meet-detail .pg-head::after{content:"CREATIVE\A ATTENTION\A AI\A\A —\A\A ONE ECOSYSTEM.\A MANY POSSIBILITIES.\A FOR BRANDS, CREATORS,\A ENTREPRENEURS, AND\A THE NEXT GENERATION.";white-space:pre;position:absolute;right:3.2rem;top:4.8rem;width:12rem;font-size:.58rem;line-height:1.65;letter-spacing:.2em;color:rgba(255,255,255,.84);text-shadow:0 1px 8px #000}
+  .meet-detail .pg-head::after{display:none;content:"CREATIVE\A ATTENTION\A AI\A\A —\A\A ONE ECOSYSTEM.\A MANY POSSIBILITIES.\A FOR BRANDS, CREATORS,\A ENTREPRENEURS, AND\A THE NEXT GENERATION.";white-space:pre;position:absolute;right:3.2rem;top:4.8rem;width:12rem;font-size:.58rem;line-height:1.65;letter-spacing:.2em;color:rgba(255,255,255,.84);text-shadow:0 1px 8px #000}
   .meet-detail .pg-eyebrow{font-size:.54rem;letter-spacing:.31em;color:rgba(255,255,255,.78)}
-  .meet-detail .pg-title{font-family:'Inter',sans-serif;font-size:clamp(60px,8vh,76px);font-weight:500;line-height:.87;letter-spacing:-.055em;color:#f6f3ee;background:none;margin-top:.7rem;max-width:28rem;text-shadow:0 .25rem 1.8rem rgba(0,0,0,.8)}
-  .meet-detail .pg-title .meet-fcu{font-size:clamp(84px,11.6vh,112px);font-weight:700;letter-spacing:-.075em;line-height:.85}
+  .meet-detail .pg-title{font-family:'Inter',sans-serif;font-size:clamp(60px,8vh,76px);font-weight:500;line-height:.87;letter-spacing:-.055em;color:#f6f3ee;background:none;margin-top:.7rem;max-width:40rem;text-shadow:0 .25rem 1.8rem rgba(0,0,0,.8)}
+  .meet-detail .pg-title .meet-fcu{font-size:1em;font-weight:700;letter-spacing:-.05em}
+  .meet-detail .pg-title{font-size:clamp(40px,6vh,60px)!important;line-height:.95!important;white-space:nowrap}
   .meet-detail .pg-title .meet-dot{color:#fff}
   .meet-detail .pg-lead{margin-top:.55rem;max-width:35rem;color:#fff}
   .meet-sub{display:block;font-size:clamp(19px,2.75vh,27px);line-height:1.15;letter-spacing:-.035em;margin-bottom:.65rem}
-  .meet-copy{display:block;max-width:28rem;font-size:clamp(12px,1.65vh,16px);line-height:1.18;color:rgba(255,255,255,.86)}
-  .meet-stats{display:flex;margin-top:1rem;width:34rem}
-  .meet-stat{display:flex;flex-direction:column;min-width:7.2rem;padding:0 1.35rem;border-left:1px solid rgba(255,255,255,.22);font-size:clamp(11px,1.37vh,14px);line-height:1.05;color:rgba(255,255,255,.82)}
+  .meet-copy{display:block;max-width:42rem;font-size:clamp(12px,1.65vh,16px);line-height:1.18;color:rgba(255,255,255,.86)}
+  .meet-stats{display:flex;margin-top:1rem;width:40rem;max-width:100%}
+  .meet-stat{display:flex;flex-direction:column;min-width:0;white-space:nowrap;padding:0 1.15rem;border-left:1px solid rgba(255,255,255,.22);font-size:clamp(11px,1.37vh,14px);line-height:1.05;color:rgba(255,255,255,.82)}
   .meet-stat:first-child{padding-left:0;border-left:0}
   .meet-stat strong{font-size:clamp(22px,2.8vh,28px);line-height:1.1;font-weight:400;color:#fff;margin-bottom:.05rem}
 
@@ -769,6 +770,7 @@
     .meet-detail .pg-head{flex:none;min-height:35rem;padding:1.4rem 1.2rem;background-position:58% 45%;background-size:auto 100%}
     .meet-detail .pg-head::after{display:none}
     .meet-detail .pg-title{font-size:4.8rem;margin-top:1.1rem}
+    .meet-detail .pg-title{font-size:9.5vw!important;white-space:normal}
     .meet-sub{font-size:1.2rem}.meet-copy{font-size:.8rem;max-width:22rem}
     .meet-stats{width:100%;display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-top:1.3rem}
     .meet-stat{padding:0;border:0;min-width:0}
@@ -1015,8 +1017,8 @@
     'MEET FCU':{
       custom:true,
       eye:'01 / About',
-      titleHtml:'MEET<br><span class="meet-fcu">FCU<span class="meet-dot">.</span></span>',
-      leadHtml:'<span class="meet-sub">The Creative Group Holding.</span><span class="meet-copy">An Indonesian creative group holding that builds,<br>operates, and grows businesses across<br>Creativity, Attention, and AI.</span><span class="meet-stats"><span class="meet-stat"><strong>30</strong>Companies</span><span class="meet-stat"><strong>200+</strong>People</span><span class="meet-stat"><strong>2.3B+</strong>Views</span><span class="meet-stat"><strong>11</strong>Gen Z Companies<br>Invested In</span></span>',
+      titleHtml:'MEET <span class="meet-fcu">FLUX<br>CREATIVE UNIVERSE</span>',
+      leadHtml:'<span class="meet-sub">A Creative Holding Group</span><span class="meet-copy">Flux Creative Universe is one of Indonesia’s fastest-growing creative holding companies, bringing together 30 companies across eight business pillars. Think of us as the Avengers of Indonesia’s creative industry. Each company has its own specialty, united by three core strengths: creativity, attention, and AI.</span><span class="meet-stats"><span class="meet-stat"><strong>500+</strong>Clients</span><span class="meet-stat"><strong>30</strong>Companies</span><span class="meet-stat"><strong>8</strong>Business<br>Pillars</span><span class="meet-stat"><strong>200+</strong>Creative<br>Minds</span><span class="meet-stat"><strong>18</strong>Awards and<br>Counting</span></span>',
       body:`
         <section class="meet-panel journey">
           <div class="meet-kicker">Our Journey</div>
