@@ -693,6 +693,8 @@
   .ph-brand span{font-size:clamp(12px,1.6vh,16px);color:rgba(255,255,255,.85)}
   .ph-brand b:has(+ span[style*="none"]){border-right:0;padding-right:0}
   .ph-role:empty{display:none}
+  .ph-brand:has(b:empty){display:none}
+  .ph-name{flex-direction:column;align-items:flex-start!important;gap:.5rem!important}
   .ph-about{display:grid;grid-template-columns:1fr auto;gap:1.2rem;margin-top:.8rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.12)}
   .ph-about p{font-size:clamp(11px,1.5vh,15px);line-height:1.4;color:rgba(255,255,255,.8)}
   .ph-about ul{list-style:none;padding:0 0 0 1.2rem;margin:0;border-left:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.2vh,12px);line-height:1.45;letter-spacing:.04em;color:rgba(255,255,255,.75)}
@@ -1115,8 +1117,8 @@
         <section class="ph-panel" aria-live="polite">
           <div class="ph-top"><span class="ph-count" id="phCount">01 / 20</span><span class="ph-label">PARTNER HEROES</span>
             <button class="ph-nav" data-dir="-1" aria-label="Sebelumnya">‹</button><button class="ph-nav" data-dir="1" aria-label="Berikutnya">›</button></div>
-          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole"></span></div>
-          <div class="ph-brand"><b id="phBrand">CEO &amp; Founder of Idenya Flux</b><span id="phBrandSub" style="display:none"></span></div>
+          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole">CEO &amp; Founder of Idenya Flux</span></div>
+          <div class="ph-brand"><b id="phBrand"></b><span id="phBrandSub" style="display:none"></span></div>
           <div class="ph-about"><p id="phDesc">Yohanes Auri started his journey in 2006, building Flux Design from a 4 × 4-meter bedroom. In 2018, he transformed the design agency into a full-service creative agency Idenya Flux, laying the foundation for what would eventually become Flux Creative Universe.</p>
             <ul id="phTags" class="ph-known"><li class="k">KNOWN FOR</li><li>The Creative Empire Builder</li></ul></div>
           <div class="ph-extra" id="phExtra">
@@ -1413,7 +1415,7 @@
 </script>
 <script>
 (function(){
-  var H=[['YOHANES AURI','','CEO & Founder of Idenya Flux',''],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
+  var H=[['YOHANES AURI','CEO & Founder of Idenya Flux','',''],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
     ['NADYA','Partner','Faith Media',''],['RUDY SALIM','Partner','Privilege',''],['PETRA','Partner','Pacarku',''],['DENNY','Partner','Homeless Media',''],['RICO','Partner','Fluxnesia',''],['ALDI','Partner','KA',''],
     ['HENDRA','Partner','Clipper',''],['BAYU','Partner','Studio Lama',''],['SANDY','Partner','Kreatifku',''],['CLARA','Partner','Eventgaris',''],['ARIF','Partner','AI Motion',''],
     ['TIARA','Partner','Playverse',''],['WIRA','Partner','Soundscape',''],['LUKAS','Partner','Visual District',''],['RATIH','Partner','Storylab',''],['DIMAS','Partner','Growth Hub','']];
