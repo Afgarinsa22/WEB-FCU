@@ -193,12 +193,13 @@
 
   /* award */
   .award{--glowA:rgba(255,160,50,.4);--glowB:rgba(120,70,220,.28)}
-  .award .big{font-size:2.3rem;margin-top:.9rem;position:relative;z-index:3}
-  .award p{font-size:.72rem;color:var(--mute);margin-top:.6rem;line-height:1.45;width:7rem;position:relative;z-index:3}
+  .award .big{font-size:1.9rem;margin-top:.9rem;position:relative;z-index:3}
+  .award p{font-size:.76rem;color:var(--mute);margin-top:.6rem;line-height:1.42;width:11rem;max-width:100%;position:relative;z-index:3}
   .award svg{position:absolute;right:-.5rem;bottom:0;height:95%;width:auto;z-index:2}
   .card > .pic.award-pic{inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;filter:brightness(.85);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%)}
   .award > *:not(.pic){position:relative;z-index:2}.award > .arrow{position:absolute}
   .award .eyebrow,.award .big,.award p{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}.award p{color:rgba(255,255,255,.85)}
+  body:not(.open) .card > .pic.award-pic{inset:auto 0 0 auto;width:80%;height:auto;max-width:none;aspect-ratio:1400/788;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%),linear-gradient(180deg,transparent 0,#000 30%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 28%),linear-gradient(180deg,transparent 0,#000 30%);mask-composite:intersect}
   .award .arrow{top:auto;bottom:1rem;left:1.2rem;right:auto}
 
   /* work */
@@ -916,9 +917,9 @@
   <section class="row r3">
     <article class="card award" tabindex="0" data-title="AWARD WINNING">
     <div class="rail-label"><span>05</span><b>Awards</b></div>
-      <div class="eyebrow">05 / Recognition</div>
-      <div class="big">AWARD<br>WINNING.</div>
-      <p>Our work gets recognized.</p>
+      <div class="eyebrow">05 / Hall of Fame</div>
+      <div class="big">AWARDS &amp;<br>RECOGNITION</div>
+      <p>A growing legacy of creative work, recognized through 17 awards and 1 MURI record.</p>
       <a class="arrow" href="#">→</a>
       <img class="pic cover award-pic" src="award-card.webp?v=2" alt="Piagam MURI, piala Film Craft, dan piala MDMH 2025" decoding="async">
     </article>
