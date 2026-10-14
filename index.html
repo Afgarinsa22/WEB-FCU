@@ -128,15 +128,18 @@
 
   /* about */
   .about{--glowA:rgba(255,120,70,.08);--glowB:rgba(140,80,230,.1)}
-  .about .big{font-size:3.1rem;margin-top:1rem;color:var(--pink)}
-  .about .big b{font-size:3.4rem;color:#fff}
-  .about h3{font-size:1.25rem;font-weight:400;margin-top:.5rem}
+  .about .big{font-size:2.2rem;margin-top:.7rem;color:var(--pink)}
+  .about .big b{font-size:2.5rem;color:#fff}
+  .about h3{font-size:1.05rem;font-weight:400;margin-top:.4rem}
   .about p{font-size:.72rem;line-height:1.55;color:var(--mute);margin-top:.5rem;max-width:20rem}
   .stats{position:absolute;left:.9rem;right:.9rem;bottom:.8rem;display:grid;grid-template-columns:repeat(4,auto);
     border:1px solid var(--line);border-radius:.9rem;background:rgba(0,0,0,.28);padding:.55rem .9rem;justify-content:space-between}
   .stats div{padding:0 .6rem;border-left:1px solid var(--line)}
   .stats div:first-child{border:0;padding-left:0}
   .stats strong{display:block;font-size:1.3rem;font-weight:500}
+  .stats.s5{grid-template-columns:repeat(5,auto)}
+  .about p{max-width:28rem;font-size:.66rem;line-height:1.45;margin-top:.35rem}
+  .stats.s5 strong{font-size:1.15rem}
   .stats span{font-size:.58rem;color:var(--mute);line-height:1.2;display:block}
 
   /* leadership */
@@ -339,7 +342,9 @@
     .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;gap:1rem;flex:none}
     .row,.rcol{display:contents}
     .card{grid-column:1 / -1;min-height:0;border-radius:1.3rem}
-    .about{height:18rem}
+    .about{height:auto;min-height:18rem;padding-bottom:1rem}
+    .about .stats.s5{position:static;margin-top:.9rem;grid-template-columns:repeat(3,1fr);row-gap:.5rem}
+    .about .stats.s5 div:nth-child(4){border:0;padding-left:0}
     .lead{height:26rem}
     .net{height:17rem}
     .builders{height:18.5rem;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);gap:.9rem;align-items:stretch}
@@ -841,14 +846,15 @@
       <img class="art" src="meet-fcu.webp?v=2" alt="" decoding="async">
       <div class="eyebrow">01 / About</div>
       <a class="arrow" href="#">↗</a>
-      <div class="big">MEET<br><b>FCU.</b></div>
-      <h3>The Creative Group Holding</h3>
-      <p>An Indonesian creative group holding that builds, operates, and grows businesses across Creativity, Attention, and AI.</p>
-      <div class="stats">
+      <div class="big">MEET<br><b>THE UNIVERSE</b></div>
+      <h3>A Creative Holding Group</h3>
+      <p>Just as Marvel has the Avengers, Indonesia’s creative industry has Flux Creative Universe. We’re one of Indonesia’s fastest-growing creative holding groups, bringing together 30 companies across eight business pillars, each with its own unique strengths.</p>
+      <div class="stats s5">
+        <div><strong>500+</strong><span>Clients</span></div>
         <div><strong>30</strong><span>Companies</span></div>
-        <div><strong>200+</strong><span>People</span></div>
-        <div><strong>2.3B+</strong><span>Views</span></div>
-        <div><strong>11</strong><span>Gen Z Companies<br>Invested In</span></div>
+        <div><strong>8</strong><span>Business<br>Pillars</span></div>
+        <div><strong>200+</strong><span>Creative<br>Minds</span></div>
+        <div><strong>18</strong><span>Awards and<br>Counting</span></div>
       </div>
     </article>
 
