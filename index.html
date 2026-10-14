@@ -225,13 +225,15 @@
 
   /* press + cta */
   .rcol{display:grid;grid-template-rows:1.15fr .78fr;gap:1.1rem;min-height:0}
-  .press{display:grid;grid-template-columns:7rem 1fr;gap:1rem;--glowA:rgba(255,130,70,.25)}
-  .press .big{font-size:1.9rem;margin-top:.9rem}
-  .press .big + p{font-size:.68rem;color:var(--mute);margin-top:.5rem;line-height:1.4}
-  .news{display:flex;flex-direction:column;gap:.3rem;justify-content:center;padding-right:2.6rem}
+  .press{display:grid;grid-template-columns:10.5rem 1fr;gap:1rem;--glowA:rgba(255,130,70,.25)}
+  .press .big{font-size:1.5rem;margin-top:.7rem}
+  .press .big + p{font-size:.72rem;color:var(--mute);margin-top:.5rem;line-height:1.4}
+  .news{min-width:0;display:flex;flex-direction:column;gap:.25rem;justify-content:center;padding-right:2.6rem}
   .news a{display:block;text-decoration:none;color:var(--txt);border:1px solid var(--line);border-radius:.8rem;
     background:rgba(0,0,0,.3);padding:.28rem .7rem;transition:.25s}
   .news a:hover{background:rgba(255,255,255,.1)}
+  .src-logo{color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:.08em}
+  .src-logo img{height:.8rem;width:auto;display:block}
   .news .src{font-size:.52rem;font-weight:700;letter-spacing:.04em;margin-bottom:.1rem;display:flex;gap:.3rem;align-items:center}
   .times{background:#e3262d;color:#fff;padding:.12rem .3rem;border-radius:.15rem;font-size:.5rem}
   .inv{color:#4aa8ff}
@@ -949,15 +951,17 @@
       <article class="card press" tabindex="0" data-title="IN THE NEWS">
     <div class="rail-label"><span>07</span><b>In The<br>News</b></div>
         <div>
-          <div class="eyebrow">07 / Press</div>
-          <div class="big">IN<br>THE NEWS.</div>
-          <p>What the media says about FCU.</p>
+          <div class="eyebrow">07 / Press &amp; Media</div>
+          <div class="big">FCU<br>IN THE NEWS</div>
+          <p>The latest news, stories, and media coverage featuring Flux Creative Universe.</p>
         </div>
         <div class="news">
-          <a href="#"><div class="src"><span class="times">TIMES</span> INDONESIA</div>
-            <h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4><time>Oct 6, 2026</time></a>
-          <a href="#"><div class="src inv">Investor.id</div>
-            <h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4><time>Sep 21, 2026</time></a>
+          <a href="https://www.campaignindonesia.id/article/fcu-dan-deddy-corbuzier-taruh-modal-di-11-founder-muda-sinyal-baru-investasi-agensi-kreatif-lokal/1947403" target="_blank" rel="noopener"><div class="src"><span class="src-logo" data-src="campaign">Campaign Indonesia</span></div>
+            <h4>FCU and Deddy Corbuzier Invest in 11 Young Founders, Signaling a Shift in Indonesia’s Creative Agency Industry</h4></a>
+          <a href="https://www.marketing-interactive.com/why-deddy-corbuzier-s-backing-changes-the-game-for-flux-creative-universe" target="_blank" rel="noopener"><div class="src"><span class="src-logo" data-src="marketing-interactive">Marketing-Interactive</span></div>
+            <h4>Why Deddy Corbuzier's Backing Changes the Game for Flux Creative Universe</h4></a>
+          <a href="https://www.marketeers.com/flux-creative-universe-raih-tiga-marketeers-youth-choice-award-2026-lewat-kampanye-binus-migelas-dan-kredivo/" target="_blank" rel="noopener"><div class="src"><span class="src-logo" data-src="marketeers">Marketeers</span></div>
+            <h4>Flux Creative Universe Wins Three Marketeers Youth Choice Awards 2026 for Campaigns with BINUS, Migelas, and Kredivo</h4></a>
         </div>
         <a class="arrow" href="#">→</a>
       </article>
@@ -1116,7 +1120,7 @@
         </section>
         <div class="aw-strip"><div class="aw-track" id="awTrack"><button class="aw-card" data-aw="0"><img src="awards/a01.webp" alt="" loading="lazy"><span class="aw-n">01</span><span class="aw-t">MARKETEERS<br>YOUTH CHOICE<br>AWARD 2026</span><i></i></button><button class="aw-card" data-aw="1"><img src="awards/a02.webp" alt="" loading="lazy"><span class="aw-n">02</span><span class="aw-t">MURI</span><i></i></button><button class="aw-card" data-aw="2"><img src="awards/a03.webp" alt="" loading="lazy"><span class="aw-n">03</span><span class="aw-t">INDONESIA CONTENT MARKETING AWARDS</span><i></i></button><button class="aw-card" data-aw="3"><img src="awards/a04.webp" alt="" loading="lazy"><span class="aw-n">04</span><span class="aw-t">ASIAVISION AWARDS</span><i></i></button><button class="aw-card" data-aw="4"><img src="awards/a05.webp" alt="" loading="lazy"><span class="aw-n">05</span><span class="aw-t">TIKTOK AD AWARDS</span><i></i></button><button class="aw-card" data-aw="5"><img src="awards/a06.webp" alt="" loading="lazy"><span class="aw-n">06</span><span class="aw-t">YOUTUBE WORKS AWARDS</span><i></i></button><button class="aw-card" data-aw="6"><img src="awards/a07.webp" alt="" loading="lazy"><span class="aw-n">07</span><span class="aw-t">PR INDONESIA AWARDS</span><i></i></button><button class="aw-card" data-aw="7"><img src="awards/a08.webp" alt="" loading="lazy"><span class="aw-n">08</span><span class="aw-t">KEMENTERIAN PARIWISATA</span><i></i></button><button class="aw-card" data-aw="8"><img src="awards/a09.webp" alt="" loading="lazy"><span class="aw-n">09</span><span class="aw-t">META CREATIVE AWARDS</span><i></i></button></div><button class="aw-more" aria-label="Geser">›</button></div>`},
     'OUR WORK':{eye:'06 / Selected Works',cols:12,lead:'A collection of work that pushes possibilities beyond the ordinary.',body:'<div class="pt" style="--sp:6"><div class="k">Creative</div><div class="big">CREATIVE</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">Attention</div><div class="big">ATTENTION</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">AI</div><div class="big">AI</div><span>Showcase segera hadir</span></div><div class="pt" style="--sp:6"><div class="k">All Work</div><div class="big">ALL WORK</div><span>Showcase segera hadir</span></div>'},
-    'IN THE NEWS':{eye:'07 / Press',cols:12,lead:'What the media says about FCU.',body:'<div class="pt" style="--sp:6"><div class="k">Times Indonesia · Oct 6, 2026</div><a class="nl" href="#"><h4>Flux Creative Universe Raih 3 Marketeers Youth Choice Award…</h4></a></div><div class="pt" style="--sp:6"><div class="k">Investor.id · Sep 21, 2026</div><a class="nl" href="#"><h4>Flux Creative Universe Perluas Bisnis dari Agency ke Ekosistem…</h4></a></div>'},
+    'IN THE NEWS':{eye:'07 / Press & Media',cols:12,lead:'The latest news, stories, and media coverage featuring Flux Creative Universe.',body:'<div class="pt" style="--sp:4"><div class="k">Campaign Indonesia</div><a class="nl" href="https://www.campaignindonesia.id/article/fcu-dan-deddy-corbuzier-taruh-modal-di-11-founder-muda-sinyal-baru-investasi-agensi-kreatif-lokal/1947403" target="_blank" rel="noopener"><h4>FCU and Deddy Corbuzier Invest in 11 Young Founders, Signaling a Shift in Indonesia’s Creative Agency Industry</h4></a></div><div class="pt" style="--sp:4"><div class="k">Marketing-Interactive</div><a class="nl" href="https://www.marketing-interactive.com/why-deddy-corbuzier-s-backing-changes-the-game-for-flux-creative-universe" target="_blank" rel="noopener"><h4>Why Deddy Corbuzier\'s Backing Changes the Game for Flux Creative Universe</h4></a></div><div class="pt" style="--sp:4"><div class="k">Marketeers</div><a class="nl" href="https://www.marketeers.com/flux-creative-universe-raih-tiga-marketeers-youth-choice-award-2026-lewat-kampanye-binus-migelas-dan-kredivo/" target="_blank" rel="noopener"><h4>Flux Creative Universe Wins Three Marketeers Youth Choice Awards 2026 for Campaigns with BINUS, Migelas, and Kredivo</h4></a></div>'},
     'A UNIVERSE':{eye:'08 / The Beginning',cols:12,lead:'This is only the beginning.',body:'<div class="pt" style="--sp:12"><div class="k">Flux Creative Universe</div><div class="big">WE\'RE BUILDING A UNIVERSE.</div></div>'}
   };
 
@@ -1224,6 +1228,7 @@
 
   allCards.forEach(card=>{
     card.addEventListener('click', e=>{
+      if (e.target.closest('a[target="_blank"]')) return;
       if (e.target.closest('a')) e.preventDefault();
       openPage(card);
     });
@@ -1234,7 +1239,7 @@
   document.getElementById('back').addEventListener('click', closePage);
   document.querySelector('.logo').addEventListener('click', e=>{ e.preventDefault(); closePage(); });
   document.addEventListener('keydown', e=>{ if (e.key==='Escape') closePage(); });
-  page.addEventListener('click', e=>{ if (e.target.closest('a')) e.preventDefault(); });
+  page.addEventListener('click', e=>{ if (e.target.closest('a') && !e.target.closest('a[target="_blank"]')) e.preventDefault(); });
   /* restore sub-page after refresh (URL #slug) */
   const h=decodeURIComponent(location.hash.slice(1));
   const start=h&&allCards.find(c=>slug(c)===h);
