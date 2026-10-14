@@ -691,10 +691,14 @@
   .ph-brand{display:flex;align-items:center;gap:.8rem;margin-top:.55rem}
   .ph-brand b{font-size:clamp(20px,3vh,30px);font-weight:900;letter-spacing:-.04em;color:#fff;padding-right:.8rem;border-right:1px solid rgba(255,255,255,.4);line-height:1}
   .ph-brand span{font-size:clamp(12px,1.6vh,16px);color:rgba(255,255,255,.85)}
+  .ph-brand b:has(+ span[style*="none"]){border-right:0;padding-right:0}
   .ph-about{display:grid;grid-template-columns:1fr auto;gap:1.2rem;margin-top:.8rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.12)}
   .ph-about p{font-size:clamp(11px,1.5vh,15px);line-height:1.4;color:rgba(255,255,255,.8)}
   .ph-about ul{list-style:none;padding:0 0 0 1.2rem;margin:0;border-left:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.2vh,12px);line-height:1.45;letter-spacing:.04em;color:rgba(255,255,255,.75)}
   .ph-about ul:empty{display:none}
+  .ph-about ul.ph-known{max-width:11rem;letter-spacing:0;font-size:clamp(11px,1.45vh,14px);line-height:1.25;color:#fff;font-weight:600}
+  .ph-about ul.ph-known .k{font-size:.72em;letter-spacing:.18em;color:rgba(255,255,255,.6);font-weight:500;margin-bottom:.35rem}
+  .ph-projects h4{margin-bottom:.55rem}
   .ph-row{display:flex;justify-content:space-between;align-items:center;margin:.75rem 0 .5rem;font-size:clamp(9px,1.2vh,12px);letter-spacing:.04em;color:rgba(255,255,255,.75)}
   .ph-all{color:rgba(255,255,255,.85);text-decoration:none}
   .ph-projects{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem}
@@ -1110,16 +1114,16 @@
         <section class="ph-panel" aria-live="polite">
           <div class="ph-top"><span class="ph-count" id="phCount">01 / 20</span><span class="ph-label">PARTNER HEROES</span>
             <button class="ph-nav" data-dir="-1" aria-label="Sebelumnya">‹</button><button class="ph-nav" data-dir="1" aria-label="Berikutnya">›</button></div>
-          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole">Group CEO</span></div>
-          <div class="ph-brand"><b id="phBrand">FCU</b><span id="phBrandSub">Flux Creative Universe</span></div>
-          <div class="ph-about"><p id="phDesc">Leading the vision, strategy, and expansion of FCU, building and scaling next-generation creative, media, and technology businesses across Indonesia and beyond.</p>
-            <ul id="phTags"><li>STRATEGY</li><li>CREATIVE</li><li>MEDIA</li><li>TECHNOLOGY</li><li>PEOPLE</li></ul></div>
+          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole">CEO &amp; Founder</span></div>
+          <div class="ph-brand"><b id="phBrand">Idenya Flux</b><span id="phBrandSub" style="display:none"></span></div>
+          <div class="ph-about"><p id="phDesc">Yohanes Auri started his journey in 2006, building Flux Design from a 4 × 4-meter bedroom. In 2018, he transformed the design agency into a full-service creative agency Idenya Flux, laying the foundation for what would eventually become Flux Creative Universe.</p>
+            <ul id="phTags" class="ph-known"><li class="k">KNOWN FOR</li><li>The Creative Empire Builder</li></ul></div>
           <div class="ph-extra" id="phExtra">
-            <div class="ph-row"><span>TOP PROJECTS</span><a href="#" class="ph-all">View All Projects →</a></div>
+            <div class="ph-row"><span>TOP 3 PROJECTS</span><a href="#" class="ph-all">View All Projects →</a></div>
             <div class="ph-projects">
-              <article><img src="heroes-proj-1.webp" alt="" loading="lazy"><h4>FCU SHOWCASE</h4><p>A multi-city creative event uniting creators, brands, and communities.</p></article>
-              <article><img src="heroes-proj-2.webp" alt="" loading="lazy"><h4>ORIGINAL SERIES</h4><p>Developing original content IP for digital and streaming platforms.</p></article>
-              <article><img src="heroes-proj-3.webp" alt="" loading="lazy"><h4>BRAND ACTIVATION</h4><p>Large-scale brand experiences across entertainment, media, and live events.</p></article>
+              <article><img src="heroes-proj-1.webp" alt="" loading="lazy"><h4>BPJS KETENAGAKERJAAN</h4></article>
+              <article><img src="heroes-proj-2.webp" alt="" loading="lazy"><h4>NO DROP</h4></article>
+              <article><img src="heroes-proj-3.webp" alt="" loading="lazy"><h4>DUNIA GAMES</h4></article>
             </div>
             <div class="ph-clients"><span>CLIENTS &amp; PARTNERS</span><img src="heroes-clients.webp" alt="Samsung, Telkomsel, Indomie, Hyundai, Grab, Taco, Spotify, YouTube" loading="lazy"></div>
           </div>
@@ -1408,7 +1412,7 @@
 </script>
 <script>
 (function(){
-  var H=[['YOHANES AURI','Group CEO','FCU','Flux Creative Universe'],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
+  var H=[['YOHANES AURI','CEO & Founder','Idenya Flux',''],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
     ['NADYA','Partner','Faith Media',''],['RUDY SALIM','Partner','Privilege',''],['PETRA','Partner','Pacarku',''],['DENNY','Partner','Homeless Media',''],['RICO','Partner','Fluxnesia',''],['ALDI','Partner','KA',''],
     ['HENDRA','Partner','Clipper',''],['BAYU','Partner','Studio Lama',''],['SANDY','Partner','Kreatifku',''],['CLARA','Partner','Eventgaris',''],['ARIF','Partner','AI Motion',''],
     ['TIARA','Partner','Playverse',''],['WIRA','Partner','Soundscape',''],['LUKAS','Partner','Visual District',''],['RATIH','Partner','Storylab',''],['DIMAS','Partner','Growth Hub','']];
