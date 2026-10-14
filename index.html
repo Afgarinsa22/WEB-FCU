@@ -471,14 +471,14 @@
   .story-btn{position:absolute;right:1rem;top:.65rem;z-index:4;padding:.48rem 1.15rem;border:1px solid rgba(255,255,255,.22);border-radius:2rem;background:rgba(0,0,0,.4);color:#fff;font:clamp(10px,1.1vh,12px) 'Inter';cursor:pointer}
   .story-btn span{padding-left:.8rem;font-size:.9rem}
   .timeline{position:relative;z-index:2;height:100%;display:grid;grid-template-columns:repeat(5,1fr);align-items:center;padding-top:.3rem}
-  .timeline::before{content:"";position:absolute;left:3.2%;right:4%;top:44%;border-top:1px solid rgba(255,255,255,.5);transform:rotate(-.5deg)}
-  .milestone{position:relative;align-self:end;padding:0 .55rem 0 1.1rem;min-height:5.5rem;color:rgba(255,255,255,.72);font-size:clamp(10px,1.22vh,12px);line-height:1.22}
+  .timeline::before{content:"";position:absolute;left:3.2%;right:calc(20% - 1.95rem);top:44%;border-top:1px solid rgba(255,255,255,.5);transform:rotate(-.5deg)}
+  .milestone{position:relative;align-self:end;max-width:15rem;padding:0 .55rem 0 1.1rem;min-height:5.5rem;color:rgba(255,255,255,.72);font-size:clamp(10px,1.22vh,12px);line-height:1.22}
   .milestone::before{content:"";position:absolute;left:1.4rem;top:-1.1rem;width:1.15rem;height:1.15rem;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#d77b3b 28%,#130a08 62%);box-shadow:0 0 .8rem rgba(255,120,67,.8)}
   .milestone:nth-child(2)::before{background:radial-gradient(circle at 35% 30%,#fff,#454ad7 30%,#060618 65%);box-shadow:0 0 .8rem rgba(95,100,255,.85)}
   .milestone:nth-child(3)::before{background:radial-gradient(circle at 35% 30%,#fff,#bf3f4f 30%,#180508 65%);box-shadow:0 0 .8rem rgba(255,89,110,.75)}
   .milestone:nth-child(4)::before{background:radial-gradient(circle at 35% 30%,#fff,#1d5a96 28%,#030b12 65%);box-shadow:0 0 .8rem rgba(72,144,212,.65)}
   .milestone:nth-child(5)::before{background:#fff;box-shadow:0 0 .7rem #fff}
-  .milestone:last-child{text-shadow:0 1px 5px #000}
+  .milestone:last-child{text-shadow:0 0 4px #000,0 1px 8px #000,0 0 16px rgba(0,0,0,.9);color:#fff}
   .milestone strong{display:block;margin-bottom:.18rem;font-size:clamp(14px,1.75vh,18px);font-weight:500;color:#fff}
   .milestone b{display:block;color:#fff;font-weight:500}
 
@@ -1025,11 +1025,11 @@
           <div class="journey-intro">From a creative idea to a limitless creative universe.</div>
           <button class="story-btn" type="button">Our Full Story <span>›</span></button>
           <div class="timeline">
-            <div class="milestone"><strong>2000</strong><b>The beginning.</b>Started as a creative<br>agency.</div>
-            <div class="milestone"><strong>2018</strong><b>Flux.</b>The idea of Flux was<br>born.</div>
-            <div class="milestone"><strong>2021</strong><b>Flux Creative Universe.</b>Evolved into a creative<br>group holding.</div>
-            <div class="milestone"><strong>2023</strong><b>Deddy Corbuzier</b>invested in FCU.</div>
-            <div class="milestone"><strong>2024 – Now</strong><b>Expanding.</b>New companies,<br>new opportunities,<br>bigger impact.</div>
+            <div class="milestone"><strong>2006</strong><b>THE BEGINNING</b>Started as Flux Design, a design agency operating from a 4×4 meter bedroom.</div>
+            <div class="milestone"><strong>2018</strong><b>A NEW CHAPTER</b>Evolved into Idenya Flux, a full-service 360 creative agency.</div>
+            <div class="milestone"><strong>2021</strong><b>A BIGGER VISION</b>Flux Creative Universe was established as a creative holding group.</div>
+            <div class="milestone"><strong>2023</strong><b>A MAJOR MILESTONE</b>Deddy Corbuzier joined as lead investor.</div>
+            <div class="milestone"><strong>TODAY</strong><b>A GROWING UNIVERSE</b>Growing into one of Indonesia’s fastest-growing creative holding groups, with 30 companies and more to come.</div>
           </div>
         </section>
         <section class="meet-panel engines">
