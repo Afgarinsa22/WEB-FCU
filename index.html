@@ -169,10 +169,10 @@
   .net .big{font-size:2.5rem;margin-top:1rem}
   .net p{font-size:.74rem;color:var(--mute);margin-top:.7rem;width:15.5rem;max-width:100%;line-height:1.42}
   .net .big{font-size:2.1rem}
-  body:not(.open) .net::before{content:'';position:absolute;inset:auto 0 0 0;height:75%;z-index:1;pointer-events:none;border-radius:inherit;background:linear-gradient(180deg,rgba(8,4,18,0) 0,rgba(8,4,18,.55) 40%,rgba(8,4,18,.9) 100%)}
+  body:not(.open) .net::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;background:linear-gradient(90deg,rgba(8,4,18,.7) 0,rgba(8,4,18,.25) 30%,rgba(8,4,18,0) 45%),linear-gradient(180deg,rgba(8,4,18,0) 70%,rgba(8,4,18,.45) 100%)}
   .net > .net-copy{position:absolute;left:1.5rem;right:1.5rem;bottom:1.2rem;z-index:2}
   .net .net-copy p{width:auto;max-width:30rem}
-  body:not(.open) .card > .pic.net-pic{-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 22%,#000 42%);mask-image:linear-gradient(90deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.85) 22%,#000 42%)}
+  body:not(.open) .card > .pic.net-pic{left:24%;width:76%;object-position:50% 30%;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 30%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 30%)}
   .strip{position:absolute;right:.5rem;top:2.7rem;bottom:.6rem;width:61%;display:grid;grid-template-columns:repeat(6,1fr);gap:.35rem}
   .strip .ph{border-radius:.7rem;height:100%}
   .ph.photo{background:#0a0a0c}.ph.photo::before,.ph.photo::after{display:none}
@@ -351,6 +351,7 @@
     .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;gap:1rem;flex:none}
     .row,.rcol{display:contents}
     .card{grid-column:1 / -1;min-height:0;border-radius:1.3rem}
+    body:not(.open) .card > .pic.net-pic{object-position:0% 30%}
     .about{height:auto;min-height:18rem;padding-bottom:1rem}
     .about .stats.s5{position:static;margin-top:.9rem;grid-template-columns:repeat(3,1fr);row-gap:.5rem}
     .about .stats.s5 div:nth-child(4){border:0;padding-left:0}
