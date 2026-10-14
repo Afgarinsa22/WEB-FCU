@@ -692,6 +692,7 @@
   .ph-brand b{font-size:clamp(20px,3vh,30px);font-weight:900;letter-spacing:-.04em;color:#fff;padding-right:.8rem;border-right:1px solid rgba(255,255,255,.4);line-height:1}
   .ph-brand span{font-size:clamp(12px,1.6vh,16px);color:rgba(255,255,255,.85)}
   .ph-brand b:has(+ span[style*="none"]){border-right:0;padding-right:0}
+  .ph-role:empty{display:none}
   .ph-about{display:grid;grid-template-columns:1fr auto;gap:1.2rem;margin-top:.8rem;padding-bottom:.9rem;border-bottom:1px solid rgba(255,255,255,.12)}
   .ph-about p{font-size:clamp(11px,1.5vh,15px);line-height:1.4;color:rgba(255,255,255,.8)}
   .ph-about ul{list-style:none;padding:0 0 0 1.2rem;margin:0;border-left:1px solid rgba(255,255,255,.3);font-size:clamp(9px,1.2vh,12px);line-height:1.45;letter-spacing:.04em;color:rgba(255,255,255,.75)}
@@ -1114,8 +1115,8 @@
         <section class="ph-panel" aria-live="polite">
           <div class="ph-top"><span class="ph-count" id="phCount">01 / 20</span><span class="ph-label">PARTNER HEROES</span>
             <button class="ph-nav" data-dir="-1" aria-label="Sebelumnya">‹</button><button class="ph-nav" data-dir="1" aria-label="Berikutnya">›</button></div>
-          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole">CEO &amp; Founder</span></div>
-          <div class="ph-brand"><b id="phBrand">Idenya Flux</b><span id="phBrandSub" style="display:none"></span></div>
+          <div class="ph-name"><h3 id="phName">YOHANES AURI</h3><span class="ph-role" id="phRole"></span></div>
+          <div class="ph-brand"><b id="phBrand">CEO &amp; Founder of Idenya Flux</b><span id="phBrandSub" style="display:none"></span></div>
           <div class="ph-about"><p id="phDesc">Yohanes Auri started his journey in 2006, building Flux Design from a 4 × 4-meter bedroom. In 2018, he transformed the design agency into a full-service creative agency Idenya Flux, laying the foundation for what would eventually become Flux Creative Universe.</p>
             <ul id="phTags" class="ph-known"><li class="k">KNOWN FOR</li><li>The Creative Empire Builder</li></ul></div>
           <div class="ph-extra" id="phExtra">
@@ -1412,7 +1413,7 @@
 </script>
 <script>
 (function(){
-  var H=[['YOHANES AURI','CEO & Founder','Idenya Flux',''],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
+  var H=[['YOHANES AURI','','CEO & Founder of Idenya Flux',''],['DEDDY CORBUZIER','Partner','DC MEDIA',''],['ANDREW SUSANTO','Partner','Bersinema',''],['IVAN TANJAYA','Partner','Attention',''],
     ['NADYA','Partner','Faith Media',''],['RUDY SALIM','Partner','Privilege',''],['PETRA','Partner','Pacarku',''],['DENNY','Partner','Homeless Media',''],['RICO','Partner','Fluxnesia',''],['ALDI','Partner','KA',''],
     ['HENDRA','Partner','Clipper',''],['BAYU','Partner','Studio Lama',''],['SANDY','Partner','Kreatifku',''],['CLARA','Partner','Eventgaris',''],['ARIF','Partner','AI Motion',''],
     ['TIARA','Partner','Playverse',''],['WIRA','Partner','Soundscape',''],['LUKAS','Partner','Visual District',''],['RATIH','Partner','Storylab',''],['DIMAS','Partner','Growth Hub','']];
@@ -1431,7 +1432,7 @@
     $('phQuote').textContent=main?first.quote:'Different expertises, one ecosystem.';
     document.querySelectorAll('.hc').forEach(function(x){x.classList.toggle('is-on',Number(x.dataset.hero)===cur)});
     var art=document.querySelector('.ph-art'); if(art){art.style.backgroundImage=(cur>=6&&cur<=16)?"linear-gradient(90deg,rgba(8,4,18,.6) 0,rgba(8,4,18,0) 32%,rgba(8,4,18,0) 58%,rgba(8,4,18,.55) 100%),linear-gradient(180deg,rgba(8,4,18,0) 55%,rgba(8,4,18,.7) 100%),url('heroes/big/p"+String(cur+1).padStart(2,'0')+".webp?v=2')":'';art.setAttribute('aria-label',h[0]);}
-    $('phSignName').textContent=h[0]; $('phSignRole').textContent=h[1]+(main?'':' · '+h[2]);
+    $('phSignName').textContent=h[0]; $('phSignRole').textContent=(h[1]||h[2])+(main?'':' · '+h[2]);
   };
   document.addEventListener('click',function(e){
     var h=e.target.closest&&e.target.closest('.hc');
