@@ -746,7 +746,7 @@
   .pg-body.awards-body{position:relative;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr) minmax(0,1fr);grid-template-rows:auto auto;
     min-height:100%;margin:0;padding:clamp(1.2rem,4.5vh,3rem) 1.6rem 1.2rem 2.2rem;gap:1rem 1.4rem;isolation:isolate}
   .aw-art::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(6,4,12,.82) 0,rgba(6,4,12,.35) 30%,rgba(6,4,12,0) 42%,rgba(6,4,12,0) 58%,rgba(6,4,12,.4) 70%,rgba(6,4,12,.85) 100%)}
-  .aw-art{position:absolute;left:0;right:0;top:0;height:calc(100% - clamp(180px,24vh,235px) - 1rem);z-index:-1;background:url('awards/big/a01.webp?v=1') center top/cover no-repeat;transition:background-image .35s;
+  .aw-art{position:absolute;left:0;right:0;top:0;height:calc(100% - clamp(180px,24vh,235px) - 1rem);z-index:-1;background:url('awards/big/a01.webp?v=2') center top/cover no-repeat;transition:background-image .35s;
     -webkit-mask-image:linear-gradient(180deg,#000 75%,transparent);mask-image:linear-gradient(180deg,#000 75%,transparent)}
   .awards-body::after{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(ellipse at 50% 100%,rgba(120,80,30,.18),transparent 60%),#050403}
   .aw-left{grid-column:1;grid-row:1;align-self:start;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.7)}
@@ -1528,7 +1528,7 @@
     $('awDesc').textContent=cur===0?first.desc:'Detail penghargaan dan kampanye pemenang segera hadir.';
     $('awCamps').style.display=cur===0?'':'none';
     document.querySelectorAll('.aw-card').forEach(function(c){c.classList.toggle('is-on',Number(c.dataset.aw)===cur)});
-    var art=document.querySelector('.aw-art'); if(art){art.style.backgroundImage="url('awards/big/a"+String(cur+1).padStart(2,'0')+".webp?v=1')";art.setAttribute('aria-label',a[0]);}
+    var art=document.querySelector('.aw-art'); if(art){art.style.backgroundImage="url('awards/big/a"+String(cur+1).padStart(2,'0')+".webp?v=2')";art.setAttribute('aria-label',a[0]);}
     
   };
   document.addEventListener('click',function(e){
