@@ -672,6 +672,10 @@
   .hc:hover::before,.hc:focus-visible::before{opacity:1}
   .ph-dnav{position:absolute;top:30%;z-index:5;width:2.2rem;height:3.4rem;border:1px solid rgba(255,255,255,.25);border-radius:.5rem;background:rgba(10,14,22,.7);color:#fff;font-size:1.3rem;cursor:pointer}
   .ph-dnav:hover{background:#fff;color:#111}.ph-dnav.prev{left:0}.ph-dnav.next{right:0}
+  .ph-dnav{transition:background .2s,color .2s,opacity .3s,left .3s,top .3s}.ph-dnav:disabled{opacity:.3;cursor:default;pointer-events:none}
+  .hc.off-page{display:none!important}
+  .hc-grid.paging{animation:hcPage .5s cubic-bezier(.2,.7,.2,1)}
+  @keyframes hcPage{from{opacity:0;transform:translateX(calc(var(--pdir,1)*6%))}to{opacity:1;transform:none}}
   .ph-quote{position:absolute;left:2.6%;top:6.5%;width:min(15rem,22%);z-index:2;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.6)}
   .ph-tag{font-size:clamp(10px,1.35vh,13px);letter-spacing:.06em;line-height:1.35;color:rgba(255,255,255,.62)}
   .ph-tag::after{content:"";display:block;width:1.6rem;margin:.9rem 0 1.1rem;border-top:1px solid rgba(255,255,255,.5)}
@@ -1435,13 +1439,15 @@
     $('phExtra').style.display=main?'':'none';
     $('phQuote').textContent=main?first.quote:'Different expertises, one ecosystem.';
     document.querySelectorAll('.hc').forEach(function(x){x.classList.toggle('is-on',Number(x.dataset.hero)===cur)});
+    if(window.fcuHeroPage)window.fcuHeroPage(Math.floor(cur/20));
     var art=document.querySelector('.ph-art'); if(art){art.style.backgroundImage=true?"linear-gradient(90deg,rgba(8,4,18,.6) 0,rgba(8,4,18,0) 32%,rgba(8,4,18,0) 58%,rgba(8,4,18,.55) 100%),linear-gradient(180deg,rgba(8,4,18,0) 55%,rgba(8,4,18,.7) 100%),url('heroes/big/p"+String(cur+1).padStart(2,'0')+".webp?v=3')":'';art.setAttribute('aria-label',h[0]);}
     $('phSignName').textContent=h[0]; $('phSignRole').textContent=(h[1]||h[2])+(main?'':' · '+h[2]);
   };
   document.addEventListener('click',function(e){
     var h=e.target.closest&&e.target.closest('.hc');
     if(h){e.preventDefault();e.stopPropagation();window.fcuHeroShow(Number(h.dataset.hero));if(e.detail)h.blur();return;}
-    var b=e.target.closest&&e.target.closest('.ph-nav,.ph-dnav'); if(!b)return;
+    var dn=e.target.closest&&e.target.closest('.ph-dnav'); if(dn){e.preventDefault();e.stopPropagation();if(!dn.disabled&&window.fcuHeroPage)window.fcuHeroPage(Number(dn.dataset.dir),true);return;}
+    var b=e.target.closest&&e.target.closest('.ph-nav'); if(!b)return;
     e.preventDefault(); e.stopPropagation(); window.fcuHeroShow(cur+Number(b.dataset.dir));
   });
 })();
@@ -1451,7 +1457,7 @@
   function layout(){
     var g=document.querySelector('.hc-grid'); if(!g) return;
     var deck=g.parentNode, body=deck.parentNode, panel=body.querySelector('.ph-panel');
-    if(innerWidth<=900){g.querySelectorAll('.hc').forEach(function(c){c.removeAttribute('style')});body.style.removeProperty('--ph-h');deck.style.removeProperty('--deck-top');deck.style.removeProperty('--deck-h');return;}
+    if(innerWidth<=900){g.querySelectorAll('.hc').forEach(function(c){c.removeAttribute('style');c.classList.remove('off-page')});body.style.removeProperty('--ph-h');deck.style.removeProperty('--deck-top');deck.style.removeProperty('--deck-h');return;}
     var page=body.parentNode, ph=page.clientHeight;
     var pb=panel?panel.offsetTop+panel.offsetHeight:ph*.55;
     var mx=Number(deck.dataset.pb||0); if(pb>mx){mx=pb;deck.dataset.pb=pb}
@@ -1462,7 +1468,8 @@
     var P=1100*W/1150; g.parentNode.style.perspective=P+'px';
     var w=Math.min(W/10.9,H*.44/1.32), h=w*1.32, R=W*0.8, step=(w*1.05)/R;
     g.querySelectorAll('.hc').forEach(function(c){
-      var i=Number(c.dataset.hero), row=i<10?0:1, col=i%10, duo=c.classList.contains('hc-duo');
+      var i=Number(c.dataset.hero), pg=Math.floor(i/20), li=i%20, row=li<10?0:1, col=li%10, duo=c.classList.contains('hc-duo');
+      c.classList.toggle('off-page',pg!==PG);
       var t=((duo?col+.5:col)-4.5)*step + (row?-0.012:0);
       var x=R*Math.sin(t)-W*.01, z=R*(1-Math.cos(t))*.9;
       var y=row? h*.53 : -h*.53;
@@ -1471,7 +1478,28 @@
       z2-=W*.06; y+=(x2/W)*h*.3 - h*.2;
       c.style.cssText='--d:'+col+';--w:'+(duo?w*2.05:w).toFixed(1)+'px;--h:'+h.toFixed(1)+'px;--x:'+x2.toFixed(1)+'px;--y:'+y.toFixed(1)+'px;--z:'+z2.toFixed(1)+'px;--ry:'+((-t+a)*-57.3*-1).toFixed(2)+'deg;--rx:'+(row?1:4)+'deg;z-index:'+(100+Math.round(z2));
     });
+    navState(); clearTimeout(navT); navT=setTimeout(placeNav,1100);
   }
+  var PG=0, NB=null, navT;
+  function pages(){var n=0;document.querySelectorAll('.hc-grid .hc').forEach(function(c){n=Math.max(n,Number(c.dataset.hero))});return Math.floor(n/20)+1}
+  function navState(){var np=pages();document.querySelectorAll('.ph-dnav').forEach(function(b){b.disabled=Number(b.dataset.dir)<0?PG<=0:PG>=np-1});}
+  function placeNav(){
+    var g=document.querySelector('.hc-grid'); if(!g||innerWidth<=900) return; var deck=g.parentNode, dr=deck.getBoundingClientRect(), L=1e9,R=-1e9,T=1e9,B=-1e9;
+    if(PG===0&&!g.classList.contains('paging')){
+      g.querySelectorAll('.hc:not(.off-page):not([hidden])').forEach(function(c){var r=c.getBoundingClientRect();if(!r.width)return;L=Math.min(L,r.left);R=Math.max(R,r.right);T=Math.min(T,r.top);B=Math.max(B,r.bottom)});
+      if(L<R) NB={l:L-dr.left,r:R-dr.left,m:(T+B)/2-dr.top,w:dr.width};
+    }
+    if(!NB||Math.abs(NB.w-dr.width)>2) return; L=NB.l+dr.left;R=NB.r+dr.left; var mid=NB.m;
+    var p=deck.querySelector('.ph-dnav.prev'), n=deck.querySelector('.ph-dnav.next');
+    if(p){p.style.left=Math.max(4,L-dr.left-p.offsetWidth-14)+'px';p.style.top=(mid-p.offsetHeight/2)+'px'}
+    if(n){n.style.left=(R-dr.left+14)+'px';n.style.right='auto';n.style.top=(mid-n.offsetHeight/2)+'px'}
+  }
+  window.fcuHeroPage=function(v,rel){
+    var np=pages(), t=rel?PG+v:v; t=Math.max(0,Math.min(np-1,t)); if(t===PG){navState();return}
+    var g=document.querySelector('.hc-grid'), dir=t>PG?1:-1; PG=t;
+    if(g){g.style.setProperty('--pdir',dir);g.classList.remove('paging');void g.offsetWidth;g.classList.add('paging');}
+    layout(); navState();
+  };
   window.fcuHeroLayout=layout;
   addEventListener('resize',layout);
   var ro=new ResizeObserver(function(){layout()}), seen=null;
