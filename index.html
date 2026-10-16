@@ -1565,7 +1565,7 @@
     var page=body.parentNode, ph=page.clientHeight;
     var pb=panel?panel.offsetTop+panel.offsetHeight:ph*.55;
     var mx=Number(deck.dataset.pb||0); if(pb>mx){mx=pb;deck.dataset.pb=pb}
-    var dh=Math.max(ph*.44,300), top=mx+ph*.04;
+    var dh=Math.max(ph*.44,300), top=mx+ph*.09;
     deck.style.setProperty('--deck-top',top+'px'); deck.style.setProperty('--deck-h',dh+'px');
     body.style.setProperty('--ph-h',Math.max(ph,top+dh+ph*.03)+'px');
     var W=g.clientWidth,H=g.clientHeight; if(!W) return;
