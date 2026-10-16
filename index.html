@@ -1686,9 +1686,8 @@
 <script>document.querySelectorAll('.stage .card').forEach(function(c){c.insertAdjacentHTML('beforeend','<i class="edge"></i>')});</script>
 <script>window.fcuHeroNumber=function(){var n=1,people=0,p=function(v){return String(v).padStart(2,'0')},cs=[].slice.call(document.querySelectorAll('.hc-grid .hc')).filter(function(c){return !c.hidden});
 function num(c){var el=c.querySelector('.hc-n');if(!el)return;if(c.classList.contains('hc-duo')){el.textContent=p(n)+'–'+p(n+1);n+=2;people+=2}else{el.textContent=p(n);n+=1;if(!c.classList.contains('hc-soon'))people+=1}}
-cs.filter(function(c){return !c.classList.contains('hc-duo')&&!c.classList.contains('hc-soon')}).forEach(num);
-cs.filter(function(c){return c.classList.contains('hc-duo')}).forEach(num);
-cs.filter(function(c){return c.classList.contains('hc-soon')}).forEach(num);
-window.FCU_HEROES_TOTAL=people;window.FCU_ORDER=cs.filter(function(c){return !c.classList.contains('hc-duo')&&!c.classList.contains('hc-soon')}).concat(cs.filter(function(c){return c.classList.contains('hc-duo')})).map(function(c){return Number(c.dataset.hero)});};</script>
+var sg=cs.filter(function(c){return !c.classList.contains('hc-duo')&&!c.classList.contains('hc-soon')}),du=cs.filter(function(c){return c.classList.contains('hc-duo')}),so=cs.filter(function(c){return c.classList.contains('hc-soon')});
+while(sg.length||du.length||so.length){var top=sg.splice(0,14);while(top.length<14&&so.length)top.push(so.shift());var bot=[],bc=0;while(du.length&&bc+2<=14){bot.push(du.shift());bc+=2}while(bc<14&&so.length){bot.push(so.shift());bc++}top.forEach(num);bot.forEach(num);}
+window.FCU_HEROES_TOTAL=n-1;window.FCU_ORDER=cs.filter(function(c){return !c.classList.contains('hc-duo')&&!c.classList.contains('hc-soon')}).concat(cs.filter(function(c){return c.classList.contains('hc-duo')})).map(function(c){return Number(c.dataset.hero)});};</script>
 </body>
 </html>
