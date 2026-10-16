@@ -179,7 +179,8 @@
   body:not(.open) .net::before{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;border-radius:inherit;background:linear-gradient(90deg,rgba(8,4,18,.7) 0,rgba(8,4,18,.25) 30%,rgba(8,4,18,0) 45%),linear-gradient(180deg,rgba(8,4,18,0) 70%,rgba(8,4,18,.45) 100%)}
   .net > .net-copy{position:absolute;left:1.5rem;right:1.5rem;bottom:1.2rem;z-index:2}
   .net .net-copy p{width:auto;max-width:30rem}
-  body:not(.open) .card > .pic.net-pic{left:24%;width:76%;object-position:50% 30%;-webkit-mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 30%);mask-image:linear-gradient(90deg,transparent 0,rgba(0,0,0,.6) 12%,#000 30%)}
+  body:not(.open) .card > .pic.net-pic{left:0;width:100%;object-position:50% 30%;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.55) 0,#000 9%);mask-image:linear-gradient(90deg,rgba(0,0,0,.55) 0,#000 9%)}
+  body:not(.open) .net-copy::before{content:'';position:absolute;z-index:-1;left:-1.5rem;right:-4rem;top:-4rem;bottom:-1.2rem;pointer-events:none;background:radial-gradient(ellipse 85% 100% at 12% 100%,rgba(8,4,18,.78),rgba(8,4,18,.45) 55%,transparent 100%)}
   .strip{position:absolute;right:.5rem;top:2.7rem;bottom:.6rem;width:61%;display:grid;grid-template-columns:repeat(6,1fr);gap:.35rem}
   .strip .ph{border-radius:.7rem;height:100%}
   .ph.photo{background:#0a0a0c}.ph.photo::before,.ph.photo::after{display:none}
@@ -377,7 +378,7 @@
     .grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto;gap:1rem;flex:none}
     .row,.rcol{display:contents}
     .card{grid-column:1 / -1;min-height:0;border-radius:1.3rem}
-    body:not(.open) .card > .pic.net-pic{object-position:0% 30%}
+    body:not(.open) .card > .pic.net-pic{object-position:30% 30%}
     .about{height:auto;min-height:18rem;padding-bottom:1rem}
     .about .stats.s5{position:static;margin-top:.9rem;grid-template-columns:repeat(3,1fr);row-gap:.5rem}
     .about .stats.s5 div:nth-child(4){border:0;padding-left:0}
