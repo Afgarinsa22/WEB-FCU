@@ -1566,23 +1566,26 @@
     body.style.setProperty('--ph-h',Math.max(ph,top+dh+ph*.03)+'px');
     var W=g.clientWidth,H=g.clientHeight; if(!W) return;
     var P=1100*W/1150; g.parentNode.style.perspective=P+'px';
-    var PER=14, DU=1.72, cards=[].slice.call(g.querySelectorAll('.hc')).filter(function(c){return !c.hidden});
+    var PER=14, DU=1.72, all=[].slice.call(g.querySelectorAll('.hc')).filter(function(c){return !c.hidden});
+    var sg=all.filter(function(c){return !c.classList.contains('hc-duo')&&!c.classList.contains('hc-soon')}), du=all.filter(function(c){return c.classList.contains('hc-duo')}), so=all.filter(function(c){return c.classList.contains('hc-soon')});
+    var cards=[];
+    while(sg.length||du.length||so.length){var top=sg.splice(0,PER); while(top.length<PER&&so.length) top.push(so.shift()); var bot=du.splice(0,PER); while(bot.length<PER&&so.length) bot.push(so.shift()); while(top.length<PER&&bot.length===0&&false){} cards=cards.concat(top); if(bot.length){while(top.length<PER){top.push(null)} } cards=cards.concat(bot); if(!top.length&&!bot.length)break;}
     g.querySelectorAll('.hc[hidden]').forEach(function(c){c.classList.add('off-page')});
-    var rows={}; cards.forEach(function(c,k){var pg=Math.floor(k/(PER*2)), row=Math.floor(k/PER)%2; c.dataset.pg=pg; c.dataset.row=row; (rows[pg+'_'+row]=rows[pg+'_'+row]||[]).push(c)});
+    var rows={}; cards.forEach(function(c,k){if(!c)return; var pg=Math.floor(k/(PER*2)), row=Math.floor(k/PER)%2; c.dataset.pg=pg; c.dataset.row=row; (rows[pg+'_'+row]=rows[pg+'_'+row]||[]).push(c)});
     var maxU=0; Object.keys(rows).forEach(function(k){var u=0;rows[k].forEach(function(c){u+=c.classList.contains('hc-duo')?DU:1});maxU=Math.max(maxU,u)});
     var w=Math.min(W/(maxU+1.2),H*.44/1.32), h=w*1.32, R=W*0.8, step=(w*1.05)/R;
     Object.keys(rows).forEach(function(k){
       var list=rows[k], tot=0; list.forEach(function(c){tot+=c.classList.contains('hc-duo')?DU:1});
-      var acc=0;
+      var acc=0, k=maxU/tot;
       list.forEach(function(c){
-      var pg=Number(c.dataset.pg), row=Number(c.dataset.row), duo=c.classList.contains('hc-duo'), u=duo?DU:1, col=acc+u/2; acc+=u;
+      var pg=Number(c.dataset.pg), row=Number(c.dataset.row), duo=c.classList.contains('hc-duo'), u=(duo?DU:1)*k, col=acc+u/2; acc+=u;
       c.classList.toggle('off-page',pg!==PG);
-      var t=(col-tot/2)*step + (row?-0.012:0);
+      var t=(col-maxU/2)*step + (row?-0.012:0);
       var x=R*Math.sin(t)-W*.01, z=R*(1-Math.cos(t))*.9;
       var y=row? h*.53 : -h*.53;
       var a=0.42, x2=x*Math.cos(a)+z*Math.sin(a), z2=-x*Math.sin(a)+z*Math.cos(a);
       z2-=W*.06; y+=(x2/W)*h*.3 - h*.2;
-      c.style.cssText='--d:'+Math.round(col)%10+';--w:'+(duo?w*(DU*1.02):w).toFixed(1)+'px;--h:'+h.toFixed(1)+'px;--x:'+x2.toFixed(1)+'px;--y:'+y.toFixed(1)+'px;--z:'+z2.toFixed(1)+'px;--ry:'+((-t+a)*-57.3*-1).toFixed(2)+'deg;--rx:'+(row?1:4)+'deg;z-index:'+(100+Math.round(z2));
+      c.style.cssText='--d:'+Math.round(col)%10+';--w:'+((duo?w*(DU*1.02):w)*k).toFixed(1)+'px;--h:'+h.toFixed(1)+'px;--x:'+x2.toFixed(1)+'px;--y:'+y.toFixed(1)+'px;--z:'+z2.toFixed(1)+'px;--ry:'+((-t+a)*-57.3*-1).toFixed(2)+'deg;--rx:'+(row?1:4)+'deg;z-index:'+(100+Math.round(z2));
       });
     });
     navState(); clearTimeout(navT); navT=setTimeout(placeNav,1100);
