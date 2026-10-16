@@ -1584,7 +1584,7 @@
       var pg=Number(c.dataset.pg), row=Number(c.dataset.row), duo=c.classList.contains('hc-duo'), u=(duo?DU:1)*k, col=acc+u/2; acc+=u;
       c.classList.toggle('off-page',pg!==PG);
       var t=(col-maxU/2)*step + (row?-0.012:0);
-      var x=R*Math.sin(t)-W*.01, z=R*(1-Math.cos(t))*.9;
+      var x=R*Math.sin(t)+W*.035, z=R*(1-Math.cos(t))*.9;
       var y=row? h*.53 : -h*.53;
       var a=0.42, x2=x*Math.cos(a)+z*Math.sin(a), z2=-x*Math.sin(a)+z*Math.cos(a);
       z2-=W*.06; y+=(x2/W)*h*.3 - h*.2;
