@@ -1476,6 +1476,7 @@
     else if(d){
       $('phDesc').textContent=d.d;
       $('phTags').innerHTML='<li class="k">KNOWN FOR</li><li>'+esc(d.k)+'</li>';
+      var mt=(DUO[cur]!==undefined?DUO[cur]:PAIR[cur]); if(!d.p.length && mt!==undefined && P[mt] && P[mt].p.length) d={n:d.n,r:d.r,d:d.d,k:d.k,p:P[mt].p};
       if(d.p.length){ $('phExtra').innerHTML='<div class="ph-row"><span>TOP '+d.p.length+' PROJECT'+(d.p.length>1?'S':'')+'</span></div><div class="ph-projects">'+d.p.map(function(x){return '<article><div class="ph-proj-ph"></div><h4>'+esc(x.toUpperCase())+'</h4></article>'}).join('')+'</div>'; $('phExtra').style.display=''; }
       else { $('phExtra').innerHTML=''; $('phExtra').style.display='none'; }
     } else {
