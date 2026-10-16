@@ -82,7 +82,7 @@
   /* hover: card lights up with glowing rim, others dim, hero title becomes card name */
   .card > *{position:relative}
   .card > .arrow{position:absolute}
-  .card > .art{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:100% 58%;filter:brightness(.7) saturate(1.05);z-index:0;pointer-events:none}
+  .card > .art{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;object-position:100% 58%;filter:brightness(.95) saturate(1.08);z-index:0;pointer-events:none}
   .about > *:not(.art){z-index:1}
   .about .eyebrow,.about .big,.about h3,.about p,.about .stats{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}
   .about p{color:rgba(255,255,255,.82)}
@@ -105,8 +105,6 @@
     .card{transition:transform .35s ease,border-color .35s ease,opacity .4s ease,box-shadow .4s ease}
     .card{background-color:rgba(255,255,255,0)}
     .card > *{transition:opacity .4s ease}
-    body:not(.open):not(.moving) .card:not(.hot):not(:focus-visible){background-color:rgba(14,8,30,.93)}
-    body:not(.open):not(.moving) .card:not(.hot):not(:focus-visible) > *{opacity:.5}
     body:not(.open):not(.moving) .card.hot{background-color:rgba(26,12,52,.82)}
     body:not(.open):not(.moving) .card.hot{transform:translateY(-.15rem);border-color:transparent;
       background:
@@ -147,9 +145,9 @@
   .lead{padding:0;--glowA:rgba(255,140,60,.4)}
   .lead .eyebrow{position:absolute;top:1.3rem;left:1.5rem;z-index:3}
   .card > .pic{position:absolute;left:60%;bottom:0;transform:translateX(-50%);height:92%;width:auto;max-width:96%;object-fit:contain;object-position:center bottom;z-index:1;pointer-events:none;filter:drop-shadow(0 0 1.2rem rgba(0,0,0,.45))}
-  .card > .pic.cover{left:0;right:0;top:0;bottom:0;transform:none;width:100%;height:100%;max-width:none;object-fit:cover;object-position:15% 25%;filter:brightness(.82)}
+  .card > .pic.cover{left:0;right:0;top:0;bottom:0;transform:none;width:100%;height:100%;max-width:none;object-fit:cover;object-position:15% 25%;filter:brightness(1)}
   .lead .names h2,.lead .names p,.lead .eyebrow{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}
-  .card > .pic.net-pic{inset:0;width:100%;height:100%;border-radius:0;object-position:0% 30%;filter:brightness(.85);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 42%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 42%)}
+  .card > .pic.net-pic{inset:0;width:100%;height:100%;border-radius:0;object-position:0% 30%;filter:brightness(1);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 42%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 42%)}
   .net > *:not(.pic){position:relative;z-index:2}
   .net > .arrow{position:absolute}
   .net .eyebrow,.net .big,.net p{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}
@@ -196,7 +194,7 @@
   .award .big{font-size:1.9rem;margin-top:.9rem;position:relative;z-index:3}
   .award p{font-size:.76rem;color:var(--mute);margin-top:.6rem;line-height:1.42;width:11rem;max-width:100%;position:relative;z-index:3}
   .award svg{position:absolute;right:-.5rem;bottom:0;height:95%;width:auto;z-index:2}
-  .card > .pic.award-pic{inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;filter:brightness(.85);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%)}
+  .card > .pic.award-pic{inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 50%;filter:brightness(1);z-index:0;-webkit-mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%);mask-image:linear-gradient(90deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.75) 22%,#000 45%)}
   .award > *:not(.pic){position:relative;z-index:2}.award > .arrow{position:absolute}
   .award .eyebrow,.award .big,.award p{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}.award p{color:rgba(255,255,255,.85)}
   body:not(.open) .card > .pic.award-pic{inset:auto 0 0 auto;width:80%;height:auto;max-width:none;aspect-ratio:1400/788;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%),linear-gradient(180deg,transparent 0,#000 30%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0,#000 28%),linear-gradient(180deg,transparent 0,#000 30%);mask-composite:intersect}
