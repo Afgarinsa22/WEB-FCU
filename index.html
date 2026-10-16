@@ -915,32 +915,6 @@
   @media (max-width:900px),(hover:none){
     .meet-panel,.founder-profile,.founder-social,.backer,.ph-panel,.aw-card,.aw-camp{-webkit-backdrop-filter:none;backdrop-filter:none}
   }
-
-  /* ===== home bento: static glass cards, violet -> orange light (reference mockup) ===== */
-  body:not(.open) .card{
-    background:
-      radial-gradient(38% 80% at 100% 62%,rgba(255,135,90,.42),transparent 70%),
-      radial-gradient(48% 85% at 40% -18%,rgba(140,90,255,.48),transparent 70%),
-      radial-gradient(32% 60% at 0% 108%,rgba(210,90,160,.22),transparent 72%),
-      #0f0c15;
-    box-shadow:0 .6rem 1.6rem rgba(0,0,0,.5);
-    animation:none;
-  }
-  body:not(.open) .card::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:4;mix-blend-mode:screen;
-    background:
-      radial-gradient(30% 70% at 100% 55%,rgba(255,150,100,.22),transparent 75%),
-      radial-gradient(45% 45% at 32% 0%,rgba(160,110,255,.2),transparent 75%);
-    opacity:1;transition:none}
-  body:not(.open) .card::after{opacity:1;animation:none;padding:1.5px;z-index:6;
-    background:linear-gradient(125deg,rgba(176,128,255,.95) 0%,rgba(255,255,255,.2) 30%,rgba(110,80,190,.28) 60%,rgba(255,156,108,.95) 100%)}
-  body:not(.open):not(.moving) .card.hot{
-    background:
-      radial-gradient(38% 80% at 100% 62%,rgba(255,135,90,.5),transparent 70%),
-      radial-gradient(48% 85% at 40% -18%,rgba(140,90,255,.58),transparent 70%),
-      radial-gradient(32% 60% at 0% 108%,rgba(210,90,160,.28),transparent 72%),
-      #13101b;
-    animation:none;box-shadow:0 .8rem 1.8rem rgba(0,0,0,.55),inset 0 0 2rem rgba(255,150,120,.10)}
-  body:not(.open):not(.moving) .card.hot::after{animation:none}
 </style>
 </head>
 <body>
