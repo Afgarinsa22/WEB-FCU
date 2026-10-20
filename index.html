@@ -1013,8 +1013,9 @@
   .work-detail .cr-go{position:absolute;right:1.1rem;bottom:1rem;z-index:3;font-style:normal;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:#e9b24d;font-weight:600}
   .work-detail .cr-go i{font-style:normal;display:inline-block;transition:transform .3s}.work-detail .pt.wk.cr-open:hover .cr-go i{transform:translateX(.25rem)}
   .pt.cr{position:relative;overflow:hidden;cursor:pointer;flex-direction:column;justify-content:flex-end;align-items:flex-start;padding:1rem 1.1rem;border-radius:1.2rem;background:linear-gradient(160deg,rgba(40,28,62,.55),rgba(10,7,18,.85));background-size:cover;background-position:center;animation:crIn .55s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--k,0)*45ms)}
-  .pt.cr::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(8,4,18,0) 45%,rgba(8,4,18,.8) 100%);pointer-events:none}
+  .pt.cr::after{content:"";position:absolute;inset:0;z-index:0;background:linear-gradient(180deg,rgba(8,4,18,.1) 0%,rgba(8,4,18,.35) 40%,rgba(8,4,18,.93) 100%);pointer-events:none}
   .pt.cr > *{position:relative;z-index:1}
+  .pt.cr .cr-cap{text-shadow:0 1px 3px rgba(0,0,0,.9),0 2px 16px rgba(0,0,0,.8)}
   .cr-cap b{display:block;font-family:'Inter',Arial,sans-serif;font-weight:600;font-size:1rem;letter-spacing:-.02em;color:#fff}
   .cr-cap small{display:block;font-size:.66rem;color:rgba(255,255,255,.6);margin-top:.2rem}
   .cr-play{position:absolute!important;left:50%;top:50%;transform:translate(-50%,-50%);width:3rem;height:3rem;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.08);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:grid;place-items:center;transition:transform .3s,background .3s}
@@ -1912,7 +1913,16 @@ var CR={
   {c:'BINUS University',t:'Beasiswa Emas',d:['56M+ Views Across Channels','🏆 Campus Digital Marketing Initiative | Marketeers YCA 2026'],v:'',img:'awards/camp-1.webp',y:'2026'},
   {c:'',t:'Redmi',d:['Branded Music Video | Shot on Redmi Note 13 Series'],v:'https://www.youtube.com/watch?v=vz4n7L-egJs'}
  ],
- attention:[{},{},{},{},{},{},{},{},{},{},{}],
+ attention:[
+  {c:'Flux Creative Universe',t:'MURI Record',d:['Organic Viral Campaigns','2.3B+ Organic Views','🏆 MURI Record – Highest Accumulated Digital Content Viewership by a Creative Agency 2025'],v:'',img:'awards/a01.webp',y:'2025'},
+  {c:'Dunia Games',t:'Telkomsel Gaming Platform',d:['Media & Content Partnership','3M+ Followers','320M Page Views in 90 Days','🏆 Top Media Partner & Top Reporter | Free Fire World Series 2025'],v:'',img:'awards/a05.webp',y:'2025'},
+  {c:'TikTok Shop',t:'Kamis Rojali',d:['Creative UGC Campaign','🏆 Creative UGC Campaign Heroes | MDMH 2025'],v:'',y:'2025'},
+  {c:'Migelas',t:'UGC Campaign',d:['UGC Campaign to Gen Z','🏆 UGC Campaign to Gen Z | Marketeers Youth Choice Award 2026'],v:'',img:'awards/camp-2.webp',y:'2026'},
+  {c:'Kredivo',t:'TikTok Vertical Drama',d:['Video Series to Gen Z','🏆 Video Series to Gen Z | Marketeers Youth Choice Award 2026'],v:'',img:'awards/camp-3.webp',y:'2026'},
+  {c:'Cokelat Dilan',t:'Social Media Project',d:['Engaging Content Marketing','🏆 Engaging Content Marketing Heroes | MDMH 2025'],v:'',y:'2025'},
+  {c:'Tokopedia',t:'Cinta Si Tukang Takjil',d:['TikTok Vertical Drama'],v:'',img:'projects/tokopedia.webp?v=2'},
+  {},{},{},{}
+ ],
  ai:[{},{},{},{},{},{}]
 };
 /* urutan baca (kiri-atas → kanan-bawah) dipetakan ke posisi kotak */
