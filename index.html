@@ -1031,6 +1031,18 @@
   .pg-body.cr6 > .pt.cr.cr-hide{display:none!important}
   .pg-body.cr6 .cr-c{grid-column:4/10;grid-row:1/3}.pg-body.cr6 .cr-a{grid-column:1/4;grid-row:1/3}.pg-body.cr6 .cr-f{grid-column:10/13;grid-row:1}
   .pg-body.cr6 .cr-g{grid-column:10/13;grid-row:2/4}.pg-body.cr6 .cr-h{grid-column:1/4;grid-row:3}.pg-body.cr6 .cr-i{grid-column:4/10;grid-row:3}
+  .pt.cr{cursor:default}.pt.cr.has-v{cursor:pointer}
+  .pt.cr:not(.has-v) .cr-play{display:none}
+  .pt.cr:not(.cr-c) .cr-play{left:auto;top:.8rem;right:.8rem;transform:none;width:2.4rem;height:2.4rem}
+  .pt.cr:not(.cr-c):hover .cr-play{transform:scale(1.1)}
+  .pt.cr .cr-cap small{line-height:1.35;color:rgba(255,255,255,.75)}
+  .pt.cr .cr-cap small + small{margin-top:.1rem}
+  .pt.cr .cr-cap b{font-size:clamp(13px,1.7vh,17px);line-height:1.15;margin-bottom:.3rem}
+  .pt.cr.cr-c .cr-cap b{font-size:clamp(26px,4vh,44px);letter-spacing:-.04em;line-height:1;margin-bottom:.6rem;max-width:34rem}
+  .pt.cr.cr-c .cr-cap small{font-size:clamp(11px,1.5vh,14px)}
+  .cr-k{display:block;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:#e9b24d;font-weight:600;margin-bottom:.5rem}
+  .pt.cr{background-size:cover;background-position:center}
+  .pt.cr.has-v::after{background:linear-gradient(180deg,rgba(8,4,18,.15) 0%,rgba(8,4,18,.25) 40%,rgba(8,4,18,.9) 100%)}
   @keyframes crIn{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}
   .cr-modal{position:fixed;inset:0;z-index:9999;background:rgba(4,2,10,.85);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);display:grid;place-items:center;padding:4vh 4vw}
   .cr-modal .cr-frame{width:min(1100px,100%);aspect-ratio:16/9;border-radius:1rem;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.6)}
@@ -1799,18 +1811,35 @@ function cur(h){return [].findIndex.call(h.querySelectorAll('.wk-s'),function(x)
 function arm(){clearInterval(T);T=setInterval(function(){var h=document.querySelector('.work-detail .pt.wk.hero');if(!h||document.hidden||!document.querySelector('.page.show.work-detail'))return;if(h.matches(':hover'))return;go(h,cur(h)+1)},4500)}
 document.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('.work-detail .wk-nav,.work-detail .wk-dot');if(!b)return;e.preventDefault();e.stopPropagation();var h=b.closest('.pt.wk.hero');if(b.classList.contains('wk-dot'))go(h,Number(b.dataset.i));else go(h,cur(h)+Number(b.dataset.d));arm()},true);arm();})();</script>
 <script>(function(){
-/* Isi ID atau link YouTube untuk 11 kotak Creative (urutan: 1 = kotak besar tengah). Judul opsional. */
-var CRV={
- creative:['','','','','','','','','','',''],
- attention:['','','','','','','','','','',''],
- ai:['','','','','','']
-}, CRT={
- creative:['CREATIVE','','','','','','','','','',''],
- attention:['ATTENTION','','','','','','','','','',''],
- ai:['AI','','','','','']
+/* Data portofolio per kotak. Urutan 1 = kotak besar tengah, lalu 2,3,... dibaca dari kiri-atas ke kanan-bawah.
+   t = judul, d = baris keterangan, v = link/ID YouTube (kosongkan kalau belum ada). */
+var CR={
+ creative:[
+  {t:'BPJS Ketenagakerjaan x Andre Taulany',d:['90M+ Views Across Channels','🏆 Creative Marketing Campaign Heroes – MDMH 2025'],v:'https://www.youtube.com/watch?v=gkdzujiEn98'},
+  {t:'BPJS Ketenagakerjaan “Kerja Keras Bebas Cemas”',d:['🏆 Bronze, Cinematography | Citra Pariwara 2025'],v:''},
+  {t:'Detergen Sayang',d:['End-to-end Product Launch Campaign'],v:''},
+  {t:'Lion Parcel “Berani Diandelin”',d:['OOH & Brand Activation','26.5% Brand Awareness Achieved in 1 Year'],v:'https://www.youtube.com/watch?v=aUacGPLUsyE'},
+  {t:'XL Axiata “Pesan untuk Raka”',d:['Video Commercial','11M Views'],v:'https://www.youtube.com/watch?v=VFuHftIVbaI'},
+  {t:'Telkomsel Prestige',d:['Social Media Maintenance'],v:''},
+  {t:'VinFast – IIMS 2026',d:['Integrated Product Launch Activation','10M+ Total Views','2,048 Vehicle Orders (SPK)'],v:''},
+  {t:'No Drop “No Bochor dari Hati”',d:['TikTok Vertical Drama','52M+ Views','🏆 Short Video Storytelling Campaign Heroes | MDMH 2025'],v:''},
+  {t:'ZAP Premiere',d:['Beauty Privilege Campaign'],v:''},
+  {t:'BINUS University “Beasiswa Emas”',d:['56M+ Views Across Channels','🏆 Campus Digital Marketing Initiative | Marketeers YCA 2026'],v:''},
+  {t:'Redmi',d:['Branded Music Video | Shot on Redmi Note 13 Series'],v:'https://www.youtube.com/watch?v=vz4n7L-egJs'}
+ ],
+ attention:[{t:'ATTENTION'},{},{},{},{},{},{},{},{},{},{}],
+ ai:[{t:'AI'},{},{},{},{},{}]
 };
+/* urutan baca (kiri-atas → kanan-bawah) dipetakan ke posisi kotak */
+var ORD={11:[0,1,2,3,4,6,5,7,8,9,10],6:[0,1,6,7,8,9]};
 function yid(u){if(!u)return'';var m=String(u).match(/(?:youtu\.be\/|v=|embed\/|shorts\/)([\w-]{11})/);return m?m[1]:(/^[\w-]{11}$/.test(u)?u:'')}
-function fill(pb,k){var V=CRV[k]||[],T=CRT[k]||[],six=k==='ai',SH=[0,1,6,7,8,9],n=0;pb.classList.toggle('cr6',six);pb.querySelectorAll('.pt.cr').forEach(function(t,j){var hide=six&&SH.indexOf(j)<0;t.classList.toggle('cr-hide',hide);if(hide)return;var i=n++;t.style.setProperty('--k',i);var id=yid(V[i]);t.dataset.yt=id;t.querySelector('.cr-cap b').textContent=T[i]||(i?'Project '+String(i+1).padStart(2,'0'):k.toUpperCase());t.style.backgroundImage=id?'url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)':'';t.querySelector('.cr-cap small').textContent=id?'Tonton video':'Video segera hadir'})}
+function esc(x){return String(x).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fill(pb,k){var L=CR[k]||[],six=L.length===6,O=ORD[six?6:11],T=pb.querySelectorAll('.pt.cr');pb.classList.toggle('cr6',six);pb.dataset.crk=k;
+ T.forEach(function(t,j){var i=O.indexOf(j),hide=i<0;t.classList.toggle('cr-hide',hide);if(hide)return;var it=L[i]||{},id=yid(it.v);
+  t.style.setProperty('--k',i);t.style.order=i;t.dataset.yt=id;t.classList.toggle('has-v',!!id);
+  var ttl=it.t||(i?'Project '+String(i+1).padStart(2,'0'):k.toUpperCase()),ds=it.d&&it.d.length?it.d:[id?'Tonton video':'Segera hadir'];
+  t.querySelector('.cr-cap').innerHTML=(i===0?'<span class="cr-k">'+esc(k)+'</span>':'')+'<b>'+esc(ttl)+'</b>'+ds.map(function(x){return '<small>'+esc(x)+'</small>'}).join('');
+  t.style.backgroundImage=id?'url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)':''})}
 function open(id){var m=document.createElement('div');m.className='cr-modal';m.innerHTML='<button type="button" class="cr-x" aria-label="Tutup">×</button><div class="cr-frame"><iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';m.addEventListener('click',function(e){if(e.target===m||e.target.closest('.cr-x')){e.stopPropagation();m.remove()}});document.body.appendChild(m)}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){var m=document.querySelector('.cr-modal');if(m)m.remove()}});
 document.addEventListener('click',function(e){var t=e.target;if(!t.closest)return;
