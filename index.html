@@ -2064,10 +2064,11 @@ function pjLay(box,R){if(!box.isConnected)return;var W=box.clientWidth,mob=inner
  function P(i,x,y,w,h){var e=its[i];if(!e)return;e.style.left=x+'px';e.style.top=y+'px';e.style.width=w+'px';e.style.height=h+'px';e.classList.toggle('pj-sm',h<170||w<230)}
  if(mob){var y=0;its.forEach(function(e,i){var ar=R[i]||1.5,h=Math.min(W/ar,480);P(i,0,y,W,h);y+=h+gap});box.style.height=(y-gap)+'px';return}
  var H=box.clientHeight;if(!H)return;box.style.height='';
- var k=n-1,sideTotal=k>=5?2:0,rem=k-sideTotal,topCount=Math.ceil(rem/2),botCount=Math.max(0,rem-topCount);
- var idx=1,leftI=-1,rightI=-1,topIdx=[],botIdx=[];
- if(sideTotal===2){leftI=idx++;rightI=idx++}
+ var k=n-1,sideEach=k>=12?3:k>=8?2:k>=5?1:0,rem=k-sideEach*2,topCount=Math.ceil(rem/2),botCount=Math.max(0,rem-topCount);
+ var idx=1,leftIdx=[],rightIdx=[],topIdx=[],botIdx=[];
  for(var t=0;t<topCount;t++)topIdx.push(idx++);
+ for(var s=0;s<sideEach;s++)leftIdx.push(idx++);
+ for(var s=0;s<sideEach;s++)rightIdx.push(idx++);
  for(var t=0;t<botCount;t++)botIdx.push(idx++);
  var wTop=topCount>0?1:0,wBot=botCount>0?1:0,wMid=3.3,sumW=wTop+wMid+wBot;
  var gapCount=(topCount>0?1:0)+(botCount>0?1:0),avail=H-gap*gapCount;
@@ -2075,10 +2076,9 @@ function pjLay(box,R){if(!box.isConnected)return;var W=box.clientWidth,mob=inner
  function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v))}
  var y=0;
  if(topCount>0){var colW=(W-gap*(topCount-1))/topCount,x=0;topIdx.forEach(function(i){P(i,x,y,colW,topH);x+=colW+gap});y+=topH+gap}
- var midY=y,leftW=0,rightW=0;
- if(sideTotal===2){leftW=clamp(midH*(R[leftI]||1.2),W*.12,W*.2);rightW=clamp(midH*(R[rightI]||1.2),W*.12,W*.2)}
- var kvW=W-leftW-rightW-(sideTotal===2?gap*2:0),mx=0;
- if(sideTotal===2){P(leftI,mx,midY,leftW,midH);mx+=leftW+gap;P(0,mx,midY,kvW,midH);mx+=kvW+gap;P(rightI,mx,midY,rightW,midH)}else{P(0,0,midY,kvW,midH)}
+ var midY=y,hasSides=sideEach>0,sideW=hasSides?clamp(W*.18,190,W*.205):0;
+ var kvW=W-sideW*2-(hasSides?gap*2:0),mx=0;
+ if(hasSides){var sideH=(midH-gap*(sideEach-1))/sideEach;leftIdx.forEach(function(i){P(i,0,midY+(sideH+gap)*leftIdx.indexOf(i),sideW,sideH)});mx=sideW+gap;P(0,mx,midY,kvW,midH);mx+=kvW+gap;rightIdx.forEach(function(i){P(i,mx,midY+(sideH+gap)*rightIdx.indexOf(i),sideW,sideH)})}else{P(0,0,midY,kvW,midH)}
  y=midY+midH;
  if(botCount>0){y+=gap;var colW2=(W-gap*(botCount-1))/botCount,x2=0;botIdx.forEach(function(i){P(i,x2,y,colW2,botH);x2+=colW2+gap})}}
 addEventListener('resize',function(){var b=document.querySelector('.pg-body.pj-mode .pj');if(b&&b._r)pjLay(b,b._r)});
