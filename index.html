@@ -2069,14 +2069,14 @@ function pjLay(box,R){if(!box.isConnected)return;var W=box.clientWidth,mob=inner
  if(sideTotal===2){leftI=idx++;rightI=idx++}
  for(var t=0;t<topCount;t++)topIdx.push(idx++);
  for(var t=0;t<botCount;t++)botIdx.push(idx++);
- var wTop=topCount>0?1:0,wBot=botCount>0?1:0,wMid=2.3,sumW=wTop+wMid+wBot;
+ var wTop=topCount>0?1:0,wBot=botCount>0?1:0,wMid=3.3,sumW=wTop+wMid+wBot;
  var gapCount=(topCount>0?1:0)+(botCount>0?1:0),avail=H-gap*gapCount;
  var topH=topCount>0?avail*(wTop/sumW):0,botH=botCount>0?avail*(wBot/sumW):0,midH=avail*(wMid/sumW);
  function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v))}
  var y=0;
  if(topCount>0){var colW=(W-gap*(topCount-1))/topCount,x=0;topIdx.forEach(function(i){P(i,x,y,colW,topH);x+=colW+gap});y+=topH+gap}
  var midY=y,leftW=0,rightW=0;
- if(sideTotal===2){leftW=clamp(midH*(R[leftI]||1.2),W*.14,W*.26);rightW=clamp(midH*(R[rightI]||1.2),W*.14,W*.26)}
+ if(sideTotal===2){leftW=clamp(midH*(R[leftI]||1.2),W*.12,W*.2);rightW=clamp(midH*(R[rightI]||1.2),W*.12,W*.2)}
  var kvW=W-leftW-rightW-(sideTotal===2?gap*2:0),mx=0;
  if(sideTotal===2){P(leftI,mx,midY,leftW,midH);mx+=leftW+gap;P(0,mx,midY,kvW,midH);mx+=kvW+gap;P(rightI,mx,midY,rightW,midH)}else{P(0,0,midY,kvW,midH)}
  y=midY+midH;
