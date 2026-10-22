@@ -2016,7 +2016,7 @@ var CR={
   {c:'BPJS Ketenagakerjaan',t:'Kerja Keras Bebas Cemas',d:['🏆 Bronze, Cinematography | Citra Pariwara 2025'],v:'',img:'work-1.webp?v=1',y:'2025'}
  ],
  attention:[
-  {c:'SeaWorld',t:'UGC Campaign',d:['UGC Campaign','150% KPI Achieved'],v:'',img:'projects/seaworld.webp?v=1'},
+  {c:'SeaWorld',t:'UGC Campaign',d:['UGC Campaign','150% KPI Achieved'],v:'',img:'projects/seaworld.webp?v=1',gal:[{t:'Intrusive Thought',d:['UGC Video'],v:'oTI5qvnGntM',img:'projects/sw-1.webp?v=1'},{t:'Air Mata Kesedot',d:['UGC Video'],v:'jhvuQt7lxbE',img:'projects/sw-2.webp?v=1'},{t:'Seaworld Seromantis Ini',d:['UGC Video'],v:'S6EKYzducmc',img:'projects/sw-3.webp?v=1'},{t:'Ayo Dam',d:['UGC Video'],v:'KMddgqKPFQk',img:'projects/sw-4.webp?v=1'}]},
   {c:'TikTok Shop',t:'Kamis Rojali',d:['UGC Campaign','91.7M Views','🏆 Creative UGC Campaign Heroes – MDMH 2025'],v:'',img:'projects/tiktokshop-kv.webp?v=1',y:'2025'},
   {c:'Shopee',t:'UGC Campaign',d:['UGC Campaign','73M+ Total Views Across Channels'],v:'',img:'projects/shopee.webp?v=1'},
   {c:'Appetito',t:'UGC Campaign',d:['UGC Campaign','112.9M Total Views','348% Above KPI Target'],v:'',img:'projects/appetito.webp?v=1'},
@@ -2047,7 +2047,7 @@ function fill(pb,k,sel){if(sel===undefined){delete pb.dataset.ord}if(!pb.dataset
   var ttl=it.t?((it.c?it.c+' ':'')+it.t):(i?'Project '+String(i+1).padStart(2,'0'):k.toUpperCase()),ds=it.d&&it.d.length?it.d:[id?'Tonton video':'Segera hadir'];
   t.querySelector('.cr-cap').innerHTML=(i===0?'<span class="cr-k">'+esc(pb.dataset.pmode?pb.dataset.plabel:k)+'</span>':'')+'<b>'+esc(ttl)+'</b>'+ds.map(function(x){return '<small>'+esc(x)+'</small>'}).join('');
   t.style.backgroundImage=it.img?'url('+it.img+')':(id?'url(https://i.ytimg.com/vi/'+id+'/hqdefault.jpg)':'')})}
-function pjBuild(pb,it){var G=(it.gal||[]).filter(function(g){return g&&g.img}),id=yid(it.v),items=[{kv:1,t:it.t||'',c:(it.c||'').replace(/\s*×$/,''),d:it.d||[],img:it.img||(id?'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg':''),yt:id}].concat(G.map(function(g){return{t:g.t,d:g.d||[],img:g.img}}));
+function pjBuild(pb,it){var G=(it.gal||[]).filter(function(g){return g&&(g.img||g.v)}),id=yid(it.v),items=[{kv:1,t:it.t||'',c:(it.c||'').replace(/\s*×$/,''),d:it.d||[],img:it.img||(id?'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg':''),yt:id}].concat(G.map(function(g){return{t:g.t,d:g.d||[],img:g.img||(yid(g.v)?'https://i.ytimg.com/vi/'+yid(g.v)+'/hqdefault.jpg':''),yt:yid(g.v)}}));
  var box=pb.querySelector('.pj');if(!box){box=document.createElement('div');box.className='pj';pb.appendChild(box)}
  box.innerHTML=items.map(function(x,n){return '<button type="button" class="pj-it'+(x.kv?' pj-kv':'')+(x.yt?' has-v':'')+'" '+(x.yt?'data-yt="'+x.yt+'"':'data-img="'+x.img+'"')+' style="background-image:url('+x.img+');--k:'+n+'">'+(x.yt?'<span class="pj-pl"><i></i></span>':'')+'<span class="pj-cap">'+(x.kv&&x.c?'<em>'+esc(x.c)+'</em>':'')+'<b>'+esc(x.t||'')+'</b>'+(x.d.length?'<small>'+esc(x.d.join(' · '))+'</small>':'')+'</span></button>'}).join('');
  pb.classList.add('pj-mode');var ratios=items.map(function(){return 1.5}),left=items.length;box._r=ratios;
