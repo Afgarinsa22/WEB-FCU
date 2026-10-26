@@ -2105,14 +2105,16 @@ function pjLay(box,R){if(!box.isConnected)return;var ratioMode=box.classList.con
   var baseline=fitHeight(0,n,H);
   if(baseline.rows.length<2){render(0,baseline.rows);return}
   var baseRowH=(baseline.tot-gap*(baseline.rows.length-1))/baseline.rows.length;
+  var targetHeroH=baseRowH*1.65;
   var maxHero=Math.min(n-1,8),bestHero=null,bestHeroAny=null;
   for(var hi=1;hi<=maxHero;hi++){
    var hSum=0;for(var hk=0;hk<hi;hk++)hSum+=(R[hk]||1.5);
    var hGW=gap*(hi-1),hH=(W-hGW)/hSum;
-   var rH=Math.max(H-hH-gap,24),remRes=fitHeight(hi,n,rH),total=hH+gap+remRes.tot,diff=Math.abs(total-H);
-   if(!bestHeroAny||diff<bestHeroAny.diff)bestHeroAny={idx:hi,heroRowH:hH,rem:remRes,diff:diff};
-   if(hH<H*0.15||hH>H*0.85)continue;
-   if(!bestHero||diff<bestHero.diff)bestHero={idx:hi,heroRowH:hH,rem:remRes,diff:diff}
+   var rH=Math.max(H-hH-gap,24),remRes=fitHeight(hi,n,rH),total=hH+gap+remRes.tot,fitDiff=Math.abs(total-H),diff=Math.abs(hH-targetHeroH);
+   if(!bestHeroAny||fitDiff<bestHeroAny.fitDiff)bestHeroAny={idx:hi,heroRowH:hH,rem:remRes,diff:diff,fitDiff:fitDiff};
+   if(hH<H*0.18||hH>H*0.6)continue;
+   if(fitDiff>H*0.22)continue;
+   if(!bestHero||diff<bestHero.diff)bestHero={idx:hi,heroRowH:hH,rem:remRes,diff:diff,fitDiff:fitDiff}
   }
   if(!bestHero)bestHero=bestHeroAny;
   if(!bestHero){render(0,baseline.rows);return}
