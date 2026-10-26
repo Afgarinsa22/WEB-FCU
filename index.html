@@ -1855,10 +1855,13 @@
       $('phTags').innerHTML=''; $('phExtra').innerHTML=''; $('phExtra').style.display='none';
     }
     $('phQuote').textContent=main?first.quote:'Different expertises, one ecosystem.';
+    var noText=(slot===10), tagEl=document.querySelector('.ph-tag'), qEl=$('phQuote');
+    if(tagEl)tagEl.style.display=noText?'none':'';
+    if(qEl)qEl.style.display=noText?'none':'';
     document.querySelectorAll('.hc').forEach(function(x){x.classList.toggle('is-on',Number(x.dataset.hero)===slot)});
     if(window.fcuHeroPage){var hc=document.querySelector('.hc[data-hero="'+slot+'"]');window.fcuHeroPage(Number(hc&&hc.dataset.pg||0));}
-    var art=document.querySelector('.ph-art'); if(art){art.style.backgroundImage="linear-gradient(90deg,rgba(8,4,18,.6) 0,rgba(8,4,18,0) 32%,rgba(8,4,18,0) 58%,rgba(8,4,18,.55) 100%),linear-gradient(180deg,rgba(8,4,18,0) 55%,rgba(8,4,18,.7) 100%),url('heroes/big/p"+String(slot+1).padStart(2,'0')+".webp?v=11')";art.setAttribute('aria-label',name);}
-    $('phSignName').textContent=name; $('phSignRole').textContent=role; var LG={1:'adsventure',2:'bersinema',6:'unexplnd',14:'lrcreative',23:'oxygen',16:'holyflux',17:'pravia',8:'ssmedia',25:'getcore',22:'impressive',20:'jonbray',21:'activead',27:'sparktank',24:'fluxdesign',28:'folkshitkuy',4:'ngiklan',5:'ngiklan',10:'numen',11:'numen',18:'thecurious',19:'thecurious',3:'needed',13:'pikology',7:'wahgenz',12:'demenfilm'}, lg=$('phSignLogo'); if(lg){ if(LG[slot]){lg.src='hero-logos/'+LG[slot]+'.webp?v=6';lg.alt=role;lg.style.display='block';} else {lg.removeAttribute('src');lg.style.display='none';} }
+    var art=document.querySelector('.ph-art'); if(art){art.style.backgroundImage="linear-gradient(90deg,rgba(8,4,18,.6) 0,rgba(8,4,18,0) 32%,rgba(8,4,18,0) 58%,rgba(8,4,18,.55) 100%),linear-gradient(180deg,rgba(8,4,18,0) 55%,rgba(8,4,18,.7) 100%),url('heroes/big/p"+String(slot+1).padStart(2,'0')+".webp?v=12')";art.setAttribute('aria-label',name);}
+    $('phSignName').textContent=noText?'Karina, Fajar & Syelinda':name; $('phSignRole').textContent=role; var LG={1:'adsventure',2:'bersinema',6:'unexplnd',14:'lrcreative',23:'oxygen',16:'holyflux',17:'pravia',8:'ssmedia',25:'getcore',22:'impressive',20:'jonbray',21:'activead',27:'sparktank',24:'fluxdesign',28:'folkshitkuy',4:'ngiklan',5:'ngiklan',10:'numen',11:'numen',18:'thecurious',19:'thecurious',3:'needed',13:'pikology',7:'wahgenz',12:'demenfilm'}, lg=$('phSignLogo'); if(lg){ if(LG[slot]){lg.src='hero-logos/'+LG[slot]+'.webp?v=6';lg.alt=role;lg.style.display='block';} else {lg.removeAttribute('src');lg.style.display='none';} }
   };
   document.addEventListener('click',function(e){
     var sb=e.target.closest&&e.target.closest('#phSwitch button'); if(sb){e.preventDefault();e.stopPropagation();window.fcuHeroShow(Number(sb.dataset.hp),true);return;}
