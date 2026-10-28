@@ -1079,8 +1079,10 @@
    .ow-grid .ow-lg,.ow-grid .ow-lg.lg-zap-premiere,.ow-grid .ow-lg.lg-binus{grid-column:2;grid-row:1/3;width:100%!important;height:100%;max-height:none!important;max-width:9.5rem!important;margin:0 auto!important;padding:0;object-fit:contain;object-position:center;align-self:center;justify-self:center}
    .ow-grid .ow-tx{display:none!important}
    .ow-grid .ow-it.lg-sq{grid-template-columns:auto minmax(0,1fr)!important}
-   .ow-grid .ow-it.lg-sq .ow-lg.lg-duniagames,.ow-grid .ow-it.lg-sq .ow-lg.lg-dilan-logo,.ow-grid .ow-it.lg-sq .ow-lg.lg-harvest-logo{max-width:4.8rem;height:70%}
+   .ow-grid .ow-it.lg-sq .ow-lg.lg-dilan-logo,.ow-grid .ow-it.lg-sq .ow-lg.lg-harvest-logo{max-width:4.8rem;height:70%}
    .ow-grid .ow-it.lg-sq .ow-lg.lg-harvest-logo{max-width:5.6rem!important;height:80%!important}
+   .ow-grid .ow-it.lg-sq .ow-lg.lg-duniagames{max-width:3.6rem!important;height:52%!important}
+   .ow-grid .ow-it.lg-sq .ow-lg.lg-bellagio{max-width:4.8rem;height:70%}
    .ow-grid .ow-lg.lg-redmi{max-width:7rem!important;height:62%!important;align-self:center}
    .ow-grid .ow-it.lg-sq .ow-lg{grid-column:2;grid-row:1/3;width:auto!important;height:80%;max-width:4.4rem;align-self:center;object-position:center;margin:0}
    .ow-grid .ow-it.lg-sq .ow-th2{height:84%!important;align-self:center}
@@ -2176,7 +2178,7 @@ function kv(k,i){var it=(CR[k]||[])[i]||{},id=yid(it.v),src=it.img||(id?'https:/
 function open(id){var m=document.createElement('div');m.className='cr-modal';m.innerHTML='<button type="button" class="cr-x" aria-label="Tutup">×</button><div class="cr-frame"><iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';m.addEventListener('click',function(e){if(e.target===m||e.target.closest('.cr-x')){e.stopPropagation();m.remove()}});document.body.appendChild(m)}
 function openTikTok(id){var m=document.createElement('div');m.className='cr-modal tk-modal';m.innerHTML='<button type="button" class="cr-x" aria-label="Tutup">×</button><div class="cr-frame"><iframe src="https://www.tiktok.com/player/v1/'+id+'?autoplay=1&controls=1&progress_bar=1&fullscreen_button=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div>';m.addEventListener('click',function(e){if(e.target===m||e.target.closest('.cr-x')){e.stopPropagation();m.remove()}});document.body.appendChild(m)}
 var CAT={creative:{n:'Creative',tag:'Ideas people love',img:'engine-creative-v2.webp'},attention:{n:'Attention',tag:'Stories that move millions',img:'engine-attention-v2.webp'},ai:{n:'AI',tag:'Creative at scale',img:'engine-ai-v2.webp'}};
-var BLG=[['bpjs','bpjs'],['redmi','redmi'],['detergen','sayang'],['lion parcel','lionparcel'],['xl axiata','xl'],['bni','bni-bank'],['telkomsel','telkomsel'],['vinfast','vinfast'],['zap','zap-premiere'],['no drop','nodrop'],['seaworld','seaworld-ancol'],['harvest','harvest-logo'],['dilan','dilan-logo'],['appetito','apetito'],['binus','binus'],['tiktok shop','tiktok'],['shopee','shopee'],['dunia games','duniagames'],['morinaga','morinaga-m'],['macao','macao'],['le minerale','leminerale'],['getcore','getcore'],['getrun','getcore']];
+var BLG=[['bpjs','bpjs'],['redmi','redmi'],['detergen','sayang'],['lion parcel','lionparcel'],['xl axiata','xl'],['bni','bni-bank'],['telkomsel','telkomsel'],['vinfast','vinfast'],['zap','zap-premiere'],['no drop','nodrop'],['seaworld','seaworld-ancol'],['harvest','harvest-logo'],['dilan','dilan-logo'],['appetito','apetito'],['binus','binus'],['tiktok shop','tiktok'],['shopee','shopee'],['dunia games','duniagames'],['morinaga','morinaga-m'],['macao','macao'],['le minerale','leminerale'],['getcore','getcore'],['getrun','getcore'],['bellagio','bellagio']];
 function blg(x){var k=((x.c||'')+' '+(x.t||'')).toLowerCase();for(var i=0;i<BLG.length;i++)if(k.indexOf(BLG[i][0])>=0)return BLG[i][1];return ''}
 function pimg(it){var id=yid(it.v);return it.img||(id?'https://i.ytimg.com/vi/'+id+'/hqdefault.jpg':'')}
 function stat(x){var m=String(x).match(/^([\d.,]+\s?[MKB%]?\+?)\s+(.+)$/);return m&&!/^🏆/.test(x)?{v:m[1],l:m[2]}:null}
