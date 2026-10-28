@@ -17,6 +17,7 @@
     --mute:rgba(244,238,252,.62);
     --pink:#f0b7f5;
     --gold:#e9b24d;
+    --purple:#b388ff;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{font-size:max(9px,min(1.04vw,1.56vh));}
@@ -130,13 +131,13 @@
     background:rgba(255,255,255,.04);cursor:pointer;z-index:4;transition:.25s;
   }
   .arrow:hover{background:#fff;color:#111}
-  .big{font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:.01em;line-height:.92}
-  .big .thin{font-weight:400}
+  .big{font-family:'Bebas Neue',sans-serif;font-weight:700;letter-spacing:.01em;line-height:.92}
+  .big .t1,.lead .names h2 .t1,.cta h2 .t1{color:#fff;font-weight:700}
+  .big .t2,.lead .names h2 .t2,.cta h2 .t2{color:var(--purple);font-weight:700}
 
   /* about */
   .about{--glowA:rgba(255,120,70,.08);--glowB:rgba(140,80,230,.1)}
-  .about .big{font-size:3.2rem;margin-top:.7rem;color:var(--pink)}
-  .about .big b{font-size:3.5rem;color:#fff}
+  .about .big{font-size:3.2rem;margin-top:.7rem}
   .about h3{font-size:1.05rem;font-weight:400;margin-top:.4rem}
   .about p{font-size:.72rem;line-height:1.55;color:var(--mute);margin-top:.5rem;max-width:20rem}
   .stats{position:absolute;left:.9rem;right:.9rem;bottom:.8rem;display:grid;grid-template-columns:repeat(4,auto);
@@ -162,7 +163,7 @@
   .net .eyebrow,.net .big,.net p{text-shadow:0 1px 3px rgba(0,0,0,.95),0 2px 14px rgba(0,0,0,.85)}
   .net p{color:rgba(255,255,255,.85)}
   .lead .names{text-shadow:0 1px 10px rgba(0,0,0,.7);position:absolute;left:1.5rem;bottom:1.2rem;z-index:3}
-  .lead .names h2{font-family:'Bebas Neue',sans-serif;font-size:3.3rem;font-weight:400;line-height:1.05;letter-spacing:.01em}
+  .lead .names h2{font-family:'Bebas Neue',sans-serif;font-size:3.3rem;font-weight:700;line-height:1.05;letter-spacing:.01em}
   .lead .names p{font-size:.85rem;margin-top:.5rem;color:#e8dff5}
   .lead .names p i{opacity:.6;font-style:normal;margin:0 .5rem}
   .lead .names{right:1.5rem}
@@ -265,8 +266,7 @@
   .press .arrow:hover{transform:translateY(-50%)}
   .cta{display:flex;flex-direction:column;justify-content:center;--glowA:rgba(120,70,230,.5);--glowB:rgba(255,130,70,.3)}
   .cta small{font-size:.56rem;letter-spacing:.3em;color:var(--mute)}
-  .cta h2{font-family:'Bebas Neue',sans-serif;font-size:3.3rem;font-weight:400;line-height:1;margin:.5rem 0;letter-spacing:.01em}
-  .cta h2 b{font-weight:400}
+  .cta h2{font-family:'Bebas Neue',sans-serif;font-size:3.3rem;font-weight:700;line-height:1;margin:.5rem 0;letter-spacing:.01em}
   .cta p{font-size:.78rem;color:rgba(255,255,255,.85);margin-top:.15rem}
   .cta .arrow{top:auto;bottom:1rem}
 
@@ -1293,7 +1293,7 @@
       <img class="art" src="meet-fcu.webp?v=2" alt="" decoding="async">
       <div class="eyebrow">01 / About</div>
       <a class="arrow" href="#">↗</a>
-      <div class="big">MEET<br><b>THE UNIVERSE</b></div>
+      <div class="big"><span class="t1">MEET</span><br><span class="t2">THE UNIVERSE</span></div>
       <h3>A Creative Holding Group</h3>
       <p class="sub">The Avengers of Indonesia’s creative industry. Meet Flux Creative Universe, powered by creativity, attention, and AI.</p>
       <div class="stats s5">
@@ -1311,7 +1311,7 @@
       <a class="arrow" href="#">→</a>
       <img class="pic cover" src="founders-card.webp?v=3" alt="Yohanes Auri dan Deddy Corbuzier" decoding="async">
       <div class="names">
-        <h2>MEET<br>THE LEADERS</h2>
+        <h2><span class="t1">MEET</span><br><span class="t2">THE LEADERS</span></h2>
         <p>Yohanes Auri <i>×</i> Deddy Corbuzier</p>
       </div>
     </article>
@@ -1320,7 +1320,7 @@
     <div class="rail-label"><span>03</span><b>Investor</b></div>
       <div class="eyebrow">03 / Investor</div>
       <a class="arrow" href="#">→</a>
-      <div class="net-copy"><div class="big">MEET OUR<br>INVESTORS</div>
+      <div class="net-copy"><div class="big"><span class="t1">MEET OUR</span><br><span class="t2">INVESTORS</span></div>
       <p class="sub">Supported by influential Indonesian entrepreneurs and business leaders.</p></div>
       <img class="pic cover net-pic" src="network-card.webp?v=3" alt="Investor dan partner Flux Creative Universe" decoding="async">
         </article>
@@ -1331,7 +1331,7 @@
     <div class="rail-label"><span>04</span><b>Partner<br>Heroes</b></div>
     <div>
       <div class="eyebrow">04 / Creative Partners</div>
-      <div class="big">MEET OUR<br><span class="thin">PARTNER HEROES</span></div>
+      <div class="big"><span class="t1">MEET OUR</span><br><span class="t2">PARTNER HEROES</span></div>
       <p class="sub">The founders behind our creative ecosystem.</p>
     </div>
     <div class="faces">
@@ -1354,7 +1354,7 @@
     <article class="card award" tabindex="0" data-title="AWARD WINNING">
     <div class="rail-label"><span>05</span><b>Awards</b></div>
       <div class="eyebrow">05 / Hall of Fame</div>
-      <div class="big">AWARDS &amp;<br>RECOGNITION</div>
+      <div class="big"><span class="t1">AWARDS &amp;</span><br><span class="t2">RECOGNITION</span></div>
       <p class="sub">A growing record of 17 awards and 1 MURI achievement.</p>
       <a class="arrow" href="#">→</a>
       <img class="pic cover award-pic" src="award-card.webp?v=2" alt="Piagam MURI, piala Film Craft, dan piala MDMH 2025" decoding="async">
@@ -1365,7 +1365,7 @@
       <div class="eyebrow">06 / Selected Works</div>
       <a class="arrow" href="#">→</a>
       <video class="pic cover work-pic work-vid" src="work-video.mp4?v=1" poster="work-video-poster.webp?v=1" autoplay muted loop playsinline preload="auto" aria-label="Lion Parcel x Idenya Flux"></video>
-      <div class="big">OUR<br>WORK</div>
+      <div class="big"><span class="t1">OUR</span><br><span class="t2">WORK</span></div>
       <p class="sub">A showcase of what we create.</p>
       <div class="thumbs" id="thumbs">
         <div class="ph scene photo" data-c="creative" style="--h:330"><img src="work-1.webp?v=1" style="object-position:50% 30%" alt="" loading="lazy"></div>
@@ -1380,7 +1380,7 @@
     <div class="rail-label"><span>07</span><b>In The<br>News</b></div>
         <div>
           <div class="eyebrow">07 / Press &amp; Media</div>
-          <div class="big">FCU<br>IN THE NEWS</div>
+          <div class="big"><span class="t1">FCU</span><br><span class="t2">IN THE NEWS</span></div>
           <p>The latest stories featuring Flux Creative Universe.</p>
         </div>
         <div class="news">
@@ -1399,7 +1399,7 @@
       <article class="card cta" tabindex="0" data-title="A UNIVERSE">
     <div class="rail-label"><span></span><b>Contact<br>Us</b></div>
         <small>CONTACT US</small>
-        <h2>BE PART OF<br> THE <b>UNIVERSE</b></h2>
+        <h2><span class="t1">BE PART OF</span><br> <span class="t2">THE UNIVERSE</span></h2>
         <p>Get in touch with our team</p>
         <a class="arrow" href="#">→</a>
       </article>
