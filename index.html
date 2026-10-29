@@ -463,8 +463,7 @@
   body.open .page.meet-detail{overflow:hidden}
   .meet-detail .back{display:none}
   .meet-detail .pg-head{flex:0 0 44%;isolation:isolate;border:0;border-radius:0;padding:1.55rem 1.65rem;background:
-    linear-gradient(270deg,rgba(5,3,10,.55) 0%,transparent 14%),
-    url('meet-fcu-universe-banner.webp?v=2') left center/auto 100% no-repeat;
+    #020208;
     box-shadow:none;overflow:hidden}
   .meet-detail .pg-head::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 72% 0%,rgba(255,186,139,.17),transparent 42%);pointer-events:none}
   .meet-detail .pg-head::after{display:none;content:"CREATIVE\A ATTENTION\A AI\A\A —\A\A ONE ECOSYSTEM.\A MANY POSSIBILITIES.\A FOR BRANDS, CREATORS,\A ENTREPRENEURS, AND\A THE NEXT GENERATION.";white-space:pre;position:absolute;right:3.2rem;top:4.8rem;width:12rem;font-size:.58rem;line-height:1.65;letter-spacing:.2em;color:rgba(255,255,255,.84);text-shadow:0 1px 8px #000}
@@ -905,10 +904,13 @@
   .founders-detail::after{left:16%!important;top:1%!important;width:68%!important;height:76%!important;background:url('founders-hero-bg.webp?v=1') 50% 0/118% auto no-repeat!important;filter:none!important;-webkit-mask-image:radial-gradient(ellipse 50% 52% at 50% 42%,#000 60%,transparent 100%);mask-image:radial-gradient(ellipse 50% 52% at 50% 42%,#000 60%,transparent 100%)}
   @media (max-width:900px){.founders-detail::after{left:0!important;top:12rem!important;width:100%!important;height:20rem!important;background-size:cover!important;background-position:50% 20%!important}}
   .awards-body::after{background:radial-gradient(ellipse at 50% 100%,rgba(140,90,40,.16),transparent 60%)!important}
-  .meet-detail .pg-head{background:
-    linear-gradient(270deg,rgba(5,3,10,.55) 0%,transparent 14%),
-    url('meet-fcu-universe-banner.webp?v=2') left center/auto 100% no-repeat!important;border-radius:1rem}
+  .meet-detail .pg-head{background:#020208!important;border-radius:1rem}
+  /* banner image digeser ke kanan di dalam frame; sisi kanan boleh terpotong, tepi kiri disamarkan gradient */
+  .meet-detail .pg-head::after{display:block!important;content:""!important;position:absolute;z-index:-1;top:0;bottom:0;left:var(--meet-shift,9%);right:auto;width:auto;aspect-ratio:4/1;height:100%;
+    background:url('meet-fcu-universe-banner.webp?v=2') left center/auto 100% no-repeat;pointer-events:none;
+    -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%);mask-image:linear-gradient(90deg,transparent 0,#000 7%)}
   @media (max-width:900px){
+    .meet-detail .pg-head::after{display:none!important}
     .meet-detail .pg-head{background:
       linear-gradient(180deg,rgba(7,4,16,.2) 0%,rgba(7,4,16,.74) 62%,rgba(7,4,16,.92) 100%),
       url('meet-fcu-universe-banner.webp?v=2') center top/contain no-repeat!important;border-radius:1rem}
