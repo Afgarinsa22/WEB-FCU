@@ -762,7 +762,7 @@
     .ph-panel{position:relative;right:auto;top:auto;width:auto;min-height:0}
     .ph-deck{position:relative;left:auto;right:auto;bottom:auto;height:auto;perspective:none}
     .hc-grid{position:relative;inset:auto;transform:none;display:flex;overflow-x:auto;gap:.8rem;padding:.6rem .2rem 1rem;scrollbar-width:none}
-    .hc,.hc:hover{position:relative;left:auto;top:auto;margin:0;flex:0 0 7.5rem;width:7.5rem;height:10.5rem;transform:none}
+    .hc,.hc:hover{position:relative;left:auto;top:auto;margin:0;flex:0 0 auto;width:clamp(5.6rem,21vw,8.4rem);height:auto;aspect-ratio:120/165;transform:none}
     .ph-dnav{display:none!important}.hc-soon{display:none!important}
     .ph-art{-webkit-mask-image:none;mask-image:none}
     .ph-about{grid-template-columns:1fr}
@@ -1927,7 +1927,7 @@
     g.querySelectorAll('.hc[hidden]').forEach(function(c){c.classList.add('off-page')});
     var rows={}; cards.forEach(function(c,k){if(!c)return; var pg=Math.floor(k/(PER*2)), row=Math.floor(k/PER)%2; c.dataset.pg=pg; c.dataset.row=row; (rows[pg+'_'+row]=rows[pg+'_'+row]||[]).push(c)});
     var maxU=0; Object.keys(rows).forEach(function(k){var u=0;rows[k].forEach(function(c){u+=c.classList.contains('hc-duo')?DU:1});maxU=Math.max(maxU,u)});
-    var w=Math.min(W/(maxU+1.2),H*.44/1.32), h=w*1.32, R=W*0.8, step=(w*1.05)/R;
+    var w=Math.max(84,Math.min(136,W/(maxU+1.2),H*.44/1.32)), h=w*1.32, R=W*0.8, step=(w*1.05)/R;
     Object.keys(rows).forEach(function(k){
       var list=rows[k], tot=0; list.forEach(function(c){tot+=c.classList.contains('hc-duo')?DU:1});
       var acc=0, k=maxU/tot;
