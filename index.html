@@ -2257,6 +2257,19 @@ document.addEventListener('click',function(e){var t=e.target;if(!t.closest)retur
  var c=t.closest('.pt.cr');if(c){e.preventDefault();e.stopPropagation();var pb2=c.closest('.pg-body');if(pb2.dataset.pmode){if(c.dataset.yt)open(c.dataset.yt);else if(c.dataset.img)lb(c.dataset.img);return}if(c.classList.contains('cr-c')){if(c.dataset.yt)open(c.dataset.yt);return}if(c.classList.contains('has-kv')){fill(pb2,pb2.dataset.crk,Number(c.dataset.i));pb2.querySelectorAll('.pt.cr').forEach(function(x){x.style.animation='none';x.offsetWidth;x.style.animation=''})}else if(c.dataset.yt)open(c.dataset.yt);return}
 },true);
 })();</script>
-<script>document.addEventListener('submit',function(e){var f=e.target.closest&&e.target.closest('#brief');if(!f)return;e.preventDefault();var bad=false;f.querySelectorAll('[required]').forEach(function(i){if(!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value))){bad=true}});f.querySelector('.cf-err').hidden=!bad;/* TODO: kirim ke endpoint setelah tujuan submit ditentukan */});</script>
+<script>
+/* Formspree: isi FORM_ID dengan kode dari https://formspree.io/f/XXXXXXXX (bagian XXXXXXXX). Email tujuan diatur di dashboard Formspree. */
+var FCU_FORMSPREE_ID='';
+document.addEventListener('submit',function(e){var f=e.target.closest&&e.target.closest('#brief');if(!f)return;e.preventDefault();
+var err=f.querySelector('.cf-err'),btn=f.querySelector('button'),bad=false;
+f.querySelectorAll('[required]').forEach(function(i){if(!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value)))bad=true});
+err.textContent='Please fill the required field.';err.style.color='';err.hidden=!bad;if(bad)return;
+if(!FCU_FORMSPREE_ID){err.textContent='Form belum terhubung.';err.hidden=false;return}
+btn.disabled=true;btn.textContent='SENDING...';
+fetch('https://formspree.io/f/'+FCU_FORMSPREE_ID,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify({name:f.name.value,email:f.email.value,message:f.brief.value,_subject:'New Brief from '+f.name.value})})
+.then(function(r){if(!r.ok)throw 0;f.reset();err.textContent='Thank you! Your brief has been sent.';err.style.color='#000';err.hidden=false;btn.textContent='SUBMIT';btn.disabled=false})
+.catch(function(){err.textContent='Something went wrong. Please try again or email brief@fluxcreativeuniverse.com.';err.hidden=false;btn.textContent='SUBMIT';btn.disabled=false});
+});
+</script>
 </body>
 </html>
