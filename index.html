@@ -2262,7 +2262,7 @@ document.addEventListener('click',function(e){var t=e.target;if(!t.closest)retur
 })();</script>
 <script>
 /* Formspree: isi FORM_ID dengan kode dari https://formspree.io/f/XXXXXXXX (bagian XXXXXXXX). Email tujuan diatur di dashboard Formspree. */
-var FCU_FORMSPREE_ID='';
+var FCU_FORMSPREE_ID='maeebrev';
 document.addEventListener('submit',function(e){var f=e.target.closest&&e.target.closest('#brief');if(!f)return;e.preventDefault();
 var err=f.querySelector('.cf-err'),btn=f.querySelector('button'),bad=false;
 f.querySelectorAll('[required]').forEach(function(i){if(!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value)))bad=true});
