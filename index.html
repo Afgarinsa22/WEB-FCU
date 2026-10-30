@@ -449,7 +449,8 @@
   body.open .card.award{background:linear-gradient(90deg,#0b0710 0,#0b0710 28%,rgba(11,7,16,0) 52%),url('awards-rail.webp?v=1') right center/auto 100% no-repeat,#0b0710}
   body.open .card.work{background-image:url('work-rail-lion.webp');background-size:cover;background-position:right center}
   body.open .card.work::before{display:block!important;background:linear-gradient(90deg,rgba(10,5,22,.97) 0%,rgba(10,5,22,.9) 38%,rgba(10,5,22,.45) 62%,rgba(10,5,22,0) 85%)!important}
-  body.open .card.press{background-image:linear-gradient(0deg,rgba(5,6,8,.88),rgba(6,8,10,.35) 55%,rgba(6,8,10,.4)),url(press-rail-bg.webp?v=1)}
+  body.open .card.press{background-image:url(press-rail-bg.webp?v=1);background-size:cover}
+  body.open .card.press::before{background:linear-gradient(90deg,rgba(16,8,34,.8) 0%,rgba(16,8,34,.4) 30%,rgba(16,8,34,0) 55%)!important}
   body.open .card.cta{background-image:url('meet-fcu-planet.webp');background-position:63% 8%}
   body.open .card:not(.active){filter:saturate(.64) brightness(.74)}
   body.open .card:hover{filter:saturate(.9) brightness(.96);transform:translateX(.12rem)}
